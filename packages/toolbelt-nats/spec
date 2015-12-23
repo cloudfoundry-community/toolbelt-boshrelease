@@ -1,0 +1,5 @@
+---
+name: toolbelt-nats
+dependencies: []
+files:
+  - nats/nats-1.0.2-linux-x86_64.tar.gz

@@ -1,0 +1,12 @@
+#!/bin/sh
+
+for package in $(find /var/vcap/packages -type l -name 'toolbelt-*'); do
+	for dir in bin sbin; do
+		if [[ -d ${package}/${dir} ]]; then
+			for bin in ${package}/${dir}/*; do
+				test -x ${bin} && echo ":: found ${bin##*/} utility"
+			done
+			export PATH="${PATH}:${package}/${dir}"
+		fi
+	done
+done

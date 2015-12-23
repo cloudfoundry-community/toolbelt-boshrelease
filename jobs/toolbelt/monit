@@ -1,0 +1,4 @@
+check file toolbelt
+  path /etc/envrc
+  start program "/bin/cp /var/vcap/jobs/toolbelt/envrc /etc/envrc"
+  group vcap

@@ -1,0 +1,6 @@
+---
+name: toolbelt
+packages:
+  - toolbelt-nats
+templates:
+  envrc: envrc
