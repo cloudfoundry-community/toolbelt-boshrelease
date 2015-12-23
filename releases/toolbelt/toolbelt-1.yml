@@ -1,0 +1,25 @@
+---
+packages:
+- name: toolbelt-jq
+  version: b36480470dd3839778fb343eb0c3987276847ac2
+  fingerprint: b36480470dd3839778fb343eb0c3987276847ac2
+  sha1: c5c6a03f3e0fee9eb135529189fec4c07015f6d1
+  dependencies: []
+- name: toolbelt-nats
+  version: 35bd4d5bd9e0cc0ca5e1368a86a23345c362e772
+  fingerprint: 35bd4d5bd9e0cc0ca5e1368a86a23345c362e772
+  sha1: 63865e67b2c34463b85722cf4c4e858426bd8694
+  dependencies: []
+jobs:
+- name: toolbelt
+  version: 080cf04490bacc2f8fb1f65c7173a5612008d80a
+  fingerprint: 080cf04490bacc2f8fb1f65c7173a5612008d80a
+  sha1: 0fd1eda8e99228e54c90f586c4ba15a2d5e9cd07
+license:
+  version: add99949ee372a5e7a9f71f37eade757c23cb057
+  fingerprint: add99949ee372a5e7a9f71f37eade757c23cb057
+  sha1: cef36b73d7adfffb8895e263b892c6f206d0b21e
+commit_hash: fd8d8eb0
+uncommitted_changes: true
+name: toolbelt
+version: '1'

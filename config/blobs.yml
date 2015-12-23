@@ -1,1 +1,9 @@
---- {}
+---
+jq/jq-linux64:
+  object_id: babe6a62-2740-4aa8-9e03-fe1437169669
+  sha: d8e36831c3c94bb58be34dd544f44a6c6cb88568
+  size: 3027945
+nats/nats-1.0.2-linux-x86_64.tar.gz:
+  object_id: 9530f4aa-fcca-43d2-af55-34b8b44a728c
+  sha: a47897ac81b83d7e72344ef0c58b90dc9db036c5
+  size: 1976167
