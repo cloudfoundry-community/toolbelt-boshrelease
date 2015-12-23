@@ -1,0 +1,6 @@
+---
+name: toolbelt-jq
+dependencies: []
+files:
+    # https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64
+  - jq/jq-linux64

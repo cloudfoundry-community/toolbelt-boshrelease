@@ -1,6 +1,7 @@
 ---
 name: toolbelt
 packages:
+  - toolbelt-jq
   - toolbelt-nats
 templates:
   envrc: envrc
