@@ -7,3 +7,7 @@ nats/nats-1.0.2-linux-x86_64.tar.gz:
   object_id: 9530f4aa-fcca-43d2-af55-34b8b44a728c
   sha: a47897ac81b83d7e72344ef0c58b90dc9db036c5
   size: 1976167
+gaol/gaol-linux64:
+  object_id: 512c442f-da94-4fd0-a882-c6b425f38b47
+  sha: 2a0f3a900e37ba04fcbdaf1a2880aede04b1d4d8
+  size: 8545336
