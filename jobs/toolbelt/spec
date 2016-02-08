@@ -3,5 +3,8 @@ name: toolbelt
 packages:
   - toolbelt-jq
   - toolbelt-nats
+  - toolbelt-gaol
 templates:
   envrc: envrc
+
+properties: {}
