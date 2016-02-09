@@ -3,10 +3,16 @@
 for package in $(find /var/vcap/packages -type l -name 'toolbelt-*'); do
 	for dir in bin sbin; do
 		if [[ -d ${package}/${dir} ]]; then
-			for bin in ${package}/${dir}/*; do
-				test -x ${bin} && echo ":: found ${bin##*/} utility"
-			done
 			export PATH="${PATH}:${package}/${dir}"
+		fi
+	done
+	for dir in lib; do
+		if [[ -d ${package}/${dir} ]]; then
+			if [[ -z ${LD_LIBRARY_PATH} ]]; then
+				export LD_LIBRARY_PATH="${package}/${dir}"
+			else
+				export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${package}/${dir}"
+			fi
 		fi
 	done
 done
