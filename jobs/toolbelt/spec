@@ -4,6 +4,9 @@ packages:
   - toolbelt-jq
   - toolbelt-nats
   - toolbelt-gaol
+  - toolbelt-cf
+  - toolbelt-esuf
+  - toolbelt-tree
 templates:
   envrc: envrc
 
