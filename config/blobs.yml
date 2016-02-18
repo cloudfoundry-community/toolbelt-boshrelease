@@ -11,3 +11,15 @@ gaol/gaol-linux64:
   object_id: 512c442f-da94-4fd0-a882-c6b425f38b47
   sha: 2a0f3a900e37ba04fcbdaf1a2880aede04b1d4d8
   size: 8545336
+cf-cli/cf-linux64:
+  object_id: 1e711010-7c7c-4852-b32b-924e195fb1c6
+  sha: 1ab6a9c11d92cf7fb443c24225a007b6fcb3cc99
+  size: 19896417
+tree/tree-1.7.0.tgz:
+  object_id: 0206d042-9017-4118-ab4d-a6c79278d0e0
+  sha: 35bd212606e6c5d60f4d5062f4a59bb7b7b25949
+  size: 47082
+esuf/esuf-linux-amd64:
+  object_id: 0926492c-2b17-4bc8-b5e5-5ca77b9ce1c3
+  sha: 5ec7c5b67678287d2eb30b98ca2707993a152e78
+  size: 8293096
