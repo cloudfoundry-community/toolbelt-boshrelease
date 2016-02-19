@@ -1,0 +1,147 @@
+---
+meta:
+  name:     (( param "Please name your BOSH release" ))
+  release:  (( concat "The " meta.name " BOSH Release" ))
+  pipeline: (( concat meta.name "-boshrelease" ))
+  bosh:
+    target:     (( vault "secret/bosh-lite/arena:target" ))
+    username:   (( vault "secret/bosh-lite/arena:username" ))
+    password:   (( vault "secret/bosh-lite/arena:password" ))
+    deployment: (( concat meta.name "-pipeline" ))
+  github:
+    org:          cloudfoundry-community
+    repo:         toolbelt-boshrelease
+    branch:       master
+    uri:          (( concat "git@github.com:" meta.github.org "/" meta.github.repo ))
+    private_key:  (( vault "secret/pipelines/toolbelt-boshrelease/github:key" ))
+    access_token: (( vault "secret/pipelines/toolbelt-boshrelease/github:token" ))
+  aws:
+    bucket:     (( concat meta.name "-boshrelease" ))
+    access_key: (( vault "secret/aws/cfcommunity:access" ))
+    secret_key: (( vault "secret/aws/cfcommunity:secret" ))
+
+resources:
+- name: version
+  type: semver
+  source:
+    driver:            s3
+    bucket:            (( grab meta.aws.bucket ))
+    key:               version
+    access_key_id:     (( grab meta.aws.access_key ))
+    secret_access_key: (( grab meta.aws.secret_key ))
+    initial_version:   0.1.0
+
+- name: git
+  type: git
+  source:
+    uri: (( grab meta.github.uri ))
+    branch: (( grab meta.github.branch || "master" ))
+    private_key: (( grab meta.github.private_key ))
+
+- name: github
+  type: github-release
+  source:
+    user: (( grab meta.github.org ))
+    repository: (( grab meta.github.repo ))
+    access_token: (( grab meta.github.access_token ))
+
+- name: amazon
+  type: s3
+  source:
+    bucket:            (( grab meta.aws.bucket ))
+    access_key_id:     (( grab meta.aws.access_key ))
+    secret_access_key: (( grab meta.aws.secret_key ))
+    regexp: (( concat meta.name "-(.*).tgz" ))
+
+jobs:
+- name: testflight
+  public: true
+  serial: true
+  plan:
+  - do:
+    - { get: git, trigger: true }
+    - task: create-release-and-deploy
+      config:
+        platform: linux
+        image:    docker:///starkandwayne/concourse
+        inputs:
+          - { name: git, path: release }
+        run:
+          path: ./release/ci/scripts/testflight
+          args: []
+        params:
+          bosh_target:          (( grab meta.bosh.target ))
+          bosh_username:        (( grab meta.bosh.username ))
+          bosh_password:        (( grab meta.bosh.password ))
+          bosh_deployment_name: (( grab meta.bosh.deployment ))
+
+- name: rc
+  public: true
+  plan:
+  - aggregate:
+    - { get: git,     trigger: true,  passed: [testflight] }
+    - { get: version, trigger: false, params: {bump: minor, pre: rc} }
+  - { put: version, params: {file: version/number} }
+- name: patch
+  public: true
+  plan:
+  - { get: version, trigger: false, params: {bump: patch} }
+  - { put: version, params: {file: version/number} }
+- name: minor
+  public: true
+  plan:
+  - { get: version, trigger: false, params: {bump: minor} }
+  - { put: version, params: {file: version/number} }
+- name: major
+  public: true
+  plan:
+  - { get: version, trigger: false, params: {bump: major} }
+  - { put: version, params: {file: version/number} }
+
+- name: shipit
+  public: true
+  serial: true
+  plan:
+  - aggregate:
+    - { get: version, passed: [rc], params: {bump: final} }
+    - { get: git,     passed: [rc] }
+  - task: create-final
+    config:
+      platform: linux
+      image:    docker:///starkandwayne/concourse
+      inputs:
+      - {name: git, path: release}
+      - {name: version}
+      run:
+        path: ./release/ci/scripts/shipit
+        args: []
+      params:
+        release_name:          (( grab meta.release ))
+        branch_name:           (( grab meta.github.branch || "master" ))
+        bosh_target:           (( grab meta.bosh.target ))
+        bosh_username:         (( grab meta.bosh.username ))
+        bosh_password:         (( grab meta.bosh.password ))
+        bosh_deployment_name:  (( grab meta.bosh.deployment ))
+        aws_access_key_id:     (( grab meta.aws.access_key ))
+        aws_secret_access_key: (( grab meta.aws.secret_key ))
+
+  - put: git
+    params:
+      repository: create-final/release
+      rebase: true
+
+  # FIXME: have shipit increment patch, for the next go-round
+
+  - aggregate:
+    - put: version
+      params: {file: version/number}
+    - put: amazon
+      params:
+        from: (( concat "create-final/release/releases/" meta.name "/" meta.name "-(.*).tgz" ))
+    - put: github
+      params:
+        name:   create-final/release/release/name
+        tag:    create-final/release/release/tag
+        body:   create-final/release/release/notes.md
+        globs:
+          - (( concat "create-final/release/releases/" meta.name "/" meta.name "-*.tgz" ))

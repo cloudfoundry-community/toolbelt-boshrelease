@@ -1,0 +1,18 @@
+#!/bin/bash
+
+
+cd $(dirname $BASH_SOURCE[0])
+echo "Working in $(pwd)"
+
+set -e
+trap "rm -f .deploy.yml" QUIT TERM EXIT INT
+spruce merge pipeline.yml local.yml > .deploy.yml
+PIPELINE=$(spruce json .deploy.yml | jq -r '.meta.pipeline // ""')
+if [[ -z ${PIPELINE} ]]; then
+	echo >&2 "Missing pipeline name in ci/pipeline.yml!"
+	exit 1
+fi
+TARGET=${TARGET:-sw}
+
+fly --target ${TARGET} set-pipeline     --pipeline ${PIPELINE} --config .deploy.yml
+fly --target ${TARGET} unpause-pipeline --pipeline ${PIPELINE}
