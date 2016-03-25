@@ -9,10 +9,10 @@ meta:
     password:   (( vault "secret/bosh-lite/arena:password" ))
     deployment: (( concat meta.name "-pipeline" ))
   github:
-    org:          cloudfoundry-community
+    owner:          cloudfoundry-community
     repo:         toolbelt-boshrelease
     branch:       master
-    uri:          (( concat "git@github.com:" meta.github.org "/" meta.github.repo ))
+    uri:          (( concat "git@github.com:" meta.github.owner "/" meta.github.repo ))
     private_key:  (( vault "secret/pipelines/toolbelt-boshrelease/github:key" ))
     access_token: (( vault "secret/pipelines/toolbelt-boshrelease/github:token" ))
   aws:
@@ -41,8 +41,8 @@ resources:
 - name: github
   type: github-release
   source:
-    user: (( grab meta.github.org ))
-    repository: (( grab meta.github.repo ))
+    user:         (( grab meta.github.owner ))
+    repository:   (( grab meta.github.repo ))
     access_token: (( grab meta.github.access_token ))
 
 - name: amazon
@@ -51,7 +51,7 @@ resources:
     bucket:            (( grab meta.aws.bucket ))
     access_key_id:     (( grab meta.aws.access_key ))
     secret_access_key: (( grab meta.aws.secret_key ))
-    regexp: (( concat meta.name "-(.*).tgz" ))
+    regexp:            (( concat meta.name "-(.*).tgz" ))
 
 jobs:
 - name: testflight
