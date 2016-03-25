@@ -7,6 +7,7 @@ packages:
   - toolbelt-cf
   - toolbelt-esuf
   - toolbelt-tree
+  - toolbelt-redis
 templates:
   envrc: envrc
 

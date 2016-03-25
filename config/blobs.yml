@@ -23,3 +23,7 @@ esuf/esuf-linux-amd64:
   object_id: 0926492c-2b17-4bc8-b5e5-5ca77b9ce1c3
   sha: 5ec7c5b67678287d2eb30b98ca2707993a152e78
   size: 8293096
+redis/redis-3.0.7.tar.gz:
+  object_id: f048dc59-c299-4c46-a631-4bb14da326db
+  sha: e56b4b7e033ae8dbf311f9191cf6fdf3ae974d1c
+  size: 1375200
