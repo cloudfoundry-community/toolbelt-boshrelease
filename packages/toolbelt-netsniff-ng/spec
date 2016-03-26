@@ -1,0 +1,5 @@
+---
+name: toolbelt-netsniff-ng
+dependencies: []
+files:
+  - netsniff-ng/*

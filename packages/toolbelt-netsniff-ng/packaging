@@ -1,0 +1,113 @@
+set -e # exit immediately if a simple command exits with a non-zero status
+set -u # report the usage of uninitialized variables
+
+# save a build transcript
+exec &> >(tee "${BOSH_INSTALL_TARGET}/install.log")
+
+# Detect # of CPUs so make jobs can be parallelized
+CPUS=$(grep -c ^processor /proc/cpuinfo)
+ # Available variables
+# $BOSH_COMPILE_TARGET - where this package & spec'd source files are available
+# $BOSH_INSTALL_TARGET - where you copy/install files to be included in package
+export HOME=/var/vcap
+export PKG_CONFIG_PATH=${BOSH_INSTALL_TARGET}/lib/pkgconfig
+export LD_LIBRARY_PATH=${BOSH_INSTALL_TARGET}/lib
+export INCLUDE_PATH=${BOSH_INSTALL_TARGET}/include
+
+# (cd blobs/netsniff-ng ; curl -LSsO https://ftp.gnu.org/pub/gnu/ncurses/ncurses-5.9.tar.gz)
+tar -xzf netsniff-ng/ncurses-5.9.tar.gz
+(cd ncurses-5.9
+ ./configure --prefix ${BOSH_INSTALL_TARGET} --with-shared && \
+ make && \
+ make install) || exit 1
+
+# (cd blobs/netsniff-ng ; curl -LSsO http://hyperelliptic.org/nacl/nacl-20110221.tar.bz2)
+#tar -xjf netsniff-ng/nacl-20110221.tar.bz2
+#(cd nacl-20110221
+# ./do && \
+# mkdir -p {BOSH_INSTALL_TARGET}/{bin,lib,include} && \
+# rm -f build/*/bin/ok* && \
+# cp -a build/*/bin/*     ${BOSH_INSTALL_TARGET}/bin/ && \
+# cp -a build/*/lib/*/*   ${BOSH_INSTALL_TARGET}/lib/ && \
+# cp -a build/*/include/* ${BOSH_INSTALL_TARGET}/include/) || exit 1
+
+# (cd blobs/netsniff-ng ; curl -LSsO https://download.libsodium.org/libsodium/releases/libsodium-1.0.8.tar.gz)
+tar -xzf netsniff-ng/libsodium-1.0.8.tar.gz
+(cd libsodium-1.0.8
+ ./configure --prefix ${BOSH_INSTALL_TARGET} && \
+ make && \
+ make install) || exit 1
+
+# (cd blobs/netsniff-ng ; curl -LSsO http://www.netfilter.org/projects/libnfnetlink/files/libnfnetlink-1.0.1.tar.bz2)
+tar -xjf netsniff-ng/libnfnetlink-1.0.1.tar.bz2
+(cd libnfnetlink-1.0.1
+ ./configure --prefix ${BOSH_INSTALL_TARGET} && \
+ make && \
+ make install) || exit 1
+
+# (cd blobs/netsniff-ng ; curl -LSsO https://www.infradead.org/~tgr/libnl/files/libnl-3.2.25.tar.gz)
+tar -xzf netsniff-ng/libnl-3.2.25.tar.gz
+(cd libnl-3.2.25
+ ./configure --prefix ${BOSH_INSTALL_TARGET} && \
+ make && \
+ make install) || exit 1
+
+# (cd blobs/netsniff-ng ; curl -LSsO http://www.netfilter.org/projects/libmnl/files/libmnl-1.0.3.tar.bz2)
+tar -xjf netsniff-ng/libmnl-1.0.3.tar.bz2
+(cd libmnl-1.0.3
+ ./configure --prefix ${BOSH_INSTALL_TARGET} && \
+ make && \
+ make install) || exit 1
+
+# (cd blobs/netsniff-ng ; curl -LSsO http://www.netfilter.org/projects/libnetfilter_conntrack/files/libnetfilter_conntrack-1.0.5.tar.bz2)
+tar -xjf netsniff-ng/libnetfilter_conntrack-1.0.5.tar.bz2
+(cd libnetfilter_conntrack-1.0.5
+ ./configure --prefix ${BOSH_INSTALL_TARGET} && \
+ make && \
+ make install) || exit 1
+
+# (cd blobs/netsniff-ng ; curl -LSsO http://www.tcpdump.org/release/libpcap-1.7.4.tar.gz)
+tar -xzf netsniff-ng/libpcap-1.7.4.tar.gz
+(cd libpcap-1.7.4
+ ./configure --prefix ${BOSH_INSTALL_TARGET} && \
+ make && \
+ make install) || exit 1
+
+# (cd blobs/netsniff-ng ; curl -LSsO http://www.lttng.org/files/urcu/userspace-rcu-0.9.1.tar.bz2)
+tar -xjf netsniff-ng/userspace-rcu-0.9.1.tar.bz2
+(cd userspace-rcu-0.9.1
+ ./configure --prefix ${BOSH_INSTALL_TARGET} && \
+ make && \
+ make install) || exit 1
+
+# (cd blobs/netsniff-ng ; curl -LSs https://github.com/dparrish/libcli/archive/v1.9.7.tar.gz -o libcli-1.9.7.tar.gz)
+tar -xzf netsniff-ng/libcli-1.9.7.tar.gz
+(cd libcli-1.9.7
+ sed -i -e "s@/usr/local@${BOSH_INSTALL_TARGET}@" Makefile
+ make && \
+ make install) || exit 1
+
+# (cd blobs/netsniff-ng ; curl -LSsO http://downloads.sourceforge.net/project/libnet-dev/libnet-1.1.6.tar.gz)
+tar -xzf netsniff-ng/libnet-1.1.6.tar.gz
+(cd libnet-1.1.6
+ ./configure --prefix ${BOSH_INSTALL_TARGET} && \
+ make && \
+ make install) || exit 1
+
+# (cd blobs/netsniff-ng ; curl -LSsO http://pub.netsniff-ng.org/netsniff-ng/netsniff-ng-0.6.0.tar.gz)
+# NB: mausezahn, curvetun and flowtop are silently failing...
+tar -xzf netsniff-ng/netsniff-ng-0.6.0.tar.gz
+(cd netsniff-ng-0.6.0
+ export PREFIX=${BOSH_INSTALL_TARGET}
+ export NACL_INC_DIR=${BOSH_INSTALL_TARGET}/include/sodium
+ export NACL_LIB_DIR=${BOSH_INSTALL_TARGET}/lib
+ export NACL_LIB=sodium
+
+ # because the configure script doesn't honor other flags,
+ # rely on some default gcc behaviors
+ export C_INCLUDE_PATH=${INCLUDE_PATH}
+ export LIBRARY_PATH=${LD_LIBRARY_PATH}
+
+ ./configure && \
+ make && \
+ make install) || exit 1

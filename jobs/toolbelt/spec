@@ -8,6 +8,7 @@ packages:
   - toolbelt-esuf
   - toolbelt-tree
   - toolbelt-redis
+  - toolbelt-netsniff-ng
 templates:
   envrc: envrc
 
