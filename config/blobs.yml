@@ -27,3 +27,51 @@ redis/redis-3.0.7.tar.gz:
   object_id: f048dc59-c299-4c46-a631-4bb14da326db
   sha: e56b4b7e033ae8dbf311f9191cf6fdf3ae974d1c
   size: 1375200
+netsniff-ng/libcli-1.9.7.tar.gz:
+  object_id: efe03ced-bed3-49a5-b61d-b93e346b8eba
+  sha: 0bf27f3f9e0f5284e04663afe3f865136b0d5f30
+  size: 29557
+netsniff-ng/libmnl-1.0.3.tar.bz2:
+  object_id: 5bd60d2f-3dca-4220-8124-4ec3ee881743
+  sha: c27e25f67c6422ebf893fc3a844af8085a1c5b63
+  size: 337375
+netsniff-ng/libnet-1.1.6.tar.gz:
+  object_id: 6f374800-a71d-49a0-8cb2-79066f736626
+  sha: dffff71c325584fdcf99b80567b60f8ad985e34c
+  size: 1202970
+netsniff-ng/libnetfilter_conntrack-1.0.5.tar.bz2:
+  object_id: 0ec53245-ce87-4c3d-88a8-cf9b17f34c1e
+  sha: 9aed8733d98af39d57fffd929c2bea70f1dcba06
+  size: 418516
+netsniff-ng/libnfnetlink-1.0.1.tar.bz2:
+  object_id: 47f5296f-b253-41aa-8d4a-5a570a5f2f06
+  sha: 27ae2dfbd976e28cb7a417f9e946c901f512dd9a
+  size: 320641
+netsniff-ng/libnl-3.2.25.tar.gz:
+  object_id: 633075cf-8bf6-46c9-8f58-aacc93886d5e
+  sha: b7a4981f7edf7398256d35fd3c0b87bc84ae27d1
+  size: 832513
+netsniff-ng/libpcap-1.7.4.tar.gz:
+  object_id: f4c31382-6054-40bd-934d-039706d08071
+  sha: 3f31a7706c1487fca36b8379e511965a8d7cbd70
+  size: 663021
+netsniff-ng/libsodium-1.0.8.tar.gz:
+  object_id: c3df5d17-b234-4a3d-b747-270f45f764b4
+  sha: 3d53b827da88d6c2e391fb377bddcd592515ab79
+  size: 1794750
+netsniff-ng/nacl-20110221.tar.bz2:
+  object_id: 177d6a76-70d7-44c5-b1ba-9db1373e7c5d
+  sha: 6007a6aee249f5a534ec53fddfc364601fba9629
+  size: 163415
+netsniff-ng/ncurses-5.9.tar.gz:
+  object_id: c32c9ee1-cdb9-478f-a6d2-1b193e670010
+  sha: 3e042e5f2c7223bffdaac9646a533b8c758b65b5
+  size: 2826473
+netsniff-ng/netsniff-ng-0.6.0.tar.gz:
+  object_id: 515d6e69-363d-45e8-912d-f9567e5fd464
+  sha: 0fe01f378190ce7c64c1b2022f9c47060c49885f
+  size: 719687
+netsniff-ng/userspace-rcu-0.9.1.tar.bz2:
+  object_id: d0749b45-feb3-4bb4-bd0c-3e7096569e51
+  sha: ca1b603655c3c5bf5d5b6254117999e3ae5f6751
+  size: 468197
