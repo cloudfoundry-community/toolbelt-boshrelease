@@ -1,36 +1,31 @@
 #!/bin/bash
-
-# change to root of bosh release
-DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-cd $DIR/../..
+#
+# ci/scripts/create-release-and-deploy
+#
+# Script for generating Github release / tag assets
+# and managing release notes for a BOSH Release pipeline
+#
+# author:  James Hunt <james@niftylogic.com>
+# created: 2016-03-30
 
 cat > ~/.bosh_config << EOF
 ---
 aliases:
   target:
-    bosh-lite: ${bosh_target}
+    bosh-lite: ${BOSH_LITE_TARGET}
 auth:
-  ${bosh_target}:
-    username: ${bosh_username}
-    password: ${bosh_password}
+  ${BOSH_LITE_TARGET}:
+    username: ${BOSH_LITE_USERNAME}
+    password: ${BOSH_LITE_PASSWORD}
 EOF
-cat ~/.bosh_config
-bosh target ${bosh_target}
-
-_bosh() {
-  bosh -n $@
-}
 
 set -e
+cd ${REPO_ROOT}
 git submodule update --init --recursive --force
 
-_bosh delete deployment ${bosh_deployment_name} --force || echo "Continuing..."
-_bosh create release
-set +e
-_bosh upload release --rebase || echo "Continuing..."
-set -e
-
-bosh upload stemcell https://bosh.io/d/stemcells/bosh-warden-boshlite-ubuntu-trusty-go_agent?v=3147
+bosh target ${BOSH_LITE_TARGET}
+bosh -n delete deployment ${BOSH_LITE_DEPLOYMENT} --force || echo "continuing on..."
+bosh -n create release
+bosh -n upload release --rebase || echo "Continuing..."
 ./templates/make_manifest warden
-
-_bosh deploy
+bosh -n deploy

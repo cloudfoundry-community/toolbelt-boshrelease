@@ -1,74 +1,82 @@
 #!/bin/bash
+#
+# ci/scripts/shipit
+#
+# Script for generating Github release / tag assets
+# and managing release notes for a BOSH Release pipeline
+#
+# author:  James Hunt <james@niftylogic.com>
+# created: 2016-03-30
 
-set -e
+set -eu
 
-# change to root of bosh release
-DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-cd $DIR/../..
+if [[ -z ${VERSION_FROM} ]]; then
+  echo >&2 "VERSION_FROM environment variable not set, or empty.  Did you misconfigure Concourse?"
+  exit 2
+fi
+if [[ ! -f ${VERSION_FROM} ]]; then
+  echo >&2 "Version file (${VERSION_FROM}) not found.  Did you misconfigure Concourse?"
+  exit 2
+fi
+VERSION=$(cat ${VERSION_FROM})
+if [[ -z ${VERSION} ]]; then
+  echo >&2 "Version file (${VERSION_FROM}) was empty.  Did you misconfigure Concourse?"
+  exit 2
+fi
+
+if [[ ! -f ${REPO_ROOT}/ci/release_notes.md ]]; then
+  echo >&2 "ci/release_notes.md not found.  Did you forget to write them?"
+  exit 1
+fi
+
+###############################################################
 
 cat > ~/.bosh_config << EOF
 ---
 aliases:
   target:
-    bosh-lite: ${bosh_target}
+    bosh-lite: ${BOSH_LITE_TARGET}
 auth:
-  ${bosh_target}:
-    username: ${bosh_username}
-    password: ${bosh_password}
+  ${BOSH_LITE_TARGET}:
+    username: ${BOSH_LITE_USERNAME}
+    password: ${BOSH_LITE_PASSWORD}
 EOF
-bosh target ${bosh_target}
-
-cat > config/private.yml << EOF
+cat > ${REPO_ROOT}/config/private.yml << EOF
 ---
 blobstore:
   s3:
-    access_key_id: ${aws_access_key_id}
-    secret_access_key: ${aws_secret_access_key}
+    access_key_id: ${AWS_ACCESS_KEY}
+    secret_access_key: ${AWS_SECRET_KEY}
+EOF
+bosh target ${BOSH_LITE_TARGET}
+(cd ${REPO_ROOT}
+ bosh -n create release --final --with-tarball --version "${VERSION}")
+
+mkdir -p ${RELEASE_ROOT}/artifacts
+echo "v${VERSION}"                         > ${RELEASE_ROOT}/tag
+echo "${RELEASE_NAME} v${VERSION}"         > ${RELEASE_ROOT}/name
+mv ${REPO_ROOT}/ci/release_notes.md          ${RELEASE_ROOT}/notes.md
+cp ${REPO_ROOT}/releases/*/*-${VERSION}.tgz  ${RELEASE_ROOT}/artifacts
+ls -alhR ${RELEASE_ROOT}
+
+cat > ${RELEASE_ROOT}/notification <<EOF
+<!here> New ${RELEASE_NAME} v${VERSION} released!
 EOF
 
-_bosh() {
-  bosh -n $@
-}
 
-set -e
-
-version=$(cat ../version/number)
-if [ -z "${version}" ]; then
-  echo "missing version number"
-  exit 1
+# GIT!
+if [[ -z $(git config --global user.email) ]]; then
+  git config --global user.email "ci@starkandwayne.com"
 fi
-if [[ -z "${branch_name}" ]]; then
-  echo "missing \$branch_name"
-  exit 1
-fi
-if [[ -z "${release_name}" ]]; then
-  echo "missing \$release_name"
-  exit 1
+if [[ -z $(git config --global user.name) ]]; then
+  git config --global user.name "CI Bot"
 fi
 
-echo Prepare github release information
-set -x
-mkdir -p release
-cp ci/release_notes.md release/notes.md
-echo "${release_name} v${version}" > release/name
-echo "v${version}" > release/tag
-cat > release/slack_success_message.txt <<EOS
-<!here> New version v${version} released
-EOS
+(cd ${REPO_ROOT}
+ git merge --no-edit ${BRANCH}
+ git add -A
+ git status
+ git commit -m "release v${VERSION}")
 
-if [[ -z "$(git config --global user.email)" ]]; then
-  git config --global user.email "drnic+bot@starkandwayne.com"
-fi
-if [[ -z "$(git config --global user.name)" ]]; then
-  git config --global user.name "Stark and Wayne CI Bot"
-fi
-
-git merge --no-edit ${branch_name}
-
-
-bosh target ${BOSH_TARGET}
-
-bosh -n create release --final --with-tarball --version "${version}"
-
-git add -A
-git commit -m "release v${version}"
+# so that future steps in the pipeline can push our changes
+cp -a ${REPO_ROOT} ${REPO_OUT}
