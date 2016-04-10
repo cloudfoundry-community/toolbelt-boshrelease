@@ -1,0 +1,8 @@
+---
+name: toolbelt-veritas
+packages:
+  - toolbelt-veritas
+templates:
+  ignore: .ignore
+
+properties: {}

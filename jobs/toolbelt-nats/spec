@@ -1,0 +1,8 @@
+---
+name: toolbelt-nats
+packages:
+  - toolbelt-nats
+templates:
+  ignore: .ignore
+
+properties: {}

@@ -1,0 +1,8 @@
+---
+name: toolbelt-redis
+packages:
+  - toolbelt-redis
+templates:
+  ignore: .ignore
+
+properties: {}

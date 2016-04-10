@@ -1,0 +1,8 @@
+---
+name: toolbelt-tree
+packages:
+  - toolbelt-tree
+templates:
+  ignore: .ignore
+
+properties: {}

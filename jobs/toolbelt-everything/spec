@@ -1,0 +1,16 @@
+---
+name: toolbelt-everything
+packages:
+  - toolbelt-jq
+  - toolbelt-nats
+  - toolbelt-gaol
+  - toolbelt-cf
+  - toolbelt-esuf
+  - toolbelt-tree
+  - toolbelt-redis
+  - toolbelt-netsniff-ng
+  - toolbelt-veritas
+templates:
+  ignore: .ignore
+
+properties: {}

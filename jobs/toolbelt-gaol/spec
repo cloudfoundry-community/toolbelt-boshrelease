@@ -1,0 +1,8 @@
+---
+name: toolbelt-gaol
+packages:
+  - toolbelt-gaol
+templates:
+  ignore: .ignore
+
+properties: {}

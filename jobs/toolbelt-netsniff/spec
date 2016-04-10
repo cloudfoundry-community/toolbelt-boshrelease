@@ -1,0 +1,8 @@
+---
+name: toolbelt-netsniff-ng
+packages:
+  - toolbelt-netsniff-ng
+templates:
+  ignore: .ignore
+
+properties: {}

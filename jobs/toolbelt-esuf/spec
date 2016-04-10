@@ -1,0 +1,8 @@
+---
+name: toolbelt-esuf
+packages:
+  - toolbelt-esuf
+templates:
+  ignore: .ignore
+
+properties: {}

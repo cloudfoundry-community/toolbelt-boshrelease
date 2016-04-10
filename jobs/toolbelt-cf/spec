@@ -1,0 +1,8 @@
+---
+name: toolbelt-cf
+packages:
+  - toolbelt-cf
+templates:
+  ignore: .ignore
+
+properties: {}

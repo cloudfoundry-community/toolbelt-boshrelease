@@ -1,0 +1,8 @@
+---
+name: toolbelt-jq
+packages:
+  - toolbelt-jq
+templates:
+  ignore: .ignore
+
+properties: {}
