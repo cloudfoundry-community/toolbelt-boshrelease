@@ -1,0 +1,5 @@
+---
+name: toolbelt-veritas
+dependencies: []
+files:
+- veritas/veritas-*

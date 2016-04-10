@@ -75,3 +75,7 @@ netsniff-ng/userspace-rcu-0.9.1.tar.bz2:
   object_id: d0749b45-feb3-4bb4-bd0c-3e7096569e51
   sha: ca1b603655c3c5bf5d5b6254117999e3ae5f6751
   size: 468197
+veritas/veritas-47c19f8:
+  object_id: 7e2f5aaa-fc23-4b71-85be-50bd4947335e
+  sha: 6c1ae8605fc58848fee1c6ea80571dc93be52173
+  size: 12270832
