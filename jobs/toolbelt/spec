@@ -9,6 +9,7 @@ packages:
   - toolbelt-tree
   - toolbelt-redis
   - toolbelt-netsniff-ng
+  - toolbelt-veritas
 templates:
   envrc: envrc
 
