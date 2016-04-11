@@ -2,6 +2,14 @@
 name: toolbelt
 packages: []
 templates:
+  bin/ctl: bin/ctl
+  bin/monit_debugger: bin/monit_debugger
+  data/properties.sh.erb: data/properties.sh
+  helpers/ctl_setup.sh: helpers/ctl_setup.sh
+  helpers/ctl_utils.sh: helpers/ctl_utils.sh
   envrc: envrc
 
-properties: {}
+properties:
+  toolbelt.auto:
+    description: Automatically configure the environment when you login.
+    default: true

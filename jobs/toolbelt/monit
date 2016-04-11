@@ -1,4 +1,5 @@
-check file toolbelt
-  path /etc/envrc
-  start program "/bin/cp /var/vcap/jobs/toolbelt/envrc /etc/envrc"
+check process toolbelt
+  with pidfile /var/vcap/sys/run/toolbelt/toolbelt.pid
+  start program "/var/vcap/jobs/toolbelt/bin/monit_debugger toolbelt_ctl '/var/vcap/jobs/toolbelt/bin/ctl start'"
+  stop program "/var/vcap/jobs/toolbelt/bin/monit_debugger toolbelt_ctl '/var/vcap/jobs/toolbelt/bin/ctl stop'"
   group vcap

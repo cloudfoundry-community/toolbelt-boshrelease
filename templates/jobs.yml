@@ -21,4 +21,6 @@ jobs:
 
 networks: (( param "please set networks" ))
 
-properties: {}
+properties:
+  toolbelt:
+    auto: true
