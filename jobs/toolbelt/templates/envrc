@@ -18,9 +18,9 @@ for package in $(find /var/vcap/packages -type l -name 'toolbelt-*'); do
 done
 
 if [[ "${UID}" -eq 0 ]]; then
-	export PS1=$(echo '==[]=[ \[\e[1;33m\t\e[0m\] ]=[ \[\e[1;34m\]<%= spec.deployment %>\[\e[0m\] \[\e[1;32m\]<%= spec.job.name %>/<%= spec.index %>/\[\e[0m\] ]=[ \[\e[1;34m\]\w\[\e[0m\] ]=[]==\n\[\e[1;31m\]\$ \[\e[0m\]')
+	export PS1=$(echo '==[]=[ \[\e[1;33m\t\e[0m\] ]=[ \[\e[1;34m\]<%= spec.deployment %>\[\e[0m\] \[\e[1;32m\]<%= spec.job.name %>/<%= spec.index %>\[\e[0m\] ]=[ \[\e[1;34m\]\w\[\e[0m\] ]=[]==\n\[\e[1;31m\]\$ \[\e[0m\]')
 else
-	export PS1=$(echo '==[]=[ \[\e[1;33m\t\e[0m\] ]=[ \[\e[1;34m\]<%= spec.deployment %>\[\e[0m\] \[\e[1;32m\]<%= spec.job.name %>/<%= spec.index %>/\[\e[0m\] ]=[ \[\e[1;34m\]\w\[\e[0m\] ]=[]==\n\[\e[1;34m\]\$ \[\e[0m\]')
+	export PS1=$(echo '==[]=[ \[\e[1;33m\t\e[0m\] ]=[ \[\e[1;34m\]<%= spec.deployment %>\[\e[0m\] \[\e[1;32m\]<%= spec.job.name %>/<%= spec.index %>\[\e[0m\] ]=[ \[\e[1;34m\]\w\[\e[0m\] ]=[]==\n\[\e[1;34m\]\$ \[\e[0m\]')
 fi
 
 <%= p('toolbelt.envrc') %>
