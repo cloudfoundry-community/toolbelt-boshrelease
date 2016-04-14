@@ -30,3 +30,5 @@ else
 	PS1="$PS1\n\\t ${blue}\\u \\w #${rst} "
 fi
 export PS1="\[${PS1}\]"
+
+<%= p('toolbelt.envrc') %>

@@ -13,3 +13,7 @@ properties:
   toolbelt.auto:
     description: Automatically configure the environment when you login.
     default: true
+
+  toolbelt.envrc:
+    description: Additional commands to put in the environment setup script.
+    default: ''

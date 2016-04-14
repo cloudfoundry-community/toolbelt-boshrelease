@@ -24,3 +24,6 @@ networks: (( param "please set networks" ))
 properties:
   toolbelt:
     auto: true
+    envrc: |
+      echo Welcome to Toolbelt
+      export TOOLBELT=awesome
