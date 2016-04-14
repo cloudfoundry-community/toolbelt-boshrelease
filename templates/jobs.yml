@@ -12,8 +12,7 @@ jobs:
   - name: toolbelt
     templates:
       - { release: toolbelt, name: toolbelt }
-      - { release: toolbelt, name: toolbelt-nats }
-      - { release: toolbelt, name: toolbelt-jq }
+      - { release: toolbelt, name: toolbelt-everything }
     instances: 1
     persistent_disk: 0
     resource_pool: small_z1

@@ -1,14 +1,16 @@
 ---
 name: toolbelt-everything
 packages:
-  - toolbelt-jq
-  - toolbelt-nats
-  - toolbelt-gaol
   - toolbelt-cf
   - toolbelt-esuf
-  - toolbelt-tree
-  - toolbelt-redis
+  - toolbelt-gaol
+  - toolbelt-jq
+  - toolbelt-nats
   - toolbelt-netsniff-ng
+  - toolbelt-redis
+  - toolbelt-safe
+  - toolbelt-tree
+  - toolbelt-vault
   - toolbelt-veritas
 templates:
   ignore: .ignore

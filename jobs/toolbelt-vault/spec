@@ -1,0 +1,8 @@
+---
+name: toolbelt-vault
+packages:
+  - toolbelt-vault
+templates:
+  ignore: .ignore
+
+properties: {}

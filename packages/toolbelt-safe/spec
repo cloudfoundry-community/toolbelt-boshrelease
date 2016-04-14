@@ -1,0 +1,6 @@
+---
+name: toolbelt-safe
+dependencies: []
+files:
+    # from https://github.com/jhunt/safe/releases
+  - safe/safe-linux-amd64
