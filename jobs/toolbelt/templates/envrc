@@ -17,18 +17,10 @@ for package in $(find /var/vcap/packages -type l -name 'toolbelt-*'); do
 	done
 done
 
-
-red=$(tput setaf 1)
-green=$(tput setaf 2)
-blue=$(tput setaf 4)
-cyan=$(tput setaf 6)
-rst=$(tput sgr0)
-PS1="==[]=[ ${cyan}<%= spec.deployment %>${rst} ${green}<%= spec.job.name %>/<%= spec.index %>${rst} ]=[]=="
 if [[ "${UID}" -eq 0 ]]; then
-	PS1="$PS1\n\\t ${red}\\u${rst} ${blue}\\w\\e \$${rst} "
+	export PS1=$(echo '\[\e[0;30m\]==[]=[\[\e[0m\] \[\e[1;33m\t\e[0m\] \[\e[0;30m\]]=[\[\e[0m\] \[\e[1;34m\]toolbelt-warden\[\e[0m\] \[\e[1;32m\]toolbelt/0\[\e[0m\] \[\e[0;30m\]]=[\[\e[0m\] \[\e[1;34m\]\w\[\e[0m\] \[\e[0;30m\]]=[]==\[\e[0m\]\n\[\e[1;31m\]\$ \[\e[0m\]')
 else
-	PS1="$PS1\n\\t ${blue}\\u \\w #${rst} "
+	export PS1=$(echo '\[\e[0;30m\]==[]=[\[\e[0m\] \[\e[1;33m\t\e[0m\] \[\e[0;30m\]]=[\[\e[0m\] \[\e[1;34m\]toolbelt-warden\[\e[0m\] \[\e[1;32m\]toolbelt/0\[\e[0m\] \[\e[0;30m\]]=[\[\e[0m\] \[\e[1;34m\]\w\[\e[0m\] \[\e[0;30m\]]=[]==\[\e[0m\]\n\[\e[1;34m\]\$ \[\e[0m\]')
 fi
-export PS1="\[${PS1}\]"
 
 <%= p('toolbelt.envrc') %>

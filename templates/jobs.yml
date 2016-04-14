@@ -25,5 +25,4 @@ properties:
   toolbelt:
     auto: true
     envrc: |
-      echo Welcome to Toolbelt
-      export TOOLBELT=awesome
+      [ $UID != 0 ] && exec sudo -i
