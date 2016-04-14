@@ -10,4 +10,6 @@ builds:
     version: 3.2.0
   7ef2fb35-15f1-47d9-8ca8-e60786c25b41:
     version: 3.2.1
+  1580621a-05e6-4737-a3d1-132d8b04c8ca:
+    version: 3.2.2
 format-version: '2'
