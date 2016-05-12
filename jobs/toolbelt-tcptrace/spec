@@ -1,0 +1,8 @@
+---
+name: toolbelt-tcptrace
+packages:
+  - toolbelt-tcptrace
+templates:
+  ignore: .ignore
+
+properties: {}

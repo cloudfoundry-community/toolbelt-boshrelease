@@ -9,6 +9,7 @@ packages:
   - toolbelt-netsniff-ng
   - toolbelt-redis
   - toolbelt-safe
+  - toolbelt-tcptrace
   - toolbelt-tree
   - toolbelt-tshark
   - toolbelt-vault
