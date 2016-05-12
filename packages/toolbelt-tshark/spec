@@ -1,0 +1,5 @@
+---
+name: toolbelt-tshark
+dependencies: []
+files:
+  - tshark/*

@@ -1,0 +1,45 @@
+set -e # exit immediately if a simple command exits with a non-zero status
+set -u # report the usage of uninitialized variables
+
+# Detect # of CPUs so make jobs can be parallelized
+CPUS=$(grep -c ^processor /proc/cpuinfo)
+ # Available variables
+# $BOSH_COMPILE_TARGET - where this package & spec'd source files are available
+# $BOSH_INSTALL_TARGET - where you copy/install files to be included in package
+export HOME=/var/vcap
+export PKG_CONFIG_PATH=${BOSH_INSTALL_TARGET}/lib/pkgconfig
+export LD_LIBRARY_PATH=${BOSH_INSTALL_TARGET}/lib
+export INCLUDE_PATH=${BOSH_INSTALL_TARGET}/include
+export LDFLAGS=-L${LD_LIBRARY_PATH}
+export CPPFLAGS=-I${INCLUDE_PATH}
+export PATH=${PATH}:${BOSH_INSTALL_TARGET}/bin:${BOSH_INSTALL_TARGET}/sbin
+
+# (cd blobs/tshark ; curl -LSsO ftp://sourceware.org/pub/libffi/libffi-3.2.1.tar.gz)
+tar -xzf tshark/libffi-3.2.1.tar.gz
+(cd libffi-3.2.1
+ ./configure --prefix ${BOSH_INSTALL_TARGET} --disable-builddir && \
+ make -j ${CPUS} && \
+ make install) || exit 1
+
+# (cd blobs/tshark ; curl -LSsO http://ftp.gnome.org/pub/GNOME/sources/glib/2.45/glib-2.45.8.tar.xz)
+tar -xJf tshark/glib-2.45.8.tar.xz
+(cd glib-2.45.8/
+ ./configure --prefix ${BOSH_INSTALL_TARGET} && \
+ make -j ${CPUS} && \
+ make install) || exit 1
+
+# (cd blobs/tshark ; curl -LSsO http://www.tcpdump.org/release/libpcap-1.6.2.tar.gz)
+tar -xzf tshark/libpcap-1.6.2.tar.gz
+(cd libpcap-1.6.2
+ ./configure --prefix ${BOSH_INSTALL_TARGET} && \
+ make -j ${CPUS} && \
+ make install) || exit 1
+
+# (cd blobs/tshark ; curl -LSsO https://2.na.dl.wireshark.org/src/wireshark-2.0.3.tar.bz2)
+tar -xjf tshark/wireshark-2.0.3.tar.bz2
+(cd wireshark-2.0.3
+ ./configure --prefix ${BOSH_INSTALL_TARGET} \
+   --disable-wireshark \
+   --disable-randpkt && \
+ make -j ${CPUS} && \
+ make install) || exit 1

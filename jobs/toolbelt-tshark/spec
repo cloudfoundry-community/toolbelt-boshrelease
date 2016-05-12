@@ -1,0 +1,8 @@
+---
+name: toolbelt-tshark
+packages:
+  - toolbelt-tshark
+templates:
+  ignore: .ignore
+
+properties: {}
