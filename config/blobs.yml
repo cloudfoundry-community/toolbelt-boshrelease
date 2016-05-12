@@ -87,3 +87,23 @@ vault/vault_0.5.2_linux_amd64.zip:
   object_id: bb2ac4f2-5ab2-463b-a51e-3f6f05343aed
   sha: c4d9ec11309877885bab68d3a1df6c80f63a8159
   size: 8966609
+tcptrace/tcptrace:
+  object_id: 0975577c-b183-4e7f-bb13-8db0f1e49361
+  sha: 1209e7f64081c4edcf067927e09587aa351bef4d
+  size: 2983
+tshark/glib-2.45.8.tar.xz:
+  object_id: 833a983c-402a-47de-b2ec-34622b701239
+  sha: a25590b540251f9ed4a56ea2837d28071bddfa5a
+  size: 7188216
+tshark/libffi-3.2.1.tar.gz:
+  object_id: a7ca9dbe-a0ec-48c8-a8bd-6fa71ccd07b9
+  sha: 280c265b789e041c02e5c97815793dfc283fb1e6
+  size: 940837
+tshark/libpcap-1.6.2.tar.gz:
+  object_id: 3e8879fc-f96c-41a6-a10f-41d0bd3c2ef4
+  sha: 7efc7d56f4959de8bb33a92de2e15d92105eac32
+  size: 651237
+tshark/wireshark-2.0.3.tar.bz2:
+  object_id: e4170c85-e311-444f-81ac-df48b8f5054e
+  sha: 9805d62b4fb108cc1e755d8c47f8c1e21eee8b73
+  size: 31110988
