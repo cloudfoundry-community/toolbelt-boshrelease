@@ -18,21 +18,21 @@ export PATH=${PATH}:${BOSH_INSTALL_TARGET}/bin:${BOSH_INSTALL_TARGET}/sbin
 tar -xzf tshark/libffi-3.2.1.tar.gz
 (cd libffi-3.2.1
  ./configure --prefix ${BOSH_INSTALL_TARGET} --disable-builddir && \
- make -j ${CPUS} && \
+ make -j${CPUS} && \
  make install) || exit 1
 
 # (cd blobs/tshark ; curl -LSsO http://ftp.gnome.org/pub/GNOME/sources/glib/2.45/glib-2.45.8.tar.xz)
 tar -xJf tshark/glib-2.45.8.tar.xz
 (cd glib-2.45.8/
  ./configure --prefix ${BOSH_INSTALL_TARGET} && \
- make -j ${CPUS} && \
+ make -j${CPUS} && \
  make install) || exit 1
 
 # (cd blobs/tshark ; curl -LSsO http://www.tcpdump.org/release/libpcap-1.6.2.tar.gz)
 tar -xzf tshark/libpcap-1.6.2.tar.gz
 (cd libpcap-1.6.2
  ./configure --prefix ${BOSH_INSTALL_TARGET} && \
- make -j ${CPUS} && \
+ make -j${CPUS} && \
  make install) || exit 1
 
 # (cd blobs/tshark ; curl -LSsO https://2.na.dl.wireshark.org/src/wireshark-2.0.3.tar.bz2)
@@ -41,5 +41,5 @@ tar -xjf tshark/wireshark-2.0.3.tar.bz2
  ./configure --prefix ${BOSH_INSTALL_TARGET} \
    --disable-wireshark \
    --disable-randpkt && \
- make -j ${CPUS} && \
+ make -j${CPUS} && \
  make install) || exit 1

@@ -13,5 +13,5 @@ cd tree-1.7.0
 
 sed -i "s|^prefix = \/usr|prefix = ${BOSH_INSTALL_TARGET}|" Makefile
 
-make
+make -j${CPUS}
 make install

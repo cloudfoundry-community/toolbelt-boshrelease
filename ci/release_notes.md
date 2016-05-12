@@ -1,3 +1,9 @@
+## Fixes
+
+- Compiled packages (netsniff-ng, mostly) now take advantage of
+  multiple-core compilation VMs by running parallel make with `-j`
+  set to the number of cores present.
+
 ## New Features
 
 - **tshark** (and other Wireshark CLI utilities) are now included
