@@ -47,6 +47,7 @@ bosh -n deploy
 
 header "Cleaning up..."
 bosh -n delete deployment ${BOSH_LITE_DEPLOYMENT} --force || echo "continuing on..."
+bosh -n cleanup || echo "continuing on..."
 
 echo
 echo "SUCCESS"
