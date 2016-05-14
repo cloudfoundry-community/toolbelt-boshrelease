@@ -131,9 +131,6 @@ jobs:
             AWS_ACCESS_KEY:       (( grab meta.aws.access_key ))
             AWS_SECRET_KEY:       (( grab meta.aws.secret_key ))
 
-      - put: version
-        params:
-          bump: patch
       - put: git
         params:
           rebase: true
@@ -147,6 +144,9 @@ jobs:
           tag:    gh/tag
           body:   gh/notes.md
           globs: [gh/artifacts/*]
+      - put: version
+        params:
+          bump: patch
 
 resource_types:
   - name: slack-notification
