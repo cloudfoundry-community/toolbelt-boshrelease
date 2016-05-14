@@ -131,23 +131,22 @@ jobs:
             AWS_ACCESS_KEY:       (( grab meta.aws.access_key ))
             AWS_SECRET_KEY:       (( grab meta.aws.secret_key ))
 
-      - aggregate:
-        - put: version
-          params:
-            bump: patch
-        - put: git
-          params:
-            rebase: true
-            repository: pushme/git
-        - put: github
-          params:
-            name:   gh/name
-            tag:    gh/tag
-            body:   gh/notes.md
-            globs: [gh/artifacts/*]
-        - put: s3
-          params:
-            from:  gh/artifacts/.*-(.*).tgz
+      - put: version
+        params:
+          bump: patch
+      - put: git
+        params:
+          rebase: true
+          repository: pushme/git
+      - put: s3
+        params:
+          from:  gh/artifacts/.*-(.*).tgz
+      - put: github
+        params:
+          name:   gh/name
+          tag:    gh/tag
+          body:   gh/notes.md
+          globs: [gh/artifacts/*]
 
 resource_types:
   - name: slack-notification
