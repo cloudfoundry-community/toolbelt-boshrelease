@@ -1,21 +1,39 @@
 #!/bin/sh
 
-for package in $(find /var/vcap/packages -type l -name 'toolbelt-*'); do
+pkg() {
+	package=$1
+	if test -z "${package}"; then
+		return 0
+	fi
+
+	root=/var/vcap/packages
+	if test ! -d "${root}/${package}"; then
+		echo >&2 "${package}: no such package"
+		return 1
+	fi
+
 	for dir in bin sbin; do
-		if [[ -d ${package}/${dir} ]]; then
+		if test -d "${package}/${dir}"; then
 			export PATH="${PATH}:${package}/${dir}"
 		fi
 	done
 	for dir in lib; do
-		if [[ -d ${package}/${dir} ]]; then
-			if [[ -z ${LD_LIBRARY_PATH} ]]; then
+		if test -d "${package}/${dir}"; then
+			if test -z "${LD_LIBRARY_PATH}"; then
 				export LD_LIBRARY_PATH="${package}/${dir}"
 			else
 				export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${package}/${dir}"
 			fi
 		fi
 	done
+	return 0
+}
+
+pushd /var/vcap/packages >/dev/null
+for package in toolbelt-*; do
+	pkg "${package}"
 done
+popd >/dev/null
 
 if [[ "${UID}" -eq 0 ]]; then
 	export PS1=$(echo '==[]=[ \[\e[1;33m\t\e[0m\] ]=[ \[\e[1;34m\]<%= spec.deployment %>\[\e[0m\] \[\e[1;32m\]<%= spec.job.name %>/<%= spec.index %>\[\e[0m\] ]=[ \[\e[1;34m\]\w\[\e[0m\] ]=[]==\n\[\e[1;31m\]\$ \[\e[0m\]')
