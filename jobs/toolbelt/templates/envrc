@@ -13,16 +13,16 @@ pkg() {
 	fi
 
 	for dir in bin sbin; do
-		if test -d "${package}/${dir}"; then
-			export PATH="${PATH}:${package}/${dir}"
+		if test -d "${root}/${package}/${dir}"; then
+			export PATH="${PATH}:${root}/${package}/${dir}"
 		fi
 	done
 	for dir in lib; do
-		if test -d "${package}/${dir}"; then
+		if test -d "${root}/${package}/${dir}"; then
 			if test -z "${LD_LIBRARY_PATH}"; then
-				export LD_LIBRARY_PATH="${package}/${dir}"
+				export LD_LIBRARY_PATH="${root}/${package}/${dir}"
 			else
-				export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${package}/${dir}"
+				export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${root}/${package}/${dir}"
 			fi
 		fi
 	done
