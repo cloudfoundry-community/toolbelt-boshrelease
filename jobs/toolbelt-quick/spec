@@ -4,6 +4,7 @@ packages:
   - toolbelt-cf
   - toolbelt-esuf
   - toolbelt-gaol
+  - toolbelt-gotcha
   - toolbelt-jq
   - toolbelt-nats
   - toolbelt-redis

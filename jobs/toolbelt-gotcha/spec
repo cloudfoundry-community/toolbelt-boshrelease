@@ -1,0 +1,8 @@
+---
+name: toolbelt-gotcha
+packages:
+  - toolbelt-gotcha
+templates:
+  ignore: .ignore
+
+properties: {}
