@@ -3,6 +3,6 @@ name: toolbelt-vault
 packages:
   - toolbelt-vault
 templates:
-  ignore: .ignore
+  bin/run: bin/run
 
 properties: {}

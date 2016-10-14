@@ -3,6 +3,6 @@ name: toolbelt-jq
 packages:
   - toolbelt-jq
 templates:
-  ignore: .ignore
+  bin/run: bin/run
 
 properties: {}

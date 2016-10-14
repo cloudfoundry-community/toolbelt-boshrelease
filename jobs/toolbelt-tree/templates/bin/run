@@ -1,0 +1,20 @@
+#!/bin/sh
+cat <<EOF
+
+   **** WARNING ****
+
+   You appear to have loaded the [toolbelt] release on an errand VM.
+   This is totally okay, and normally would not cause any problems,
+   however the toolbelt* templates have superseded the actual errand
+   templates.
+
+   This isn't great.
+
+   You probably wanted to run your _actual_ errands, not the toolbelt
+   errand script.  If so, you'll need to move the toolbelt-y parts of
+   the errand jobs \`templates:' section to the bottom.
+
+   **** WARNING ****
+
+EOF
+exit 42

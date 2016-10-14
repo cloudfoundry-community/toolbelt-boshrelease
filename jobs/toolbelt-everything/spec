@@ -16,6 +16,6 @@ packages:
   - toolbelt-vault
   - toolbelt-veritas
 templates:
-  ignore: .ignore
+  bin/run: bin/run
 
 properties: {}
