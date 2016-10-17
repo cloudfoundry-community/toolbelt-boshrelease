@@ -3,6 +3,6 @@ name: toolbelt-tshark
 packages:
   - toolbelt-tshark
 templates:
-  ignore: .ignore
+  bin/run: bin/run
 
 properties: {}

@@ -3,6 +3,6 @@ name: toolbelt-esuf
 packages:
   - toolbelt-esuf
 templates:
-  ignore: .ignore
+  bin/run: bin/run
 
 properties: {}

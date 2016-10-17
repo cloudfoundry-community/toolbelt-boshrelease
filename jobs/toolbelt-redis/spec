@@ -3,6 +3,6 @@ name: toolbelt-redis
 packages:
   - toolbelt-redis
 templates:
-  ignore: .ignore
+  bin/run: bin/run
 
 properties: {}

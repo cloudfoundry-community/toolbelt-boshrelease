@@ -3,6 +3,6 @@ name: toolbelt-safe
 packages:
   - toolbelt-safe
 templates:
-  ignore: .ignore
+  bin/run: bin/run
 
 properties: {}
