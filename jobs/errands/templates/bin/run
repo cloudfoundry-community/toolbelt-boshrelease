@@ -1,0 +1,205 @@
+#!/bin/bash
+
+set -u # report the usage of uninitialized variables
+shopt -s nullglob # globs that expand to nothing expand to, well, nothing...
+export ITS_OKAY_TOOLBELT_IS_RUNNING_ERRANDS=1
+
+#
+# Returns non-zero if the requested errands are not present
+# on the system (or are not actually errands).  If the user
+# has not configured a specific set of errands to run, checks
+# for the presence of any (non-toolbelt) errands.
+#
+have_errands() {
+	<% if p("toolbelt.errands.run", []).size > 0 %>
+	# specific errands requested; verifying that *ALL* of them are present
+	local rc=0
+	<% p("toolbelt.errands.run").each do |errand| %>
+	if [[ ! -x /var/vcap/jobs/<%= errand %>/bin/run ]]; then
+		echo >&2 "MISSING ERRAND '<%= errand %>'"
+		rc=1
+	fi
+	<% end %>
+	return $rc
+
+	######################################################################
+	<% else %>
+	# all errands requested; auto-discovering which errands to run
+	n=0
+	for errand in /var/vcap/jobs/*/bin/run; do
+		if ! grep -q ITS_OKAY_TOOLBELT_IS_RUNNING_ERRANDS ${errand}; then
+			n=1
+		fi
+	done
+	if [[ $n == 0 ]]; then
+		echo >&2 "NO ERRANDS DETECTED"
+		return 1
+	fi
+	return 0
+	##############################################################
+	<% end %>
+}
+
+#
+# Prints the list of errands to run to standard output.
+# If the user has not configured a specific set of errands to
+# be run, all detected (non-toolbelt) errand job names are
+# printed to standard output.
+#
+errands() {
+	<% if p("toolbelt.errands.run", []).size > 0 %>
+	# specific errands requested; print them all out, IN ORDER
+	<% p("toolbelt.errands.run").each do |errand| %>
+	echo "<%= errand %>"
+	<% end %>
+
+	##########################################################
+	<% else %>
+	# all errands requested; auto-discovering which errands to run
+	pushd /var/vcap/jobs >/dev/null 2>&1
+	for job in *; do
+		if [[ -d /var/vcap/jobs/${job} && -x /var/vcap/jobs/${job}/bin/run ]]; then
+			if ! grep -q ITS_OKAY_TOOLBELT_IS_RUNNING_ERRANDS /var/vcap/jobs/${job}/bin/run; then
+				echo $job
+			fi
+		fi
+	done
+	popd >/dev/null 2>&1
+	##############################################################
+	<% end %>
+}
+
+ok() {
+	<% if p("toolbelt.errands.verbose") %>
+	local errand=$1
+	local outfile=$2
+
+	echo
+	echo
+	echo -ne "\e[1;32m"
+	echo "        ######  ##     ##  ######   ######  ########  ######   ######"
+	echo "       ##    ## ##     ## ##    ## ##    ## ##       ##    ## ##    ##"
+	echo "       ##       ##     ## ##       ##       ##       ##       ##"
+	echo "        ######  ##     ## ##       ##       ######    ######   ######"
+	echo "             ## ##     ## ##       ##       ##             ##       ##"
+	echo "       ##    ## ##     ## ##    ## ##    ## ##       ##    ## ##    ##"
+	echo "        ######   #######   ######   ######  ########  ######   ######"
+	echo -ne "\e[0m"
+	echo
+	echo -e "Errand \e[1;32m${errand}\e[0m succeeded"
+	echo
+	echo "----[ output below ]---------------------------------------------------"
+	cat $outfile
+	echo "---------------------------------------------------[ output above ]----"
+	echo
+	echo
+	echo
+	echo
+	<% end %>
+	:
+}
+
+oops() {
+	local errand=$1
+	local outfile=$2
+
+	echo
+	echo
+	echo -ne "\e[1;31m"
+	echo "        #######   #######  ########   ######"
+	echo "       ##     ## ##     ## ##     ## ##    ##"
+	echo "       ##     ## ##     ## ##     ## ##"
+	echo "       ##     ## ##     ## ########   ######"
+	echo "       ##     ## ##     ## ##              ##"
+	echo "       ##     ## ##     ## ##        ##    ##"
+	echo "        #######   #######  ##         ######"
+	echo -ne "\e[0m"
+	echo
+	echo -e "Errand \e[1;31m${errand}\e[0m failed"
+	echo
+	echo "----[ output below ]---------------------------------------------------"
+	cat $outfile
+	echo "---------------------------------------------------[ output above ]----"
+	echo
+	echo
+	echo
+	echo
+}
+
+run_parallel_errands() {
+	local rc=0
+	local n=0
+	local fail=0
+	declare -a pids
+
+	for errand in $(errands); do
+		local out=$(tempfile)
+		n=$((n + 1))
+
+		# `bash -l' is how BOSH itself runs errands
+		bash -l /var/vcap/jobs/${errand}/bin/run >${out} 2>&1 &
+		pids+=( $! )
+		ln -s ${out}   /tmp/$!.out
+		echo $errand > /tmp/$!.name
+	done
+
+	for pid in ${pids[@]}; do
+		wait $pid
+		if [[ $? != 0 ]]; then
+			fail=$((fail + 1))
+			oops $(cat /tmp/${pid}.name) /tmp/${pid}.out
+			rc=1
+		else
+			ok $(cat /tmp/${pid}.name) /tmp/${pid}.out
+		fi
+	done
+
+	if [[ $rc == 0 ]]; then
+		for errand in $(errands); do
+			echo -e "[ \e[1;32mOK\e[0m ]  \e[1;36m${errand}\e[0m"
+		done
+		echo -e "\e[1;32mAll ${n} errands SUCCEEDED.  Yay\!\e[0m"
+	else
+		echo -e "\e[1;31m${fail} of ${n} errands FAILED\e[0m"
+	fi
+	exit $rc;
+}
+
+run_serial_errands() {
+	local rc=0
+	local n=0
+	local fail=0
+	for errand in $(errands); do
+		n=$((n + 1))
+
+		# `bash -l' is how BOSH itself runs errands
+		bash -l /var/vcap/jobs/${errand}/bin/run >/tmp/errand.out 2>&1
+		if [[ $? != 0 ]]; then
+			fail=$((fail + 1))
+			oops ${errand} /tmp/errand.out
+			rc=1
+		else
+			ok ${errand} /tmp/errand.out
+		fi
+	done
+
+	if [[ $rc == 0 ]]; then
+		for errand in $(errands); do
+			echo -e "[ \e[1;32mOK\e[0m ]  \e[1;36m${errand}\e[0m"
+		done
+		echo -e "\e[1;32mAll ${n} errands SUCCEEDED.  Yay\!\e[0m"
+	else
+		echo -e "\e[1;31m${fail} of ${n} errands FAILED\e[0m"
+	fi
+	exit $rc;
+}
+
+if ! have_errands; then
+	exit 2;
+fi
+
+<% if p("toolbelt.errands.parallel", false) %>
+run_parallel_errands
+<% else %>
+run_serial_errands
+<% end %>

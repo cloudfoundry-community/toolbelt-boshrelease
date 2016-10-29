@@ -1,0 +1,19 @@
+---
+name: errands
+packages: []
+templates:
+  bin/run: bin/run
+
+properties:
+  toolbelt.errands.debug:
+    name:    Print additional output about what errands are being run, exit codes, etc.
+    default: false
+  toolbelt.errands.verbose:
+    name:    Always display standard output / standard error for each errand, regardless of success / failure.
+    default: false
+  toolbelt.errands.run:
+    name:    List of errands to execute.  If not specified, all detected errands will be run.
+    default: []
+  toolbelt.errands.parallel:
+    name:    Enables (true) or disables (false) parallel errand execution.
+    default: true

@@ -1,4 +1,5 @@
 #!/bin/sh
+test -n "$ITS_OKAY_TOOLBELT_IS_RUNNING_ERRANDS" && exit 0
 cat <<EOF
 
    **** WARNING ****
