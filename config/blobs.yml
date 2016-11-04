@@ -107,3 +107,7 @@ tshark/wireshark-2.0.3.tar.bz2:
   object_id: e4170c85-e311-444f-81ac-df48b8f5054e
   sha: 9805d62b4fb108cc1e755d8c47f8c1e21eee8b73
   size: 31110988
+gotcha/gotcha-linux-amd64:
+  object_id: 2db875ec-7624-4009-8478-6565909c913e
+  sha: d0978333942b48a00e8e901c5e86584b2d1f1158
+  size: 6935960

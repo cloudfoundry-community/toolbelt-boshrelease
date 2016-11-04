@@ -1,5 +1,8 @@
 ## New Features
 
+Toolbelt now includes [gotcha][gotcha] for all your HTTP proxying
+and diagnostic needs!
+
 The `toolbelt/errands` job can now be used to build run multiple
 other errand tasks, either in parallel or serially, within a
 single errand job.  This lets you bundle lots of test errands
@@ -18,3 +21,5 @@ Using it is as easy as:
         # other necessary job config
 
 The new `toolbelt.errands.*` properties govern how this behaves.
+
+[gotcha]: https://github.com/starkandwayne/gotcha
