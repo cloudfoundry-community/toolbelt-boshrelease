@@ -1,7 +1,10 @@
 ## New Features
 
 Toolbelt now includes [gotcha][gotcha] for all your HTTP proxying
-and diagnostic needs!
+and diagnostic needs!  Because it is a MiTM proxy, it's in a
+different job (`toolbelt-dev`) all by itself.  Other tools you may
+not want to run in production will also go in there, as time goes
+on.
 
 The `toolbelt/errands` job can now be used to build run multiple
 other errand tasks, either in parallel or serially, within a
