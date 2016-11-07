@@ -1,6 +1,6 @@
 ---
 meta:
-  name:    toolbelt-boshrelease
+  name:    toolbelt
   release: Toolbelt
   target:  sw
   url:     https://ci.vsphere.starkandwayne.com
