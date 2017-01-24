@@ -9,6 +9,5 @@ CPUS=$(grep -c ^processor /proc/cpuinfo)
 export HOME=/var/vcap
 mkdir -p ${BOSH_INSTALL_TARGET}/bin
 cp gaol/gaol-linux64 ${BOSH_INSTALL_TARGET}/bin/gaol
-chmod 755 ${BOSH_INSTALL_TARGET}/bin/gaol
-
-
+cp gaol/gaol-basher ${BOSH_INSTALL_TARGET}/bin/gaol-basher
+chmod 755 ${BOSH_INSTALL_TARGET}/bin/*

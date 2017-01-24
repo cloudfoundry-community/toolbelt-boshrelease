@@ -5,4 +5,5 @@ files:
     # checkout from https://github.com/contraband/gaol
     # gox -osarch linux/amd64
   - gaol/gaol-linux64
+  - gaol/gaol-basher
 

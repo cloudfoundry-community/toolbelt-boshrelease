@@ -1,0 +1,65 @@
+#!/bin/bash
+
+DEPLOYMENT_ID=""
+CONTAINER_ID=""
+
+help() {
+	echo -e "\nGaol Basher: A tool that makes connecting to bosh-lite Garden containers easy!"
+	echo -e "\nUSAGE:"
+	echo -e "------"
+	echo -e "$0 <command> <parameter>"
+	echo -e "\nCommands:"
+	echo -e "---------"
+	echo -e "help				Displays this message."
+	echo -e "deployments			Prints the list of deployments."
+	echo -e "jobs <deployment name>		Prints the list of jobs for the deployment."
+	echo -e "bash <job number>		Initiates a bash session with the Garden container using Gaol.\n"
+	echo -e "Go directly to Gaol.  Do not pass Go, do not collect \$200.\n"
+}
+
+get_deployments() {
+	echo -e "\nDeployments:"
+	echo -e "------------"
+	/var/vcap/packages/postgres/bin/psql -c "select id, name from deployments;" bosh
+}
+
+get_jobs() {
+	echo -e "\nJobs:"
+	echo -e "------"
+	/var/vcap/packages/postgres/bin/psql -c "select id as job_number, job || '/' || index as job, vm_cid as container_uuid from instances WHERE vm_cid IS NOT NULL AND deployment_id = $1;" bosh 
+}
+
+get_job_container_uuid () {
+	CONTAINER_ID=$(/var/vcap/packages/postgres/bin/psql -t -c "select vm_cid from instances WHERE id = '$1';" bosh | awk '$1=$1')
+}
+
+get_deployment_id() {
+	DEPLOYMENT_ID=$(/var/vcap/packages/postgres/bin/psql -t -c "select id from deployments where name = '$1';" bosh | awk '$1=$1')
+}
+
+if [[ "$1" = "deployments" ]]; then 
+	get_deployments
+	exit 0
+fi
+
+if [[ "$1" = "jobs" && "$2" != "" ]]; then
+	get_deployment_id $2
+	if [[ -z "$DEPLOYMENT_ID" ]]; then
+		echo "Deployment name "$2" not found."
+		exit 0
+	fi
+	get_jobs $DEPLOYMENT_ID
+	exit 0
+fi
+
+if [[ "$1" = "bash" && "$2" != "" ]]; then
+	get_job_container_uuid $2
+	if [[ -z "$CONTAINER_ID" ]]; then
+		echo "Job number "$2" not found."
+		exit 0
+	fi
+	/var/vcap/packages/toolbelt-gaol/bin/gaol shell $CONTAINER_ID
+	exit 0
+fi
+
+help
