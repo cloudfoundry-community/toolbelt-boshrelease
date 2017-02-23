@@ -20,21 +20,21 @@ help() {
 get_deployments() {
 	echo -e "\nDeployments:"
 	echo -e "------------"
-	/var/vcap/packages/postgres/bin/psql -c "select id, name from deployments;" bosh
+	/var/vcap/packages/postgres/bin/psql -U vcap -c "select id, name from deployments;" bosh
 }
 
 get_jobs() {
 	echo -e "\nJobs:"
 	echo -e "------"
-	/var/vcap/packages/postgres/bin/psql -c "select id as job_number, job || '/' || index as job, vm_cid as container_uuid from instances WHERE vm_cid IS NOT NULL AND deployment_id = $1;" bosh 
+	/var/vcap/packages/postgres/bin/psql -U vcap -c "select id as job_number, job || '/' || index as job, vm_cid as container_uuid from instances WHERE vm_cid IS NOT NULL AND deployment_id = $1;" bosh 
 }
 
 get_job_container_uuid () {
-	CONTAINER_ID=$(/var/vcap/packages/postgres/bin/psql -t -c "select vm_cid from instances WHERE id = '$1';" bosh | awk '$1=$1')
+	CONTAINER_ID=$(/var/vcap/packages/postgres/bin/psql -U vcap -t -c "select vm_cid from instances WHERE id = '$1';" bosh | awk '$1=$1')
 }
 
 get_deployment_id() {
-	DEPLOYMENT_ID=$(/var/vcap/packages/postgres/bin/psql -t -c "select id from deployments where name = '$1';" bosh | awk '$1=$1')
+	DEPLOYMENT_ID=$(/var/vcap/packages/postgres/bin/psql -U vcap -t -c "select id from deployments where name = '$1';" bosh | awk '$1=$1')
 }
 
 if [[ "$1" = "deployments" ]]; then 
