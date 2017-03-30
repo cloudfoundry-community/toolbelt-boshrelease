@@ -1,0 +1,9 @@
+#!/bin/bash
+set -eu
+
+# retrieved from https://raw.githubusercontent.com/feurix/hatop/master/bin/hatop
+# on Thu Mar 30 2017
+
+mkdir -p ${BOSH_INSTALL_TARGET}/bin
+cp hatop/hatop ${BOSH_INSTALL_TARGET}/bin
+chmod 755 ${BOSH_INSTALL_TARGET}/bin/hatop

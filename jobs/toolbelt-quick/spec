@@ -3,6 +3,7 @@ name: toolbelt-quick
 packages:
   - toolbelt-cf
   - toolbelt-esuf
+  - toolbelt-hatop
   - toolbelt-gaol
   - toolbelt-jq
   - toolbelt-nats

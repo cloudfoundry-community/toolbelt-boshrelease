@@ -5,6 +5,7 @@ packages:
   - toolbelt-esuf
   - toolbelt-gaol
   - toolbelt-gotcha
+  - toolbelt-hatop
   - toolbelt-jq
   - toolbelt-nats
   - toolbelt-netsniff-ng
