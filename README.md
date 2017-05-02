@@ -56,7 +56,9 @@ Or if you're looking to use `toolbelt` as a BOSH `add-on` via `runtime-config`:
         release: toolbelt
     releases:
     - name: toolbelt
-      version: latest
+      sha1: 03b0e2136b02819ec59675f3e38edb24de2d92f9
+      url: https://bosh.io/d/github.com/cloudfoundry-community/toolbelt-boshrelease?v=3.3.2
+      version: 3.3.2
 
 The `toolbelt` job sets up all users (present and future) on the
 box to source in the appropriate `$PATH`, and `$LD_LIBRARY_PATH`
