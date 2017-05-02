@@ -111,3 +111,7 @@ gotcha/gotcha-linux-amd64:
   object_id: 2db875ec-7624-4009-8478-6565909c913e
   sha: d0978333942b48a00e8e901c5e86584b2d1f1158
   size: 6935960
+hatop/hatop:
+  object_id: 9d096d6c-5f55-456a-8387-39d45f3d7a0e
+  sha: daddb3f13a70d4e2fa0802333c2e13468635171f
+  size: 72429
