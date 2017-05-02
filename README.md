@@ -24,9 +24,41 @@ to your BOSH director:
 
 Then, add the desired `toolbelt-*` templates to your releases:
 
+    instance_groups:
+      - name: my-job
+        jobs:
+        - { release: toolbelt, name: toolbelt }
+        - { release: toolbelt, name: toolbelt-quick }
     releases:
-      - { release: toolbelt, name: toolbelt }
-      - { release: toolbelt, name: toolbelt-quick }
+      - name: toolbelt
+        version: latest
+        
+Or if you're looking to use `toolbelt` as a BOSH `add-on` via `runtime-config`:
+
+    addons:
+    - name: toolbelt
+      jobs:
+      - name: toolbelt
+        release: toolbelt
+      - name: toolbelt-quick
+        release: toolbelt
+    - name: toolbelt-veritas
+      include:
+        jobs:
+        - name: bbs
+          release: diego
+        - name: rep
+          release: diego
+        - name: auctioneer
+          release: diego
+      jobs:
+      - name: toolbelt-veritas
+        release: toolbelt
+    releases:
+    - name: toolbelt
+      sha1: 03b0e2136b02819ec59675f3e38edb24de2d92f9
+      url: https://bosh.io/d/github.com/cloudfoundry-community/toolbelt-boshrelease?v=3.3.2
+      version: 3.3.2
 
 The `toolbelt` job sets up all users (present and future) on the
 box to source in the appropriate `$PATH`, and `$LD_LIBRARY_PATH`
