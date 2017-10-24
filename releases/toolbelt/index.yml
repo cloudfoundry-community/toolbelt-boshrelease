@@ -32,4 +32,6 @@ builds:
     version: 3.3.1
   d51b2e42-468c-47ea-b1f0-49be782f9413:
     version: 3.3.2
+  d4181207-3334-4832-8384-565b9810af7a:
+    version: 3.4.0
 format-version: '2'
