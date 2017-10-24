@@ -1,0 +1,6 @@
+---
+name: toolbelt-cfdot
+dependencies: []
+files:
+  - cfdot/cfdot-linux64
+

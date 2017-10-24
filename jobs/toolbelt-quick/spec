@@ -2,6 +2,7 @@
 name: toolbelt-quick
 packages:
   - toolbelt-cf
+  - toolbelt-cfdot
   - toolbelt-esuf
   - toolbelt-hatop
   - toolbelt-gaol
