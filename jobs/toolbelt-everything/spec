@@ -2,6 +2,7 @@
 name: toolbelt-everything
 packages:
   - toolbelt-cf
+  - toolbelt-cfdot
   - toolbelt-esuf
   - toolbelt-gaol
   - toolbelt-gotcha

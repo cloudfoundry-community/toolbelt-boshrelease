@@ -32,7 +32,7 @@ Then, add the desired `toolbelt-*` templates to your releases:
     releases:
       - name: toolbelt
         version: latest
-        
+
 Or if you're looking to use `toolbelt` as a BOSH `add-on` via `runtime-config`:
 
     addons:
@@ -77,6 +77,7 @@ Tools On The Belt
 The following `toolbelt-*` jobs exist:
 
 - `toolbelt-cf` - The Cloud Foundry CLI, [cf][cf]
+- `toolbelt-cfdot` - The Cloud Foundry Diego Operator Kit, [cfdot][cfdot]
 - `toolbelt-esuf` - The ElasticSearch Unassigned Fixer,
   [esuf][esuf], for finding and fixigin UNASSIGNED shards on an
   ElasticSearch cluster (i.e. Logsearch)
@@ -122,6 +123,7 @@ Then, you can `bosh ssh` and see what it is like using Toolbelt!
 
 
 [cf]:          https://github.com/cloudfoundry/cli
+[cfdot]:       https://github.com/cloudfoundry/cfdot
 [esuf]:        https://github.com/starkandwayne/esuf
 [gaol]:        https://github.com/contraband/gaol
 [gotcha]:      https://github.com/jhunt/gotcha
