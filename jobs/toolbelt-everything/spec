@@ -8,6 +8,7 @@ packages:
   - toolbelt-gotcha
   - toolbelt-hatop
   - toolbelt-jq
+  - toolbelt-nmap
   - toolbelt-nats
   - toolbelt-netsniff-ng
   - toolbelt-redis

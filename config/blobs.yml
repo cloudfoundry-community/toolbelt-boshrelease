@@ -78,6 +78,10 @@ netsniff-ng/userspace-rcu-0.9.1.tar.bz2:
   size: 468197
   object_id: d0749b45-feb3-4bb4-bd0c-3e7096569e51
   sha: ca1b603655c3c5bf5d5b6254117999e3ae5f6751
+nmap/nmap-7.60.tar.bz2:
+  size: 10394925
+  object_id: 3e10ab46-3468-4af6-629b-308bd7923885
+  sha: 5d36a55ce772ec24f7f50ab52780f932ee20529f
 redis/redis-3.0.7.tar.gz:
   size: 1375200
   object_id: f048dc59-c299-4c46-a631-4bb14da326db

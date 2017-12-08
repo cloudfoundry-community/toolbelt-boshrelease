@@ -1,0 +1,8 @@
+---
+name: toolbelt-nmap
+packages:
+  - toolbelt-nmap
+templates:
+  bin/run: bin/run
+
+properties: {}
