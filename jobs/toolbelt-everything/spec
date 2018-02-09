@@ -10,6 +10,7 @@ packages:
   - toolbelt-jq
   - toolbelt-nmap
   - toolbelt-nats
+  - toolbelt-mysql-client
   - toolbelt-netsniff-ng
   - toolbelt-redis
   - toolbelt-safe

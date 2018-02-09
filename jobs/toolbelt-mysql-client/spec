@@ -1,0 +1,8 @@
+---
+name: toolbelt-mysql-client
+packages:
+  - toolbelt-mysql-client
+templates:
+  bin/run: bin/run
+
+properties: {}
