@@ -1,0 +1,5 @@
+---
+name: toolbelt-mysql-client
+dependencies: []
+files:
+  - mysql/*

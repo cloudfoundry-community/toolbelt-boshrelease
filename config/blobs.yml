@@ -26,6 +26,10 @@ jq/jq-linux64:
   size: 3027945
   object_id: babe6a62-2740-4aa8-9e03-fe1437169669
   sha: d8e36831c3c94bb58be34dd544f44a6c6cb88568
+mysql/mariadb-10.3.4.tar.gz:
+  size: 70850293
+  object_id: d6c4d61a-e7a6-4ea3-5bd6-28030e579ece
+  sha: 71eb4e39ed7dda36213bd761a93098c9a7dc2903
 nats/nats-1.0.2-linux-x86_64.tar.gz:
   size: 1976167
   object_id: 9530f4aa-fcca-43d2-af55-34b8b44a728c

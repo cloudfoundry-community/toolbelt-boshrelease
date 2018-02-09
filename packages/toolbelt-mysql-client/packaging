@@ -1,0 +1,21 @@
+set -e # exit immediately if a simple command exits with a non-zero status
+set -u # report the usage of uninitialized variables
+
+# Detect # of CPUs so make jobs can be parallelized
+CPUS=$(grep -c ^processor /proc/cpuinfo)
+ # Available variables
+# $BOSH_COMPILE_TARGET - where this package & spec'd source files are available
+# $BOSH_INSTALL_TARGET - where you copy/install files to be included in package
+export HOME=/var/vcap
+export PKG_CONFIG_PATH=${BOSH_INSTALL_TARGET}/lib/pkgconfig
+export LD_LIBRARY_PATH=${BOSH_INSTALL_TARGET}/lib
+export INCLUDE_PATH=${BOSH_INSTALL_TARGET}/include
+export LDFLAGS=-L${LD_LIBRARY_PATH}
+export CPPFLAGS=-I${INCLUDE_PATH}
+export PATH=${PATH}:${BOSH_INSTALL_TARGET}/bin:${BOSH_INSTALL_TARGET}/sbin
+
+tar -xzf mysql/mariadb-10.3.4.tar.gz
+(cd mariadb-10.3.4/
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=${BOSH_INSTALL_TARGET} -DWITHOUT_SERVER:BOOL=ON && \
+  make && \
+  make install) || exit 1
