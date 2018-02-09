@@ -1,0 +1,6 @@
+---
+name: toolbelt-spruce
+dependencies: []
+files:
+    # from https://github.com/geofffranks/spruce/releases
+  - spruce/spruce-linux-amd64

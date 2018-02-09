@@ -1,0 +1,8 @@
+---
+name: toolbelt-spruce
+packages:
+  - toolbelt-spruce
+templates:
+  bin/run: bin/run
+
+properties: {}

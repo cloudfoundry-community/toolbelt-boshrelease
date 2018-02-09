@@ -94,6 +94,10 @@ safe/safe-linux-amd64:
   size: 8244296
   object_id: 070215bd-1490-452b-a09d-77226a3e3832
   sha: 0b9c713ae7ada486e92161de401e251e0b1f4bd9
+spruce/spruce-linux-amd64:
+  size: 9590977
+  object_id: 81c29646-0baf-415b-451b-5f946661b618
+  sha: 548e51cd37a1ad3a1286237287ab69741c5c41ac
 tcptrace/tcptrace:
   size: 2983
   object_id: 0975577c-b183-4e7f-bb13-8db0f1e49361

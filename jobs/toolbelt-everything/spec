@@ -14,6 +14,7 @@ packages:
   - toolbelt-netsniff-ng
   - toolbelt-redis
   - toolbelt-safe
+  - toolbelt-spruce
   - toolbelt-tcptrace
   - toolbelt-tree
   - toolbelt-tshark
