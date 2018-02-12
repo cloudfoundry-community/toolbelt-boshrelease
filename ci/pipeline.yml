@@ -48,6 +48,9 @@ meta:
     username:      concourse
     icon:          http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
     fail_url: '(( concat "<" meta.url "/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME| Concourse Failure! " meta.slack.upset_moji ">" ))'
+    blob_success:  '(( concat "$BUILD_PIPELINE_NAME: New version of $BUILD_JOB_NAME was detected, and updated in master. <" meta.url "/pipelines/$BUILD_PIPELINE_NAME| Cut a new release?>" ))'
+    blob_failure:  '(( concat "$BUILD_PIPELINE_NAME: :airplane_arriving: <" meta.url "/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME| Failed to update the blob for $BUILD_JOB_NAME>" ))'
+
 
 groups:
   - name: (( grab meta.pipeline ))
