@@ -1,0 +1,41 @@
+name: toolbelt
+
+instance_groups:
+  - name: all
+    instances: 1
+    azs:       [z1]
+    vm_type:   default
+    stemcell:  default
+    networks:
+      - name: default
+    jobs:
+      - { name: toolbelt,            release: toolbelt }
+      - { name: toolbelt-summary,    release: toolbelt }
+      - { name: toolbelt-everything, release: toolbelt }
+
+  - name: quick
+    instances: 1
+    azs:       [z1]
+    vm_type:   default
+    stemcell:  default
+    networks:
+      - name: default
+    jobs:
+      - { name: toolbelt,            release: toolbelt }
+      - { name: toolbelt-summary,    release: toolbelt }
+      - { name: toolbelt-quick,      release: toolbelt }
+
+update:
+  canaries: 0
+  max_in_flight: 1
+  serial: true
+  canary_watch_time: 1000-120000
+  update_watch_time: 1000-120000
+
+stemcells:
+  - alias: default
+    os: ubuntu-trusty
+    version: latest
+
+releases:
+  - { name: toolbelt, version: latest }
