@@ -10,7 +10,6 @@ instance_groups:
       - name: default
     jobs:
       - { name: toolbelt,            release: toolbelt }
-      - { name: toolbelt-summary,    release: toolbelt }
       - { name: toolbelt-everything, release: toolbelt }
 
   - name: quick
@@ -22,7 +21,6 @@ instance_groups:
       - name: default
     jobs:
       - { name: toolbelt,            release: toolbelt }
-      - { name: toolbelt-summary,    release: toolbelt }
       - { name: toolbelt-quick,      release: toolbelt }
 
 update:
