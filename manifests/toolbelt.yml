@@ -33,6 +33,9 @@ update:
 stemcells:
   - alias: default
     os: ubuntu-trusty
+    version: latest
+
+releases:
 - name: toolbelt
   version: 3.4.1
   url: https://github.com/cloudfoundry-community/toolbelt-boshrelease/releases/download/v3.4.1/toolbelt-3.4.1.tgz
