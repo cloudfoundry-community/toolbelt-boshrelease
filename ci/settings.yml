@@ -7,9 +7,15 @@ meta:
 
   initial_version: 2.1.0
 
+  git:
+    email: ci@starkandwayne.com
+    name:  Stark & Wayne CI Bot
+
   bosh-lite:
     target: https://10.58.111.44:25555
-    deployment: toolbelt-warden
+    username: (( vault "secret/bosh-lites/lite44/users/admin:username" ))
+    password: (( vault "secret/bosh-lites/lite44/users/admin:password" ))
+    cacert:   (( vault "secret/bosh-lites/lite44/certs:rootCA.pem" ))
 
   aws:
     access_key: (( vault "secret/aws/cfcommunity:access" ))
@@ -21,13 +27,13 @@ meta:
     branch: master
     private_key:  (( vault "secret/pipelines/toolbelt-boshrelease/github:private" ))
     access_token: (( vault "secret/pipelines/toolbelt-boshrelease/github:token" ))
-    blob_success:  '(( concat "$BUILD_PIPELINE_NAME: New version of $BUILD_JOB_NAME was detected, and updated in master. <" meta.url "/pipelines/$BUILD_PIPELINE_NAME| Cut a new release?>" ))'
-    blob_failure:  '(( concat "$BUILD_PIPELINE_NAME: :airplane_arriving: <" meta.url "/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME| Failed to update the blob for $BUILD_JOB_NAME>" ))'
 
 
   slack:
     webhook: (( vault "secret/pipelines/toolbelt-boshrelease/slack:webhook" ))
     channel: '#botspam'
+    blob_success:  '(( concat "$BUILD_PIPELINE_NAME: New version of $BUILD_JOB_NAME was detected, and updated in master. <" meta.url "/pipelines/$BUILD_PIPELINE_NAME| Cut a new release?>" ))'
+    blob_failure:  '(( concat "$BUILD_PIPELINE_NAME: :airplane_arriving: <" meta.url "/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME| Failed to update the blob for $BUILD_JOB_NAME>" ))'
 
 groups:
   - name: blobs
