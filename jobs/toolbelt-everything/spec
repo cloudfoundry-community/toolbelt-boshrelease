@@ -12,6 +12,7 @@ packages:
   - toolbelt-nats
   - toolbelt-mysql-client
   - toolbelt-netsniff-ng
+  - toolbelt-psql
   - toolbelt-redis
   - toolbelt-safe
   - toolbelt-spruce

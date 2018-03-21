@@ -86,6 +86,10 @@ nmap/nmap-7.60.tar.bz2:
   size: 10394925
   object_id: 3e10ab46-3468-4af6-629b-308bd7923885
   sha: 5d36a55ce772ec24f7f50ab52780f932ee20529f
+postgresql/postgresql-10.3.tar.gz:
+  size: 26357593
+  object_id: ca0eb3ce-8b0c-4ec8-7c47-be7c2adb6a1c
+  sha: e9431b0019c026927065b8c476fdf92eeebd00aa
 redis/redis-3.0.7.tar.gz:
   size: 1375200
   object_id: f048dc59-c299-4c46-a631-4bb14da326db

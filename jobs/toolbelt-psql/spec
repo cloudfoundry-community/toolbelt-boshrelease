@@ -1,0 +1,8 @@
+---
+name: toolbelt-psql
+packages:
+  - toolbelt-psql
+templates:
+  bin/run: bin/run
+
+properties: {}
