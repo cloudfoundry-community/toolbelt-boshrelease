@@ -89,6 +89,7 @@ The following `toolbelt-*` jobs exist:
   messagebus.
 - `toolbelt-netsniff` - The excellent [netsniff-ng][netsniff-ng]
   suite of networking diagnostics tools.  **LONG COMPILE TIMES**
+- `toolbelt-psql` - The [PostgreSQL CLI][psql].
 - `toolbelt-redis` - The [Redis CLI][redis].
 - `toolbelt-vault` - The [Vault CLI][vault], from Hashicorp.
 - `toolbelt-safe` - [safe][safe] is an alternate client for Vault.
@@ -129,6 +130,7 @@ Then, you can `bosh ssh` and see what it is like using Toolbelt!
 [gotcha]:      https://github.com/jhunt/gotcha
 [jq]:          https://stedolan.github.io/jq/
 [netsniff-ng]: http://netsniff-ng.org/
+[psql]:        http://www.postgresql.org/
 [redis]:       http://redis.io/
 [vault]:       https://www.vaultproject.io/
 [safe]:        https://github.com/jhunt/safe
