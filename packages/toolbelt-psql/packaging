@@ -1,0 +1,31 @@
+set -e # exit immediately if a simple command exits with a non-zero status
+set -u # report the usage of uninitialized variables
+
+# Detect # of CPUs so make jobs can be parallelized
+CPUS=$(grep -c ^processor /proc/cpuinfo)
+ # Available variables
+# $BOSH_COMPILE_TARGET - where this package & spec'd source files are available
+# $BOSH_INSTALL_TARGET - where you copy/install files to be included in package
+export HOME=/var/vcap
+
+# download from https://ftp.postgresql.org/pub/source/v10.3/postgresql-10.3.tar.bz2
+# shasum: https://ftp.postgresql.org/pub/source/v10.3/postgresql-10.3.tar.bz2.sha256
+VERSION=10.3
+
+tar -zxf "postgresql/postgresql-${VERSION}.tar.gz"
+
+cd postgresql-${VERSION}
+
+echo "Building only psql CLI & Libraries..."
+
+./configure --enable-depend --prefix="${BOSH_INSTALL_TARGET}"
+
+make -j${CPUS}
+make -j${CPUS} -C src/bin install
+make -j${CPUS} -C src/include install
+make -j${CPUS} -C src/interfaces install
+make -j${CPUS} -C doc install
+
+echo "Installed psql CLI & Libraries to ${BOSH_INSTALL_TARGET}"
+
+exit 0
