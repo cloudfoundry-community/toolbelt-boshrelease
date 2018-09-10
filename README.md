@@ -85,6 +85,7 @@ The following `toolbelt-*` jobs exist:
 - `toolbelt-gotcha` - A small [MitM proxy][gotcha] for debugging
   HTTP APIs that hide behind SSL/TLS.
 - `toolbelt-jq` - [jq][jq], it's sed for JSON.
+- `toolbelt-nload` - [nload][nload] Displays the current network usage
 - `toolbelt-nats` - A utiity for interacting with a NATS
   messagebus.
 - `toolbelt-netsniff` - The excellent [netsniff-ng][netsniff-ng]
@@ -93,6 +94,8 @@ The following `toolbelt-*` jobs exist:
 - `toolbelt-redis` - The [Redis CLI][redis].
 - `toolbelt-vault` - The [Vault CLI][vault], from Hashicorp.
 - `toolbelt-safe` - [safe][safe] is an alternate client for Vault.
+- `toolbelt-screen` - [screen][screen] Screen is a full-screen window manager that 
+  multiplexes a physical terminal between several processes.
 - `toolbelt-tree` - Produce tree-based directory listings.
 - `toolbelt-tcptrace` - Colorized tcpdump packet captures.
 - `toolbelt-tshark` - Terminal-mode [Wireshark][tshark], for
@@ -130,10 +133,12 @@ Then, you can `bosh ssh` and see what it is like using Toolbelt!
 [gotcha]:      https://github.com/jhunt/gotcha
 [jq]:          https://stedolan.github.io/jq/
 [netsniff-ng]: http://netsniff-ng.org/
+[nload]:       http://www.roland-riegel.de/nload/
 [psql]:        http://www.postgresql.org/
 [redis]:       http://redis.io/
 [vault]:       https://www.vaultproject.io/
 [safe]:        https://github.com/jhunt/safe
+[screen]:      https://www.gnu.org/software/screen/
 [tshark]:      https://www.wireshark.org/
 [veritas]:     https://github.com/pivotal-cf-experimental/veritas
 [diego]:       https://github.com/cloudfoundry-incubator/diego-release

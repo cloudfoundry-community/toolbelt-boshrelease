@@ -1,0 +1,8 @@
+---
+name: toolbelt-screen
+packages:
+  - toolbelt-screen
+templates:
+  bin/run: bin/run
+
+properties: {}

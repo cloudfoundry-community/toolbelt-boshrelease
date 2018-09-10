@@ -8,6 +8,7 @@ packages:
   - toolbelt-gotcha
   - toolbelt-hatop
   - toolbelt-jq
+  - toolbelt-nload
   - toolbelt-nmap
   - toolbelt-nats
   - toolbelt-mysql-client
@@ -15,6 +16,7 @@ packages:
   - toolbelt-psql
   - toolbelt-redis
   - toolbelt-safe
+  - toolbelt-screen
   - toolbelt-spruce
   - toolbelt-tcptrace
   - toolbelt-tree
