@@ -11,3 +11,5 @@
   Man page: https://linux.die.net/man/1/screen
   Package docs: https://www.gnu.org/software/screen/
   Binary source: https://ftp.gnu.org/gnu/screen/screen-4.6.2.tar.gz
+# spruce
+Bumped  to v1.18.2
