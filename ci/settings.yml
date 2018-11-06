@@ -66,9 +66,11 @@ jobs:
           REPO_ROOT:        git
           REPO_OUT:         pushme
           RELEASE_DIR:      spruce
-          BLOB:             spruce
+          BLOB_DIR:         spruce
+          BLOB_NAME:        spruce
           BLOB_BINARY:      spruce-linux-amd64
           BLOB_DESTINATION: spruce/spruce-linux-amd64
+          BLOB_CLEANUP:     spruce/spruce-linux-amd64
           AWS_ACCESS_KEY:   (( grab meta.aws.access_key ))
           AWS_SECRET_KEY:   (( grab meta.aws.secret_key ))
           BRANCH:       (( grab meta.github.branch ))
