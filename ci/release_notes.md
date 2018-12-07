@@ -13,3 +13,6 @@
   Binary source: https://ftp.gnu.org/gnu/screen/screen-4.6.2.tar.gz
 # spruce
 Bumped  to v1.18.2
+
+# spruce
+Bumped  to v1.19.0
