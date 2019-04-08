@@ -107,9 +107,9 @@ screen/screen-4.6.2.tar.gz:
   object_id: 9a562477-9597-47ee-42d3-f1a3916801eb
   sha: 0434d4c45d0b5bb339551511e10a9b2c4ec6a789
 spruce/spruce-linux-amd64:
-  size: 10384064
-  object_id: 33568f69-4b6d-400f-7d2d-6c48d2664201
-  sha: 8977d0d07eca133b109833d86a9f4015ce40b6ff
+  size: 10396353
+  object_id: 2256b532-80f5-4110-4e8b-80c805595b33
+  sha: 90f216e4f311b78250a2032dda132e08986003a9
 tcptrace/tcptrace:
   size: 2983
   object_id: 0975577c-b183-4e7f-bb13-8db0f1e49361
