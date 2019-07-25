@@ -10,3 +10,7 @@
 # spruce
 
 - Bumped spruce to v1.21.0
+
+# spruce
+
+- Bumped spruce to v1.22.0
