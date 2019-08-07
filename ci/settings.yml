@@ -30,9 +30,9 @@ meta:
 
 
   shout:
-    url:      http://10.200.131.1:7109
-    username: ops
-    password: (( vault "secret/buffalo/lab/concourse/shout/ops:password" ))
+    url:      http://10.128.4.65:7109
+    username: ((shout.username))
+    password: ((shout.password))
 
 groups:
   - name: blobs
@@ -43,7 +43,7 @@ jobs:
   - name: spruce # {{{
     public: true
     plan:
-    - aggregate:
+    - in_parallel:
       - { get: git }
       - { get: spruce, trigger: true }
     - task: update-spruce
