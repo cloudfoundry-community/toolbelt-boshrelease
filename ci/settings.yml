@@ -12,7 +12,7 @@ meta:
     name:  Stark & Wayne CI Bot
 
   bosh-lite:
-    target: https://10.200.131.9:25555
+    target:   https://10.128.4.73:25555
     username: ((thunder-dome.username))
     password: ((thunder-dome.password))
     cacert:   ((thunder-dome.ca-certificate))
