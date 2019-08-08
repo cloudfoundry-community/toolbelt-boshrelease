@@ -1,7 +1,11 @@
 # Component Software Updates
 
 - Spruce has been upgraded to [v1.22.0][1]
+
 - Safe has been upgraded to [v1.3.0][2]
+
+- The Cloud Foundry CLI has been upgraded to 6.46.0.
+
 - Netsniff-ng has been updated to 0.6.6 (from 0.6.0),
   which necessitated the following sub-component updates:
 

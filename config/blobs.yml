@@ -1,7 +1,7 @@
 cf-cli/cf-linux64:
-  size: 19896417
-  object_id: 1e711010-7c7c-4852-b32b-924e195fb1c6
-  sha: 1ab6a9c11d92cf7fb443c24225a007b6fcb3cc99
+  size: 21792000
+  object_id: 82dccac6-1e7d-4271-6af9-5c80f4049d87
+  sha: d73279d4c4250590d1950362601d6d0238bdbb8f
 cfdot/cfdot-linux64:
   size: 15276752
   object_id: 13ff04cf-4de5-4615-5e77-6860345e732f
