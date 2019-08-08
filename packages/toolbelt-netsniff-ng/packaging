@@ -17,7 +17,17 @@ export INCLUDE_PATH=${BOSH_INSTALL_TARGET}/include
 # (cd blobs/netsniff-ng ; curl -LSsO https://ftp.gnu.org/pub/gnu/ncurses/ncurses-5.9.tar.gz)
 tar -xzf netsniff-ng/ncurses-5.9.tar.gz
 (cd ncurses-5.9
- ./configure --prefix ${BOSH_INSTALL_TARGET} --with-shared && \
+ # The -P preprocessor flags keeps GCC 5+ from emitting #line
+ # directives that apparently break ncurses, leading to errors like:
+ #
+ #  In file included from ../ncurses/curses.priv.h:283:0,
+ #                   from ../ncurses/lib_gen.c:19:
+ #  _6384.c:835:15: error: expected ')' before 'int'
+ #
+ # see http://gcc.gnu.org/gcc-5/porting_to.html
+ # via https://bbs.archlinux.org/viewtopic.php?id=194029&p=3
+ # via https://trac.sagemath.org/ticket/19762
+ CPPFLAGS=-P ./configure --prefix ${BOSH_INSTALL_TARGET} --with-shared && \
  make -j${CPUS} && \
  make install) || exit 1
 
