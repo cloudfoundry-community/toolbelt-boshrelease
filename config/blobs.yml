@@ -34,54 +34,50 @@ nats/nats-1.0.2-linux-x86_64.tar.gz:
   size: 1976167
   object_id: 9530f4aa-fcca-43d2-af55-34b8b44a728c
   sha: a47897ac81b83d7e72344ef0c58b90dc9db036c5
-netsniff-ng/libcli-1.9.7.tar.gz:
-  size: 29557
-  object_id: efe03ced-bed3-49a5-b61d-b93e346b8eba
-  sha: 0bf27f3f9e0f5284e04663afe3f865136b0d5f30
-netsniff-ng/libmnl-1.0.3.tar.bz2:
-  size: 337375
-  object_id: 5bd60d2f-3dca-4220-8124-4ec3ee881743
-  sha: c27e25f67c6422ebf893fc3a844af8085a1c5b63
-netsniff-ng/libnet-1.1.6.tar.gz:
-  size: 1202970
-  object_id: 6f374800-a71d-49a0-8cb2-79066f736626
-  sha: dffff71c325584fdcf99b80567b60f8ad985e34c
-netsniff-ng/libnetfilter_conntrack-1.0.5.tar.bz2:
-  size: 418516
-  object_id: 0ec53245-ce87-4c3d-88a8-cf9b17f34c1e
-  sha: 9aed8733d98af39d57fffd929c2bea70f1dcba06
+netsniff-ng/libcli-1.10.0.tar.gz:
+  size: 46832
+  object_id: 05528f07-3cad-4de1-5deb-74ee7265db6e
+  sha: f6caf7568d9d91a801705eee1ca1743bc458fc2b
+netsniff-ng/libmnl-1.0.4.tar.bz2:
+  size: 301270
+  object_id: 67166343-e47f-4e04-44f3-1c7f7e369b91
+  sha: 2db40dea612e88c62fd321906be40ab5f8f1685a
+netsniff-ng/libnet-1.2-rc3.tar.gz:
+  size: 676205
+  object_id: 5069ecbb-6492-42c0-6d22-3c3b5bbae877
+  sha: 4d2564f057a576921ed5e8770052a0844762190f
+netsniff-ng/libnetfilter_conntrack-1.0.7.tar.bz2:
+  size: 346219
+  object_id: d907f7d8-4ef1-4ceb-598a-8ee8e5078b5d
+  sha: 5ea797b62b5add69ad2c769734f7a6f597c71ebd
 netsniff-ng/libnfnetlink-1.0.1.tar.bz2:
   size: 320641
-  object_id: 47f5296f-b253-41aa-8d4a-5a570a5f2f06
+  object_id: 981684a9-ab73-4f95-6226-1a0948a676c2
   sha: 27ae2dfbd976e28cb7a417f9e946c901f512dd9a
 netsniff-ng/libnl-3.2.25.tar.gz:
   size: 832513
-  object_id: 633075cf-8bf6-46c9-8f58-aacc93886d5e
+  object_id: 9409a195-f787-4c35-544f-1dc548a5e174
   sha: b7a4981f7edf7398256d35fd3c0b87bc84ae27d1
-netsniff-ng/libpcap-1.7.4.tar.gz:
-  size: 663021
-  object_id: f4c31382-6054-40bd-934d-039706d08071
-  sha: 3f31a7706c1487fca36b8379e511965a8d7cbd70
-netsniff-ng/libsodium-1.0.8.tar.gz:
-  size: 1794750
-  object_id: c3df5d17-b234-4a3d-b747-270f45f764b4
-  sha: 3d53b827da88d6c2e391fb377bddcd592515ab79
-netsniff-ng/nacl-20110221.tar.bz2:
-  size: 163415
-  object_id: 177d6a76-70d7-44c5-b1ba-9db1373e7c5d
-  sha: 6007a6aee249f5a534ec53fddfc364601fba9629
-netsniff-ng/ncurses-5.9.tar.gz:
-  size: 2826473
-  object_id: c32c9ee1-cdb9-478f-a6d2-1b193e670010
-  sha: 3e042e5f2c7223bffdaac9646a533b8c758b65b5
-netsniff-ng/netsniff-ng-0.6.0.tar.gz:
-  size: 719687
-  object_id: 515d6e69-363d-45e8-912d-f9567e5fd464
-  sha: 0fe01f378190ce7c64c1b2022f9c47060c49885f
-netsniff-ng/userspace-rcu-0.9.1.tar.bz2:
-  size: 468197
-  object_id: d0749b45-feb3-4bb4-bd0c-3e7096569e51
-  sha: ca1b603655c3c5bf5d5b6254117999e3ae5f6751
+netsniff-ng/libpcap-1.9.0.tar.gz:
+  size: 832079
+  object_id: 06d8a033-5467-456c-7d14-c45152f111fc
+  sha: c565f591c9a921fb5938cc16407c321c1ca8b9e8
+netsniff-ng/libsodium-1.0.18.tar.gz:
+  size: 1919817
+  object_id: d215c1e8-ebb6-4f7f-530f-46f43eabb5bd
+  sha: 795b73e3f92a362fabee238a71735579bf46bb97
+netsniff-ng/ncurses-6.1.tar.gz:
+  size: 3365395
+  object_id: 39233b1b-704b-4b7d-49bb-7052ab92db26
+  sha: 57acf6bc24cacd651d82541929f726f4def780cc
+netsniff-ng/netsniff-ng-0.6.6.tar.gz:
+  size: 802394
+  object_id: f38718ae-7135-4c06-5733-eb2b62f1f227
+  sha: 956f3b3a5f871330819f96abfeede7923d8c557c
+netsniff-ng/userspace-rcu-0.11.1.tar.bz2:
+  size: 527799
+  object_id: a6eb5090-5783-4de1-472b-dc8f809f1081
+  sha: 3678dc1eb736f61e22cdd8ab1140ac28b4d724af
 nload/nload-0.7.4.tar.gz:
   size: 151005
   object_id: fe9d2165-bca8-48ff-6f88-79b628070039

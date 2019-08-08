@@ -14,100 +14,80 @@ export PKG_CONFIG_PATH=${BOSH_INSTALL_TARGET}/lib/pkgconfig
 export LD_LIBRARY_PATH=${BOSH_INSTALL_TARGET}/lib
 export INCLUDE_PATH=${BOSH_INSTALL_TARGET}/include
 
-# (cd blobs/netsniff-ng ; curl -LSsO https://ftp.gnu.org/pub/gnu/ncurses/ncurses-5.9.tar.gz)
-tar -xzf netsniff-ng/ncurses-5.9.tar.gz
-(cd ncurses-5.9
- # The -P preprocessor flags keeps GCC 5+ from emitting #line
- # directives that apparently break ncurses, leading to errors like:
- #
- #  In file included from ../ncurses/curses.priv.h:283:0,
- #                   from ../ncurses/lib_gen.c:19:
- #  _6384.c:835:15: error: expected ')' before 'int'
- #
- # see http://gcc.gnu.org/gcc-5/porting_to.html
- # via https://bbs.archlinux.org/viewtopic.php?id=194029&p=3
- # via https://trac.sagemath.org/ticket/19762
- CPPFLAGS=-P ./configure --prefix ${BOSH_INSTALL_TARGET} --with-shared && \
+# (curl -LSsO https://ftp.gnu.org/pub/gnu/ncurses/ncurses-6.1.tar.gz && bosh add-blob ncurses-6.1.tar.gz netsniff-ng/ncurses-6.1.tar.gz)
+tar -xzf netsniff-ng/ncurses-6.1.tar.gz
+(cd ncurses-6.1
+ ./configure --prefix ${BOSH_INSTALL_TARGET} --with-shared && \
  make -j${CPUS} && \
  make install) || exit 1
 
-# (cd blobs/netsniff-ng ; curl -LSsO http://hyperelliptic.org/nacl/nacl-20110221.tar.bz2)
-#tar -xjf netsniff-ng/nacl-20110221.tar.bz2
-#(cd nacl-20110221
-# ./do && \
-# mkdir -p {BOSH_INSTALL_TARGET}/{bin,lib,include} && \
-# rm -f build/*/bin/ok* && \
-# cp -a build/*/bin/*     ${BOSH_INSTALL_TARGET}/bin/ && \
-# cp -a build/*/lib/*/*   ${BOSH_INSTALL_TARGET}/lib/ && \
-# cp -a build/*/include/* ${BOSH_INSTALL_TARGET}/include/) || exit 1
-
-# (cd blobs/netsniff-ng ; curl -LSsO https://download.libsodium.org/libsodium/releases/libsodium-1.0.8.tar.gz)
-tar -xzf netsniff-ng/libsodium-1.0.8.tar.gz
-(cd libsodium-1.0.8
+# (curl -LSsO https://download.libsodium.org/libsodium/releases/libsodium-1.0.18.tar.gz && bosh add-blob libsodium-1.0.18.tar.gz netsniff-ng/libsodium-1.0.18.tar.gz)
+tar -xzf netsniff-ng/libsodium-1.0.18.tar.gz
+(cd libsodium-1.0.18
  ./configure --prefix ${BOSH_INSTALL_TARGET} && \
  make -j${CPUS} && \
  make install) || exit 1
 
-# (cd blobs/netsniff-ng ; curl -LSsO http://www.netfilter.org/projects/libnfnetlink/files/libnfnetlink-1.0.1.tar.bz2)
+# (curl -LSsO http://www.netfilter.org/projects/libnfnetlink/files/libnfnetlink-1.0.1.tar.bz2 && bosh add-blob libnfnetlink-1.0.1.tar.bz2 netsniff-ng/libnfnetlink-1.0.1.tar.bz2)
 tar -xjf netsniff-ng/libnfnetlink-1.0.1.tar.bz2
 (cd libnfnetlink-1.0.1
  ./configure --prefix ${BOSH_INSTALL_TARGET} && \
  make -j${CPUS} && \
  make install) || exit 1
 
-# (cd blobs/netsniff-ng ; curl -LSsO https://www.infradead.org/~tgr/libnl/files/libnl-3.2.25.tar.gz)
+# (curl -LSsO https://www.infradead.org/~tgr/libnl/files/libnl-3.2.25.tar.gz && bosh add-blob libnl-3.2.25.tar.gz netsniff-ng/libnl-3.2.25.tar.gz)
 tar -xzf netsniff-ng/libnl-3.2.25.tar.gz
 (cd libnl-3.2.25
  ./configure --prefix ${BOSH_INSTALL_TARGET} && \
  make -j${CPUS} && \
  make install) || exit 1
 
-# (cd blobs/netsniff-ng ; curl -LSsO http://www.netfilter.org/projects/libmnl/files/libmnl-1.0.3.tar.bz2)
-tar -xjf netsniff-ng/libmnl-1.0.3.tar.bz2
-(cd libmnl-1.0.3
+# (curl -LSsO http://www.netfilter.org/projects/libmnl/files/libmnl-1.0.4.tar.bz2 && bosh add-blob libmnl-1.0.4.tar.bz2 netsniff-ng/libmnl-1.0.4.tar.bz2)
+tar -xjf netsniff-ng/libmnl-1.0.4.tar.bz2
+(cd libmnl-1.0.4
  ./configure --prefix ${BOSH_INSTALL_TARGET} && \
  make -j${CPUS} && \
  make install) || exit 1
 
-# (cd blobs/netsniff-ng ; curl -LSsO http://www.netfilter.org/projects/libnetfilter_conntrack/files/libnetfilter_conntrack-1.0.5.tar.bz2)
-tar -xjf netsniff-ng/libnetfilter_conntrack-1.0.5.tar.bz2
-(cd libnetfilter_conntrack-1.0.5
+# (curl -LSsO http://www.netfilter.org/projects/libnetfilter_conntrack/files/libnetfilter_conntrack-1.0.7.tar.bz2 && bosh add-blob libnetfilter_conntrack-1.0.7.tar.bz2 netsniff-ng/libnetfilter_conntrack-1.0.7.tar.bz2)
+tar -xjf netsniff-ng/libnetfilter_conntrack-1.0.7.tar.bz2
+(cd libnetfilter_conntrack-1.0.7
  ./configure --prefix ${BOSH_INSTALL_TARGET} && \
  make -j${CPUS} && \
  make install) || exit 1
 
-# (cd blobs/netsniff-ng ; curl -LSsO http://www.tcpdump.org/release/libpcap-1.7.4.tar.gz)
-tar -xzf netsniff-ng/libpcap-1.7.4.tar.gz
-(cd libpcap-1.7.4
+# (curl -LSsO http://www.tcpdump.org/release/libpcap-1.9.0.tar.gz && bosh add-blob libpcap-1.9.0.tar.gz netsniff-ng/libpcap-1.9.0.tar.gz)
+tar -xzf netsniff-ng/libpcap-1.9.0.tar.gz
+(cd libpcap-1.9.0
  ./configure --prefix ${BOSH_INSTALL_TARGET} && \
  make -j${CPUS} && \
  make install) || exit 1
 
-# (cd blobs/netsniff-ng ; curl -LSsO http://www.lttng.org/files/urcu/userspace-rcu-0.9.1.tar.bz2)
-tar -xjf netsniff-ng/userspace-rcu-0.9.1.tar.bz2
-(cd userspace-rcu-0.9.1
+# (curl -LSsO http://www.lttng.org/files/urcu/userspace-rcu-0.11.1.tar.bz2 && bosh add-blob userspace-rcu-0.11.1.tar.bz2 netsniff-ng/userspace-rcu-0.11.1.tar.bz2)
+tar -xjf netsniff-ng/userspace-rcu-0.11.1.tar.bz2
+(cd userspace-rcu-0.11.1
  ./configure --prefix ${BOSH_INSTALL_TARGET} && \
  make -j${CPUS} && \
  make install) || exit 1
 
-# (cd blobs/netsniff-ng ; curl -LSs https://github.com/dparrish/libcli/archive/v1.9.7.tar.gz -o libcli-1.9.7.tar.gz)
-tar -xzf netsniff-ng/libcli-1.9.7.tar.gz
-(cd libcli-1.9.7
+# (curl -LSs https://github.com/dparrish/libcli/archive/v1.10.0.tar.gz -o libcli-1.10.0.tar.gz && bosh add-blob libcli-1.10.0.tar.gz netsniff-ng/libcli-1.10.0.tar.gz)
+tar -xzf netsniff-ng/libcli-1.10.0.tar.gz
+(cd libcli-1.10.0
  sed -i -e "s@/usr/local@${BOSH_INSTALL_TARGET}@" Makefile
  make -j${CPUS} && \
  make install) || exit 1
 
-# (cd blobs/netsniff-ng ; curl -LSsO http://downloads.sourceforge.net/project/libnet-dev/libnet-1.1.6.tar.gz)
-tar -xzf netsniff-ng/libnet-1.1.6.tar.gz
-(cd libnet-1.1.6
+# (curl -LSsO http://downloads.sourceforge.net/project/libnet-dev/libnet-1.2-rc3.tar.gz && bosh add-blob libnet-1.2-rc3.tar.gz netsniff-ng/libnet-1.2-rc3.tar.gz)
+tar -xzf netsniff-ng/libnet-1.2-rc3.tar.gz
+(cd libnet-1.2-rc3
  ./configure --prefix ${BOSH_INSTALL_TARGET} && \
  make -j${CPUS} && \
  make install) || exit 1
 
-# (cd blobs/netsniff-ng ; curl -LSsO http://pub.netsniff-ng.org/netsniff-ng/netsniff-ng-0.6.0.tar.gz)
+# (curl -LSsO http://pub.netsniff-ng.org/netsniff-ng/netsniff-ng-0.6.6.tar.gz && bosh add-blob netsniff-ng-0.6.6.tar.gz netsniff-ng/netsniff-ng-0.6.6.tar.gz)
 # NB: mausezahn, curvetun and flowtop are silently failing...
-tar -xzf netsniff-ng/netsniff-ng-0.6.0.tar.gz
-(cd netsniff-ng-0.6.0
+tar -xzf netsniff-ng/netsniff-ng-0.6.6.tar.gz
+(cd netsniff-ng-0.6.6
  export PREFIX=${BOSH_INSTALL_TARGET}
  export NACL_INC_DIR=${BOSH_INSTALL_TARGET}/include/sodium
  export NACL_LIB_DIR=${BOSH_INSTALL_TARGET}/lib
