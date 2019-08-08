@@ -95,9 +95,9 @@ redis/redis-3.0.7.tar.gz:
   object_id: f048dc59-c299-4c46-a631-4bb14da326db
   sha: e56b4b7e033ae8dbf311f9191cf6fdf3ae974d1c
 safe/safe-linux-amd64:
-  size: 8244296
-  object_id: 070215bd-1490-452b-a09d-77226a3e3832
-  sha: 0b9c713ae7ada486e92161de401e251e0b1f4bd9
+  size: 10789908
+  object_id: d4932a96-2138-4b0f-53ac-da93efaf906b
+  sha: 977e373e102323bd6ae4565c5c3283e2ae0a9f4a
 screen/screen-4.6.2.tar.gz:
   size: 845210
   object_id: 9a562477-9597-47ee-42d3-f1a3916801eb

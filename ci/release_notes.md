@@ -1,6 +1,7 @@
 # Component Software Updates
 
 - Spruce has been upgraded to [v1.22.0][1]
+- Safe has been upgraded to [v1.3.0][2]
 - Netsniff-ng has been updated to 0.6.6 (from 0.6.0),
   which necessitated the following sub-component updates:
 
@@ -14,3 +15,4 @@
   - userspace-rcu updated from 0.9.1 to 0.11.1
 
 [1]: https://github.com/geofffranks/spruce/releases/tag/v1.22.0
+[2]: https://github.com/starkandwayne/safe/releases/tag/v1.3.0
