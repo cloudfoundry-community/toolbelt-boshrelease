@@ -2,4 +2,4 @@
 name: toolbelt-nmap
 dependencies: []
 files:
-  - nmap/nmap-7.60.tar.bz2
+  - nmap/nmap-7.80.tar.bz2

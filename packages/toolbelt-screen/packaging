@@ -6,7 +6,7 @@ set -eu
 # Binary source: https://ftp.gnu.org/gnu/screen/screen-4.6.2.tar.gz
 
 
-VERSION=4.6.2
+VERSION=4.8.0
 tar xvzf screen/screen-${VERSION}.tar.gz
 cd screen-${VERSION}
 ./configure

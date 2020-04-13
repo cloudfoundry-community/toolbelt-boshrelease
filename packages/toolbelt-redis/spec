@@ -2,4 +2,4 @@
 name: toolbelt-redis
 dependencies: []
 files:
-  - redis/redis-3.0.7.tar.gz
+  - redis/redis-5.0.8.tar.gz

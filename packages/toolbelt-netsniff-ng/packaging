@@ -14,9 +14,9 @@ export PKG_CONFIG_PATH=${BOSH_INSTALL_TARGET}/lib/pkgconfig
 export LD_LIBRARY_PATH=${BOSH_INSTALL_TARGET}/lib
 export INCLUDE_PATH=${BOSH_INSTALL_TARGET}/include
 
-# (curl -LSsO https://ftp.gnu.org/pub/gnu/ncurses/ncurses-6.1.tar.gz && bosh add-blob ncurses-6.1.tar.gz netsniff-ng/ncurses-6.1.tar.gz)
-tar -xzf netsniff-ng/ncurses-6.1.tar.gz
-(cd ncurses-6.1
+# (curl -LSsO https://ftp.gnu.org/pub/gnu/ncurses/ncurses-6.2.tar.gz && bosh add-blob ncurses-6.2.tar.gz netsniff-ng/ncurses-6.2.tar.gz)
+tar -xzf netsniff-ng/ncurses-6.2.tar.gz
+(cd ncurses-6.2
  ./configure --prefix ${BOSH_INSTALL_TARGET} --with-shared && \
  make -j${CPUS} && \
  make install) || exit 1
@@ -49,30 +49,30 @@ tar -xjf netsniff-ng/libmnl-1.0.4.tar.bz2
  make -j${CPUS} && \
  make install) || exit 1
 
-# (curl -LSsO http://www.netfilter.org/projects/libnetfilter_conntrack/files/libnetfilter_conntrack-1.0.7.tar.bz2 && bosh add-blob libnetfilter_conntrack-1.0.7.tar.bz2 netsniff-ng/libnetfilter_conntrack-1.0.7.tar.bz2)
-tar -xjf netsniff-ng/libnetfilter_conntrack-1.0.7.tar.bz2
-(cd libnetfilter_conntrack-1.0.7
+# (curl -LSsO https://www.netfilter.org/projects/libnetfilter_conntrack/files/libnetfilter_conntrack-1.0.8.tar.bz2 && bosh add-blob libnetfilter_conntrack-1.0.8.tar.bz2 netsniff-ng/libnetfilter_conntrack-1.0.8.tar.bz2)
+tar -xjf netsniff-ng/libnetfilter_conntrack-1.0.8.tar.bz2
+(cd libnetfilter_conntrack-1.0.8
  ./configure --prefix ${BOSH_INSTALL_TARGET} && \
  make -j${CPUS} && \
  make install) || exit 1
 
-# (curl -LSsO http://www.tcpdump.org/release/libpcap-1.9.0.tar.gz && bosh add-blob libpcap-1.9.0.tar.gz netsniff-ng/libpcap-1.9.0.tar.gz)
-tar -xzf netsniff-ng/libpcap-1.9.0.tar.gz
-(cd libpcap-1.9.0
+# (curl -LSsO http://www.tcpdump.org/release/libpcap-1.9.1.tar.gz && bosh add-blob libpcap-1.9.1.tar.gz netsniff-ng/libpcap-1.9.1.tar.gz)
+tar -xzf netsniff-ng/libpcap-1.9.1.tar.gz
+(cd libpcap-1.9.1
  ./configure --prefix ${BOSH_INSTALL_TARGET} && \
  make -j${CPUS} && \
  make install) || exit 1
 
-# (curl -LSsO http://www.lttng.org/files/urcu/userspace-rcu-0.11.1.tar.bz2 && bosh add-blob userspace-rcu-0.11.1.tar.bz2 netsniff-ng/userspace-rcu-0.11.1.tar.bz2)
-tar -xjf netsniff-ng/userspace-rcu-0.11.1.tar.bz2
-(cd userspace-rcu-0.11.1
+# (curl -LSsO https://www.lttng.org/files/urcu/userspace-rcu-0.12.0.tar.bz2 && bosh add-blob userspace-rcu-0.12.0.tar.bz2 netsniff-ng/userspace-rcu-0.12.0.tar.bz2)
+tar -xjf netsniff-ng/userspace-rcu-0.12.0.tar.bz2
+(cd userspace-rcu-0.12.0
  ./configure --prefix ${BOSH_INSTALL_TARGET} && \
  make -j${CPUS} && \
  make install) || exit 1
 
-# (curl -LSs https://github.com/dparrish/libcli/archive/v1.10.0.tar.gz -o libcli-1.10.0.tar.gz && bosh add-blob libcli-1.10.0.tar.gz netsniff-ng/libcli-1.10.0.tar.gz)
-tar -xzf netsniff-ng/libcli-1.10.0.tar.gz
-(cd libcli-1.10.0
+# (curl -LSs https://github.com/dparrish/libcli/archive/V1.10.4.tar.gz -o libcli-1.10.4.tar.gz && bosh add-blob libcli-1.10.4.tar.gz netsniff-ng/libcli-1.10.4.tar.gz)
+tar -xzf netsniff-ng/libcli-1.10.4.tar.gz
+(cd libcli-1.10.4
  sed -i -e "s@/usr/local@${BOSH_INSTALL_TARGET}@" Makefile
  make -j${CPUS} && \
  make install) || exit 1

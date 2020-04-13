@@ -8,9 +8,9 @@ CPUS=$(grep -c ^processor /proc/cpuinfo)
 # $BOSH_INSTALL_TARGET - where you copy/install files to be included in package
 export HOME=/var/vcap
 
-# download from http://download.redis.io/releases/redis-3.0.7.tar.gz
+# download from http://download.redis.io/releases/redis-5.0.8.tar.gz
 
-VERSION=3.0.7
+VERSION=5.0.8
 tar -xzvf redis/redis-${VERSION}.tar.gz
 cd redis-${VERSION}
 make -j${CPUS}

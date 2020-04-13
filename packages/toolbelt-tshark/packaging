@@ -14,9 +14,9 @@ export LDFLAGS=-L${LD_LIBRARY_PATH}
 export CPPFLAGS=-I${INCLUDE_PATH}
 export PATH=${PATH}:${BOSH_INSTALL_TARGET}/bin:${BOSH_INSTALL_TARGET}/sbin
 
-# (cd blobs/tshark ; curl -LSsO ftp://sourceware.org/pub/libffi/libffi-3.2.1.tar.gz)
-tar -xzf tshark/libffi-3.2.1.tar.gz
-(cd libffi-3.2.1
+# (cd blobs/tshark ; curl -LSsO ftp://sourceware.org/pub/libffi/libffi-3.3.tar.gz)
+tar -xzf tshark/libffi-3.3.tar.gz
+(cd libffi-3.3
  ./configure --prefix ${BOSH_INSTALL_TARGET} --disable-builddir && \
  make -j${CPUS} && \
  make install) || exit 1
@@ -28,16 +28,16 @@ tar -xJf tshark/glib-2.45.8.tar.xz
  make -j${CPUS} && \
  make install) || exit 1
 
-# (cd blobs/tshark ; curl -LSsO http://www.tcpdump.org/release/libpcap-1.6.2.tar.gz)
-tar -xzf tshark/libpcap-1.6.2.tar.gz
-(cd libpcap-1.6.2
+# (cd blobs/tshark ; curl -LSsO http://www.tcpdump.org/release/libpcap-1.9.1.tar.gz)
+tar -xzf tshark/libpcap-1.9.1.tar.gz
+(cd libpcap-1.9.1
  ./configure --prefix ${BOSH_INSTALL_TARGET} && \
  make -j${CPUS} && \
  make install) || exit 1
 
-# (cd blobs/tshark ; curl -LSsO https://2.na.dl.wireshark.org/src/wireshark-2.0.3.tar.bz2)
-tar -xjf tshark/wireshark-2.0.3.tar.bz2
-(cd wireshark-2.0.3
+# (cd blobs/tshark ; curl -LSsO https://2.na.dl.wireshark.org/src/wireshark-2.6.16.tar.xz)
+tar -xf tshark/wireshark-2.6.16.tar.xz
+(cd wireshark-2.6.16
  ./configure --prefix ${BOSH_INSTALL_TARGET} \
    --disable-wireshark \
    --disable-randpkt && \

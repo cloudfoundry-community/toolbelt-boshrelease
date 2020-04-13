@@ -8,9 +8,9 @@ CPUS=$(grep -c ^processor /proc/cpuinfo)
 # $BOSH_INSTALL_TARGET - where you copy/install files to be included in package
 export HOME=/var/vcap
 
-# download from https://ftp.postgresql.org/pub/source/v10.3/postgresql-10.3.tar.bz2
-# shasum: https://ftp.postgresql.org/pub/source/v10.3/postgresql-10.3.tar.bz2.sha256
-VERSION=10.3
+# download from https://ftp.postgresql.org/pub/source/v11.7/postgresql-11.7.tar.gz
+# shasum: https://ftp.postgresql.org/pub/source/v11.7/postgresql-11.7.tar.bz2.sha256
+VERSION=11.7
 
 tar -zxf "postgresql/postgresql-${VERSION}.tar.gz"
 
