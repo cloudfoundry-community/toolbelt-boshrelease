@@ -43,4 +43,6 @@ builds:
     version: 3.2.4
   ff12b19d-1acc-4470-5b12-63c48aa52b31:
     version: 3.4.3
+  ffcc07b7-3730-42fc-408b-ab482bab9bba:
+    version: 3.5.0
 format-version: "2"
