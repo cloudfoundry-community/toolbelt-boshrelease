@@ -76,7 +76,7 @@ Tools On The Belt
 
 The following `toolbelt-*` jobs exist:
 
-- `toolbelt-blacksmith` - The Blacksmith CLI, [boss][boss]
+- `toolbelt-boss` - The Blacksmith CLI, [boss][boss]
 - `toolbelt-cf` - The Cloud Foundry CLI, [cf][cf]
 - `toolbelt-cfdot` - The Cloud Foundry Diego Operator Kit, [cfdot][cfdot]
 - `toolbelt-esuf` - The ElasticSearch Unassigned Fixer,
