@@ -1,6 +1,6 @@
 ---
-name: toolbelt-blacksmith
+name: toolbelt-boss
 dependencies: []
 files:
-  - blacksmith/boss-linux-amd64
+  - boss/boss-linux-amd64
 

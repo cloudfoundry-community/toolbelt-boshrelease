@@ -5,5 +5,5 @@ set -u # report the usage of uninitialized variables
 
 export HOME=/var/vcap
 mkdir -p ${BOSH_INSTALL_TARGET}/bin
-cp blacksmith/boss-linux-amd64 ${BOSH_INSTALL_TARGET}/bin/boss
+cp boss/boss-linux-amd64 ${BOSH_INSTALL_TARGET}/bin/boss
 chmod 755 ${BOSH_INSTALL_TARGET}/bin/boss

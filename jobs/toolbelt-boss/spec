@@ -1,7 +1,7 @@
 ---
-name: toolbelt-blacksmith
+name: toolbelt-boss
 packages:
-  - toolbelt-blacksmith
+  - toolbelt-boss
 templates:
   bin/run: bin/run
 
