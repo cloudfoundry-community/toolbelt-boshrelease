@@ -1,5 +1,6 @@
-blacksmith/boss-linux-amd64:
+boss/boss-linux-amd64:
   size: 7201287
+  object_id: 1f2eeae8-c17d-43e2-5799-aeef2ade0dcc
   sha: sha256:3df6764e740c74579cfdee3b32eafc2fe46ce6c57996c4e6766abcef00399fb6
 cf-cli/cf-linux64:
   size: 24682496
