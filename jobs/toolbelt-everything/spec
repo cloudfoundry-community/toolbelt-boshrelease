@@ -1,6 +1,7 @@
 ---
 name: toolbelt-everything
 packages:
+  - toolbelt-boss
   - toolbelt-cf
   - toolbelt-cfdot
   - toolbelt-esuf
