@@ -1,11 +1,9 @@
 
-# spruce
+# toolbelt
 
-- Bumped spruce to v1.27.0
+## boss
 
-# spruce
-
-- Bumped spruce to v1.28.0
+- added Blacksmith's boss cli command
 
 # spruce
 

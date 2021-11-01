@@ -1,0 +1,6 @@
+---
+name: toolbelt-boss
+dependencies: []
+files:
+  - boss/boss-linux-amd64
+

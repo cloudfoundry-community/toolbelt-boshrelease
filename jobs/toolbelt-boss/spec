@@ -1,0 +1,8 @@
+---
+name: toolbelt-boss
+packages:
+  - toolbelt-boss
+templates:
+  bin/run: bin/run
+
+properties: {}
