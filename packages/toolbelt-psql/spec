@@ -2,4 +2,4 @@
 name: toolbelt-psql
 dependencies: []
 files:
-  - postgresql/postgresql-11.7.tar.gz
+  - postgresql/postgresql-14.1.tar.gz

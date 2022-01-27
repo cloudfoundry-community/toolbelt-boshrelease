@@ -8,6 +8,6 @@ CPUS=$(grep -c ^processor /proc/cpuinfo)
 # $BOSH_INSTALL_TARGET - where you copy/install files to be included in package
 export HOME=/var/vcap
 
-tar -xzf nats/nats-1.0.2-linux-x86_64.tar.gz
+tar -xzf nats/nats-1.2.0-linux-x86_64.tar.gz
 mkdir -p ${BOSH_INSTALL_TARGET}/bin
-cp nats-1.0.2-linux-x86_64/nats_linux_amd64 ${BOSH_INSTALL_TARGET}/bin/nats
+cp nats-1.2.0-linux-x86_64.tar.gz/nats_linux_amd64 ${BOSH_INSTALL_TARGET}/bin/nats

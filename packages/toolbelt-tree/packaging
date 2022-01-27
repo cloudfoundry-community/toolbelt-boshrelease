@@ -8,8 +8,8 @@ CPUS=$(grep -c ^processor /proc/cpuinfo)
 # $BOSH_INSTALL_TARGET - where you copy/install files to be included in package
 export HOME=/var/vcap
 
-tar -xzvf tree/tree-1.8.0.tgz
-cd tree-1.8.0
+tar -xzvf tree/tree-2.0.1.tgz
+cd tree-2.0.1
 
 sed -i "s|^prefix = \/usr|prefix = ${BOSH_INSTALL_TARGET}|" Makefile
 

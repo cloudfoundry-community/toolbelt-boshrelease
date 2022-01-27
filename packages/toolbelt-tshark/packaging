@@ -21,23 +21,23 @@ tar -xzf tshark/libffi-3.3.tar.gz
  make -j${CPUS} && \
  make install) || exit 1
 
-# (cd blobs/tshark ; curl -LSsO http://ftp.gnome.org/pub/GNOME/sources/glib/2.45/glib-2.45.8.tar.xz)
-tar -xJf tshark/glib-2.45.8.tar.xz
-(cd glib-2.45.8/
+# (cd blobs/tshark ; curl -LSsO http://ftp.gnome.org/pub/GNOME/sources/glib/2.45/glib-2.71.0.tar.xz)
+tar -xJf tshark/glib-2.71.0.tar.xz
+(cd glib-2.71.0/
  ./configure --prefix ${BOSH_INSTALL_TARGET} && \
  make -j${CPUS} && \
  make install) || exit 1
 
-# (cd blobs/tshark ; curl -LSsO http://www.tcpdump.org/release/libpcap-1.9.1.tar.gz)
-tar -xzf tshark/libpcap-1.9.1.tar.gz
-(cd libpcap-1.9.1
+# (cd blobs/tshark ; curl -LSsO http://www.tcpdump.org/release/libpcap-1.10.1.tar.gz)
+tar -xzf tshark/libpcap-1.10.1.tar.gz
+(cd libpcap-1.10.1
  ./configure --prefix ${BOSH_INSTALL_TARGET} && \
  make -j${CPUS} && \
  make install) || exit 1
 
-# (cd blobs/tshark ; curl -LSsO https://2.na.dl.wireshark.org/src/wireshark-2.6.16.tar.xz)
-tar -xf tshark/wireshark-2.6.16.tar.xz
-(cd wireshark-2.6.16
+# (cd blobs/tshark ; curl -LSsO https://2.na.dl.wireshark.org/src/wireshark-3.6.1.tar.xz)
+tar -xf tshark/wireshark-3.6.1.tar.xz
+(cd wireshark-3.6.1
  ./configure --prefix ${BOSH_INSTALL_TARGET} \
    --disable-wireshark \
    --disable-randpkt && \

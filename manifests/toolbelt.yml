@@ -12,16 +12,16 @@ instance_groups:
       - { name: toolbelt,            release: toolbelt }
       - { name: toolbelt-everything, release: toolbelt }
 
-  - name: quick
-    instances: 1
-    azs:       [z1]
-    vm_type:   default
-    stemcell:  default
-    networks:
-      - name: default
-    jobs:
-      - { name: toolbelt,            release: toolbelt }
-      - { name: toolbelt-quick,      release: toolbelt }
+#  - name: quick
+#    instances: 1
+#    azs:       [z1]
+#    vm_type:   default
+#    stemcell:  default
+#    networks:
+#      - name: default
+#    jobs:
+#      - { name: toolbelt,            release: toolbelt }
+#      - { name: toolbelt-quick,      release: toolbelt }
 
 update:
   canaries: 0
@@ -37,6 +37,6 @@ stemcells:
 
 releases:
 - name:    toolbelt
-  version: 3.5.1
-  url:     https://github.com/cloudfoundry-community/toolbelt-boshrelease/releases/download/v3.5.1/toolbelt-3.5.1.tgz
-  sha1:    347c735315678cbb1e21c2412601dac24af82501
+  version: 3.5.1+dev.4
+  # url:     https://github.com/cloudfoundry-community/toolbelt-boshrelease/releases/download/v3.5.1/toolbelt-3.5.1.tgz
+  # sha1:    347c735315678cbb1e21c2412601dac24af82501

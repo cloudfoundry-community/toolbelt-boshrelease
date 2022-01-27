@@ -14,8 +14,8 @@ export LDFLAGS=-L${LD_LIBRARY_PATH}
 export CPPFLAGS=-I${INCLUDE_PATH}
 export PATH=${PATH}:${BOSH_INSTALL_TARGET}/bin:${BOSH_INSTALL_TARGET}/sbin
 
-tar -xzf mysql/mariadb-10.4.12.tar.gz
-(cd mariadb-10.4.12/
+tar -xzf mysql/mariadb-10.6.5.tar.gz
+(cd mariadb-10.6.5/
   cmake -DCMAKE_INSTALL_PREFIX:PATH=${BOSH_INSTALL_TARGET} -DWITHOUT_SERVER:BOOL=ON && \
   make && \
   make install) || exit 1

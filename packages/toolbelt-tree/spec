@@ -2,5 +2,5 @@
 name: toolbelt-tree
 dependencies: []
 files:
-  - tree/tree-1.8.0.tgz
+  - tree/tree-2.0.1.tgz
 
