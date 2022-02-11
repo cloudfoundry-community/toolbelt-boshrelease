@@ -1,9 +1,21 @@
 #!/bin/bash
-set -eu
+set -xeu
 
-# retrieved from https://raw.githubusercontent.com/feurix/hatop/master/bin/hatop
-# on Thu Mar 30 2017
+# retrieved from https://github.com/jhunt/hatop/releases/tag/v0.8.1
 
 mkdir -p ${BOSH_INSTALL_TARGET}/bin
-cp hatop/hatop ${BOSH_INSTALL_TARGET}/bin
-chmod 755 ${BOSH_INSTALL_TARGET}/bin/hatop
+cp hatop/hatop-v0.8.1 ${BOSH_INSTALL_TARGET}/bin
+chmod 755 ${BOSH_INSTALL_TARGET}/bin/hatop-v0.8.1
+ln -s ${BOSH_INSTALL_TARGET}/bin/hatop-v0.8.1 ${BOSH_INSTALL_TARGET}/bin/hatop
+
+# Need to add a check to see if there is an
+#   existing python install. If there is, 
+#   then don't overwrite (exit if statement)
+
+
+
+# create a wrapper script to replace this that will add python 
+#   to the path when it runs
+if [[ ! -f /usr/bin/python ]] ; then 
+    ln -s /usr/bin/python3 /usr/bin/python
+fi

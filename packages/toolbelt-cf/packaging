@@ -7,6 +7,33 @@ CPUS=$(grep -c ^processor /proc/cpuinfo)
 # $BOSH_COMPILE_TARGET - where this package & spec'd source files are available
 # $BOSH_INSTALL_TARGET - where you copy/install files to be included in package
 export HOME=/var/vcap
+
+# BOSH_INSTALL_TARGET = /u/Downloads/test
+
 mkdir -p ${BOSH_INSTALL_TARGET}/bin
-cp cf-cli/cf-linux64 ${BOSH_INSTALL_TARGET}/bin/cf
-chmod 755 ${BOSH_INSTALL_TARGET}/bin/cf
+# mkdir ./tmp
+# cp -vR cf-cli ./tmp
+
+# tar -xzvf cf-cli/cf7-cli_7.4.0_linux_x86-64.tgz cf7
+# cp cf7 ${BOSH_INSTALL_TARGET}/bin
+# chmod 755 ${BOSH_INSTALL_TARGET}/bin/cf7
+
+#(cd tmp/
+(
+tar -xzvf cf-cli/cf-cli_6.53.0_linux_x86-64.tgz cf &&
+cp cf ${BOSH_INSTALL_TARGET}/bin/cf6 &&
+chmod 755 ${BOSH_INSTALL_TARGET}/bin/cf6) || exit 1
+
+#(cd tmp/
+(
+tar -xzvf cf-cli/cf7-cli_7.4.0_linux_x86-64.tgz cf7 &&
+cp cf7 ${BOSH_INSTALL_TARGET}/bin &&
+chmod 755 ${BOSH_INSTALL_TARGET}/bin/cf7) || exit 1
+
+#(cd tmp/
+(
+tar -xzvf cf-cli/cf8-cli_8.1.0_linux_x86-64.tgz cf8 &&
+cp cf8 ${BOSH_INSTALL_TARGET}/bin &&
+chmod 755 ${BOSH_INSTALL_TARGET}/bin/cf8) || exit 1
+
+ln -s ${BOSH_INSTALL_TARGET}/bin/cf7 ${BOSH_INSTALL_TARGET}/bin/cf

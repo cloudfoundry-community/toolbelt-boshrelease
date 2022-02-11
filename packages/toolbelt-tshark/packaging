@@ -1,6 +1,11 @@
 set -e # exit immediately if a simple command exits with a non-zero status
 set -u # report the usage of uninitialized variables
 
+# Need to download and bosh add-blob all 3 python versions
+    # And include libffi-3.4.2 as well
+
+. /var/vcap/packages/python-3.9/bosh/compile.env
+
 # Detect # of CPUs so make jobs can be parallelized
 CPUS=$(grep -c ^processor /proc/cpuinfo)
  # Available variables
@@ -14,19 +19,30 @@ export LDFLAGS=-L${LD_LIBRARY_PATH}
 export CPPFLAGS=-I${INCLUDE_PATH}
 export PATH=${PATH}:${BOSH_INSTALL_TARGET}/bin:${BOSH_INSTALL_TARGET}/sbin
 
+# libffi is no longer being included here because it is 
+#   included with the starkandwayne/python-release
+
 # (cd blobs/tshark ; curl -LSsO ftp://sourceware.org/pub/libffi/libffi-3.3.tar.gz)
-tar -xzf tshark/libffi-3.3.tar.gz
-(cd libffi-3.3
- ./configure --prefix ${BOSH_INSTALL_TARGET} --disable-builddir && \
- make -j${CPUS} && \
- make install) || exit 1
+# tar -xzf tshark/libffi-3.3.tar.gz
+# (cd libffi-3.3
+#  ./configure --prefix ${BOSH_INSTALL_TARGET} --disable-builddir && \
+#  make -j${CPUS} && \
+#  make install) || exit 1
 
 # (cd blobs/tshark ; curl -LSsO http://ftp.gnome.org/pub/GNOME/sources/glib/2.45/glib-2.71.0.tar.xz)
 tar -xJf tshark/glib-2.71.0.tar.xz
 (cd glib-2.71.0/
- ./configure --prefix ${BOSH_INSTALL_TARGET} && \
- make -j${CPUS} && \
- make install) || exit 1
+# ./configure --prefix ${BOSH_INSTALL_TARGET} && \
+# make -j${CPUS} && \
+# make install
+#  wget https://bootstrap.pypa.io/pip/3.6/get-pip.py && \
+#  python3 get-pip.py && \
+#  python3 -m pip install meson ninja && \
+ # don't need to install pip
+ bosh_pip meson ninja
+ meson -Dprefix="${BOSH_INSTALL_TARGET}" _build && \
+ ninja -C _build && \
+ ninja -C _build install) || exit 1
 
 # (cd blobs/tshark ; curl -LSsO http://www.tcpdump.org/release/libpcap-1.10.1.tar.gz)
 tar -xzf tshark/libpcap-1.10.1.tar.gz
@@ -36,10 +52,18 @@ tar -xzf tshark/libpcap-1.10.1.tar.gz
  make install) || exit 1
 
 # (cd blobs/tshark ; curl -LSsO https://2.na.dl.wireshark.org/src/wireshark-3.6.1.tar.xz)
-tar -xf tshark/wireshark-3.6.1.tar.xz
-(cd wireshark-3.6.1
- ./configure --prefix ${BOSH_INSTALL_TARGET} \
-   --disable-wireshark \
-   --disable-randpkt && \
- make -j${CPUS} && \
- make install) || exit 1
+#  tar -xJf tshark/wireshark-3.6.1.tar.xz
+#  (cd wireshark-3.6.1
+
+# ./configure --prefix ${BOSH_INSTALL_TARGET} \
+#   --disable-wireshark \
+#   --disable-randpkt && \
+
+## MUST add a block to install Qt
+##   https://www.qt.io/download
+
+## Need to figure out how to pash the ${BOSH_INSTALL_TARGET}
+##  to cmake/make in order to install in the right place
+# cmake ../wireshark-3.6.1.tar.xz && \
+# make -j${CPUS} && \
+# make install) || exit 1

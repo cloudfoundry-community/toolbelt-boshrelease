@@ -1,5 +1,6 @@
 ---
 name: toolbelt-tshark
-dependencies: []
+dependencies: 
+  - python-3.9
 files:
   - tshark/*

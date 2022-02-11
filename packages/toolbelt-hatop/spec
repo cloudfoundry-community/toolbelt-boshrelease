@@ -2,4 +2,4 @@
 name: toolbelt-hatop
 dependencies: []
 files:
-  - hatop/hatop
+  - hatop/*
