@@ -2,6 +2,7 @@
 name: toolbelt-tshark
 packages:
   - toolbelt-tshark
+  - python-3.9
 templates:
   bin/run: bin/run
 

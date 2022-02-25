@@ -5,6 +5,7 @@ set -u # report the usage of uninitialized variables
     # And include libffi-3.4.2 as well
 
 . /var/vcap/packages/python-3.9/bosh/compile.env
+/var/vcap/packages/python-3.9/bin/python3.9 -m pip install --upgrade pip
 
 # Detect # of CPUs so make jobs can be parallelized
 CPUS=$(grep -c ^processor /proc/cpuinfo)
@@ -23,11 +24,11 @@ export PATH=${PATH}:${BOSH_INSTALL_TARGET}/bin:${BOSH_INSTALL_TARGET}/sbin
 #   included with the starkandwayne/python-release
 
 # (cd blobs/tshark ; curl -LSsO ftp://sourceware.org/pub/libffi/libffi-3.3.tar.gz)
-# tar -xzf tshark/libffi-3.3.tar.gz
-# (cd libffi-3.3
-#  ./configure --prefix ${BOSH_INSTALL_TARGET} --disable-builddir && \
-#  make -j${CPUS} && \
-#  make install) || exit 1
+tar -xzf tshark/libffi-3.4.2.tar.gz
+(cd libffi-3.4.2
+ ./configure --prefix ${BOSH_INSTALL_TARGET} --disable-builddir && \
+ make -j${CPUS} && \
+ make install) || exit 1
 
 # (cd blobs/tshark ; curl -LSsO http://ftp.gnome.org/pub/GNOME/sources/glib/2.45/glib-2.71.0.tar.xz)
 tar -xJf tshark/glib-2.71.0.tar.xz
@@ -39,7 +40,9 @@ tar -xJf tshark/glib-2.71.0.tar.xz
 #  python3 get-pip.py && \
 #  python3 -m pip install meson ninja && \
  # don't need to install pip
- bosh_pip meson ninja
+ 
+ # bosh_pip meson ninja CMake 
+ pip install meson ninja CMake make
  meson -Dprefix="${BOSH_INSTALL_TARGET}" _build && \
  ninja -C _build && \
  ninja -C _build install) || exit 1
@@ -59,11 +62,16 @@ tar -xzf tshark/libpcap-1.10.1.tar.gz
 #   --disable-wireshark \
 #   --disable-randpkt && \
 
-## MUST add a block to install Qt
-##   https://www.qt.io/download
-
-## Need to figure out how to pash the ${BOSH_INSTALL_TARGET}
+## Need to figure out how to pass the ${BOSH_INSTALL_TARGET}
 ##  to cmake/make in order to install in the right place
 # cmake ../wireshark-3.6.1.tar.xz && \
 # make -j${CPUS} && \
 # make install) || exit 1
+
+
+## add a block to install Qt
+##   https://github.com/qt/qt5/archive/refs/tags/v6.2.3.tar.gz
+# tar -xzf tshark/qt-v6.2.3.tar.gz
+# (cd qt5-v6.2.3
+#  ./configure --prefix ${BOSH_INSTALL_TARGET} && \
+#  cmake --build .) || exit 1
