@@ -4,8 +4,9 @@ set -u # report the usage of uninitialized variables
 # Need to download and bosh add-blob all 3 python versions
     # And include libffi-3.4.2 as well
 
-. /var/vcap/packages/python-3.9/bosh/compile.env
-/var/vcap/packages/python-3.9/bin/python3.9 -m pip install --upgrade pip
+# Added for python-release implementation
+# . /var/vcap/packages/python-3.9/bosh/compile.env
+# /var/vcap/packages/python-3.9/bin/python3.9 -m pip install --upgrade pip
 
 # Detect # of CPUs so make jobs can be parallelized
 CPUS=$(grep -c ^processor /proc/cpuinfo)
@@ -36,13 +37,13 @@ tar -xJf tshark/glib-2.71.0.tar.xz
 # ./configure --prefix ${BOSH_INSTALL_TARGET} && \
 # make -j${CPUS} && \
 # make install
-#  wget https://bootstrap.pypa.io/pip/3.6/get-pip.py && \
-#  python3 get-pip.py && \
-#  python3 -m pip install meson ninja && \
- # don't need to install pip
+ wget https://bootstrap.pypa.io/pip/3.6/get-pip.py && \
+ python3 get-pip.py && \
+ python3 -m pip install meson ninja && \
  
- # bosh_pip meson ninja CMake 
- pip install meson ninja CMake make
+ # don't need to install pip
+  # bosh_pip meson ninja CMake 
+
  meson -Dprefix="${BOSH_INSTALL_TARGET}" _build && \
  ninja -C _build && \
  ninja -C _build install) || exit 1

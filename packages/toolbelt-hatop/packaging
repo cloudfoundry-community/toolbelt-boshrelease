@@ -1,7 +1,9 @@
 #!/bin/bash
 set -xeu
 
-# retrieved from https://github.com/jhunt/hatop/releases/tag/v0.8.1
+# link: https://github.com/jhunt/hatop/releases/tag/v0.8.1
+# hatop version:	0.8.0
+
 
 mkdir -p ${BOSH_INSTALL_TARGET}/bin
 cp hatop/hatop-v0.8.1 ${BOSH_INSTALL_TARGET}/bin
@@ -11,8 +13,6 @@ ln -s ${BOSH_INSTALL_TARGET}/bin/hatop-v0.8.1 ${BOSH_INSTALL_TARGET}/bin/hatop
 # Need to add a check to see if there is an
 #   existing python install. If there is, 
 #   then don't overwrite (exit if statement)
-
-
 
 # create a wrapper script to replace this that will add python 
 #   to the path when it runs

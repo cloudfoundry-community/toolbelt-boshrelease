@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Load Python Runtime Configuration
-. /var/vcap/packages/python-${SHORT_VERSION}/bosh/runtime.env
+# . /var/vcap/packages/python-${SHORT_VERSION}/bosh/runtime.env
 
 test -n "$ITS_OKAY_TOOLBELT_IS_RUNNING_ERRANDS" && exit 0
 cat <<EOF

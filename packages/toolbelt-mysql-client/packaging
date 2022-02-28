@@ -1,6 +1,11 @@
 set -e # exit immediately if a simple command exits with a non-zero status
 set -u # report the usage of uninitialized variables
 
+# link: https://mariadb.com/kb/en/release-notes/
+# link: https://dlm.mariadb.com/browse/mariadb\_server/163/1196/source/
+# mysql version:	Ver 15.1 Distrib 10.6.5-MariaDB
+
+
 # Detect # of CPUs so make jobs can be parallelized
 CPUS=$(grep -c ^processor /proc/cpuinfo)
  # Available variables

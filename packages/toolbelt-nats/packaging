@@ -1,6 +1,10 @@
 set -e # exit immediately if a simple command exits with a non-zero status
 set -u # report the usage of uninitialized variables
 
+# link: https://github.com/starkandwayne/nats/releases
+# 
+
+
 # Detect # of CPUs so make jobs can be parallelized
 CPUS=$(grep -c ^processor /proc/cpuinfo)
  # Available variables
@@ -11,3 +15,4 @@ export HOME=/var/vcap
 tar -xzvf nats/nats-1.2.0-linux-x86_64.tar.gz
 mkdir -p ${BOSH_INSTALL_TARGET}/bin
 cp nats-1.2.0-linux-x86_64/nats-linux-amd64 ${BOSH_INSTALL_TARGET}/bin/nats
+chmod 755 ${BOSH_INSTALL_TARGET}/bin/nats

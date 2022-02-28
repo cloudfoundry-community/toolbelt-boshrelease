@@ -1,10 +1,6 @@
 ---
 blobstore:
-## NEED to put the s3 back (local is for testing only)
-  # provider: s3
-  # options:
-  #   bucket_name: toolbelt-boshrelease
-  provider: local
-  options: 
-    blobstore_path: /w/toolbelt-boshrelease/blobs/
+  provider: s3
+  options:
+    bucket_name: toolbelt-boshrelease
 final_name: toolbelt
