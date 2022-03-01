@@ -12,16 +12,16 @@ instance_groups:
       - { name: toolbelt,            release: toolbelt }
       - { name: toolbelt-everything, release: toolbelt }
 
- - name: quick
-   instances: 1
-   azs:       [z1]
-   vm_type:   default
-   stemcell:  default
-   networks:
-     - name: default
-   jobs:
-     - { name: toolbelt,            release: toolbelt }
-     - { name: toolbelt-quick,      release: toolbelt }
+  - name: quick
+    instances: 1
+    azs:       [z1]
+    vm_type:   default
+    stemcell:  default
+    networks:
+      - name: default
+    jobs:
+      - { name: toolbelt,            release: toolbelt }
+      - { name: toolbelt-quick,      release: toolbelt }
 
 update:
   canaries: 0
