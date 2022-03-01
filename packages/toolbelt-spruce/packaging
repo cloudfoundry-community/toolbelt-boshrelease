@@ -1,7 +1,7 @@
 set -e # exit immediately if a simple command exits with a non-zero status
 set -u # report the usage of uninitialized variables
 
-link: https://github.com/geofffranks/spruce/releases
+# link: https://github.com/geofffranks/spruce/releases
 
 
 # Detect # of CPUs so make jobs can be parallelized

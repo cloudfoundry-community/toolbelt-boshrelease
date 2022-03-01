@@ -1,5 +1,5 @@
 #!/bin/bash
-set -xeu
+set -eu
 
 # link: https://github.com/jhunt/hatop/releases/tag/v0.8.1
 # hatop version:	0.8.0
