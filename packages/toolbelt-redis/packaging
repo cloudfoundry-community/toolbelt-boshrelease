@@ -31,4 +31,4 @@ mkdir -p ${BOSH_INSTALL_TARGET}/bin
 cp src/redis-cli ${BOSH_INSTALL_TARGET}/bin/redis-cli-v6
 
 # symlink latest version
-ln -s ${BOSH_INSTALL_TARGET}/bin/redis-cli-v6 ${BOSH_INSTALL_TARGET}/bin/redis-cli
+ln -s ${BOSH_INSTALL_TARGET}/bin/redis-cli-v6 ${BOSH_INSTALL_TARGET}/bin/redis
