@@ -22,6 +22,7 @@ cp src/redis-cli ${BOSH_INSTALL_TARGET}/bin/redis-cli-v5
 
 # v6 is currently the newest stable version 
 VERSION=6.2.6
+cd ../
 tar -xzf redis/redis-${VERSION}.tar.gz
 cd redis-${VERSION}
 make -j${CPUS}
