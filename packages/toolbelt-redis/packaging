@@ -8,12 +8,27 @@ CPUS=$(grep -c ^processor /proc/cpuinfo)
 # $BOSH_INSTALL_TARGET - where you copy/install files to be included in package
 export HOME=/var/vcap
 
-# download from http://download.redis.io/releases/redis-5.0.8.tar.gz
+# download from http://download.redis.io/releases/redis-6.2.6.tar.gz
 
+# Keeping redis v5 for compatibility sake
 VERSION=5.0.8
-tar -xzvf redis/redis-${VERSION}.tar.gz
+tar -xzf redis/redis-${VERSION}.tar.gz
 cd redis-${VERSION}
 make -j${CPUS}
 
 mkdir -p ${BOSH_INSTALL_TARGET}/bin
-cp src/redis-cli ${BOSH_INSTALL_TARGET}/bin/redis-cli
+cp src/redis-cli ${BOSH_INSTALL_TARGET}/bin/redis-cli-v5
+
+
+# v6 is currently the newest stable version 
+VERSION=6.2.6
+cd ../
+tar -xzf redis/redis-${VERSION}.tar.gz
+cd redis-${VERSION}
+make -j${CPUS}
+
+mkdir -p ${BOSH_INSTALL_TARGET}/bin
+cp src/redis-cli ${BOSH_INSTALL_TARGET}/bin/redis-cli-v6
+
+# symlink latest version
+ln -s ${BOSH_INSTALL_TARGET}/bin/redis-cli-v6 ${BOSH_INSTALL_TARGET}/bin/redis

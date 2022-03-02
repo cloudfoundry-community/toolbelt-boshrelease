@@ -2,5 +2,5 @@
 name: toolbelt-cf
 dependencies: []
 files:
-  - cf-cli/cf-linux64
+  - cf-cli/*
 
