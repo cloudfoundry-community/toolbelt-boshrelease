@@ -23,6 +23,8 @@ builds:
     version: 3.2.1
   b5a681d4-ea2e-4191-b70b-93bd68f58155:
     version: 3.3.1
+  c173b4c0-b552-4a36-6a23-e6f6f0ea9065:
+    version: 3.7.0
   c23aa50a-751a-42dd-afaa-df288cdeede8:
     version: 3.2.0
   c5f3dfd4-29ff-4f4d-b960-22537324a13e:
