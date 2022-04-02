@@ -2,8 +2,8 @@
 meta:
   name:    toolbelt
   release: Toolbelt
-  target:  pipes
-  url:     https://pipes.starkandwayne.com
+  target:  cloudpipes@main
+  url:     https://cloudpipes.starkandwayne.com
 
   initial_version: 2.1.0
 
@@ -12,7 +12,7 @@ meta:
     name:  Stark & Wayne CI Bot
 
   bosh-lite:
-    target:   https://10.128.4.73:25555
+    target:   ((thunder-dome.url))
     username: ((thunder-dome.username))
     password: ((thunder-dome.password))
     cacert:   ((thunder-dome.ca-certificate))
@@ -30,7 +30,7 @@ meta:
 
 
   shout:
-    url:      http://10.128.4.65:7109
+    url:      ((shout.url))
     username: ((shout.username))
     password: ((shout.password))
 
