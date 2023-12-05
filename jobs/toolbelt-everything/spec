@@ -13,7 +13,7 @@ packages:
   - toolbelt-nmap
   - toolbelt-nats
   - toolbelt-mysql-client
-  - toolbelt-netsniff-ng
+#  - toolbelt-netsniff-ng
   - toolbelt-psql
   - toolbelt-redis
   - toolbelt-safe
@@ -21,7 +21,7 @@ packages:
   - toolbelt-spruce
   - toolbelt-tcptrace
   - toolbelt-tree
-  - toolbelt-tshark
+#  - toolbelt-tshark
   - toolbelt-vault
   - toolbelt-veritas
 templates:
