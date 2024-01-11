@@ -11,7 +11,7 @@ export HOME=/var/vcap
 # download from http://download.redis.io/releases/redis-6.2.6.tar.gz
 
 # Keeping redis v5 for compatibility sake
-VERSION=5.0.8
+VERSION=5.0.9
 tar -xzf redis/redis-${VERSION}.tar.gz
 cd redis-${VERSION}
 make -j${CPUS}
@@ -19,9 +19,8 @@ make -j${CPUS}
 mkdir -p ${BOSH_INSTALL_TARGET}/bin
 cp src/redis-cli ${BOSH_INSTALL_TARGET}/bin/redis-cli-v5
 
-
-# v6 is currently the newest stable version 
-VERSION=6.2.6
+# v6 is currently a common version 
+VERSION=6.2.14
 cd ../
 tar -xzf redis/redis-${VERSION}.tar.gz
 cd redis-${VERSION}
@@ -30,5 +29,16 @@ make -j${CPUS}
 mkdir -p ${BOSH_INSTALL_TARGET}/bin
 cp src/redis-cli ${BOSH_INSTALL_TARGET}/bin/redis-cli-v6
 
+
+# v7 is currently the newest stable version 
+VERSION=7.2.3
+cd ../
+tar -xzf redis/redis-${VERSION}.tar.gz
+cd redis-${VERSION}
+make -j${CPUS}
+
+mkdir -p ${BOSH_INSTALL_TARGET}/bin
+cp src/redis-cli ${BOSH_INSTALL_TARGET}/bin/redis-cli-v7
+
 # symlink latest version
-ln -s ${BOSH_INSTALL_TARGET}/bin/redis-cli-v6 ${BOSH_INSTALL_TARGET}/bin/redis
+ln -s ${BOSH_INSTALL_TARGET}/bin/redis-cli-v7 ${BOSH_INSTALL_TARGET}/bin/redis

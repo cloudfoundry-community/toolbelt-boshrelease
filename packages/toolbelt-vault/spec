@@ -3,4 +3,4 @@ name: toolbelt-vault
 dependencies: []
 files:
     # from https://www.vaultproject.io/downloads.html
-  - vault/vault_1.9.2_linux_amd64.zip
+  - vault/vault_1.15.3_linux_amd64.zip

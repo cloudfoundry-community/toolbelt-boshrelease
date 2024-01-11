@@ -1,14 +1,14 @@
 #!/bin/bash
 set -eu
 
-# link: https://github.com/jhunt/hatop/releases/tag/v0.8.1
-# hatop version:	0.8.0
+# link: https://github.com/jhunt/hatop/releases/tag/v0.8.2
+# hatop version:	0.8.2
 
 
 mkdir -p ${BOSH_INSTALL_TARGET}/bin
-cp hatop/hatop-v0.8.1 ${BOSH_INSTALL_TARGET}/bin
-chmod 755 ${BOSH_INSTALL_TARGET}/bin/hatop-v0.8.1
-ln -s ${BOSH_INSTALL_TARGET}/bin/hatop-v0.8.1 ${BOSH_INSTALL_TARGET}/bin/hatop
+cp hatop/hatop-v0.8.2 ${BOSH_INSTALL_TARGET}/bin
+chmod 755 ${BOSH_INSTALL_TARGET}/bin/hatop-v0.8.2
+ln -s ${BOSH_INSTALL_TARGET}/bin/hatop-v0.8.2 ${BOSH_INSTALL_TARGET}/bin/hatop
 
 # Need to add a check to see if there is an
 #   existing python install. If there is, 

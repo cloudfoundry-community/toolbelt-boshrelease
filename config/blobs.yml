@@ -1,19 +1,19 @@
 boss/boss-linux-amd64:
-  size: 7201287
-  object_id: 1f2eeae8-c17d-43e2-5799-aeef2ade0dcc
-  sha: sha256:3df6764e740c74579cfdee3b32eafc2fe46ce6c57996c4e6766abcef00399fb6
+  size: 7279015
+  object_id: 3277b45a-318b-4361-79eb-14b6719387ae
+  sha: sha256:752b35912e0cb5ba2387c0c7a50a30c3c2380c02cd6cbd1bd34e56476384f22b
 cf-cli/cf-cli_6.53.0_linux_x86-64.tgz:
   size: 8973024
   object_id: 591d8206-aa7d-42d1-5a33-d1deaaaf40d0
   sha: sha256:09664d1469fb8a0ddba804343121aba7d8f64ba6bfde75a53f6e29d6600b2342
-cf-cli/cf7-cli_7.4.0_linux_x86-64.tgz:
-  size: 7882979
-  object_id: 946c4bb7-dbaa-48be-6fce-7959e9a1bc30
-  sha: sha256:6ac44598c580fe24c98f3b52df2e6357116478c68dee5c74800cb39cba421695
-cf-cli/cf8-cli_8.1.0_linux_x86-64.tgz:
-  size: 8840669
-  object_id: 3d3230ef-a91f-4b5c-6898-1c6d253352e5
-  sha: sha256:2bc4c178b47bed712422d94399a6cc9acc92d21c6a640392ec7181b0c1bce5d0
+cf-cli/cf7-cli_7.7.5_linux_x86-64.tgz:
+  size: 7491336
+  object_id: ddd75935-4f14-4354-60e9-171292409719
+  sha: sha256:98c7338794f9bb89f6ab7ea574dc71d4cf79c725826695de93925bb7671cde55
+cf-cli/cf8-cli_8.7.5_linux_x86-64.tgz:
+  size: 8726530
+  object_id: ae962d64-00c6-4760-6d5b-edc3aedad33b
+  sha: sha256:824d23dc595529cee953151b4c8680c43de9b36d46611f0041318706858fd9f1
 cfdot/cfdot-linux64:
   size: 24614808
   object_id: b673e243-7c22-4fd3-5ec2-945d8557c4f1
@@ -30,18 +30,18 @@ gotcha/gotcha-linux-amd64:
   size: 6120802
   object_id: 8d2d3d2d-a92f-4641-5869-ff406f0a9bb0
   sha: sha256:e7393662184c953fe6a81877429590f448fe7445af93557374c439d34593608e
-hatop/hatop-v0.8.1:
-  size: 74088
-  object_id: bc80e80a-d04a-4eb8-7d5c-485b525fce49
-  sha: sha256:71acfc8734d05dc5f85a8236c740ef7bbf4d54e6fc3eaf286b35561be093b0f3
-jq/jq-1.6-linux64:
-  size: 3953824
-  object_id: d5ccf0ea-0ccc-4cf7-648e-593fe39e0c16
-  sha: sha256:af986793a515d500ab2d35f8d2aecd656e764504b789b66d7e1a0b727a124c44
-mysql/mariadb-10.6.5.tar.gz:
-  size: 85061860
-  object_id: 84ac0ca9-e447-424b-733c-96de83947cc4
-  sha: sha256:e0be040428d9a42a8bb4bd221b567ff2522cd6fa8906386273da4f03c5c20a8f
+hatop/hatop-v0.8.2:
+  size: 74158
+  object_id: becfcd81-9c10-4956-6dad-fe7b8cdc967a
+  sha: sha256:4e41948e1c6e5d7972f721df87215a8b2971474f23afde34cd56809b89f4ae5d
+jq/jq-1.7-linux64:
+  size: 2319424
+  object_id: 77decea4-c98b-473a-573f-ecbde6c1e0a8
+  sha: sha256:2f312b9587b1c1eddf3a53f9a0b7d276b9b7b94576c85bda22808ca950569716
+mysql/mariadb-10.6.16.tar.gz:
+  size: 98224346
+  object_id: 61e8433b-47ea-433d-438e-a3041abb9c46
+  sha: sha256:5ef83843e796dcda9aea47b24690ddf6d848f43f43e11f9d9a0cc21c78fbb9cf
 nats/nats-1.2.0-linux-x86_64.tar.gz:
   size: 2394744
   object_id: 250fd04e-8840-4f95-51f3-0556cfe740a4
@@ -102,34 +102,30 @@ nmap/nmap-7.92.tar.bz2:
   size: 10498200
   object_id: 6136104c-96cc-4660-7f60-21b9210c16a5
   sha: sha256:a5479f2f8a6b0b2516767d2f7189c386c1dc858d997167d7ec5cfc798c7571a1
-postgresql/postgresql-14.1.tar.gz:
-  size: 28666442
-  object_id: 29c6c92b-d4b4-4e98-4a07-98f52d033dbe
-  sha: sha256:b29030525e1314d676f41e6007a96d4489ba0d03fa93e67b477c1d5386790c8f
-python/Python-3.8.12.tgz:
-  size: 24769402
-  object_id: b4f586d8-35e9-4eca-42d5-4df1dbcc051f
-  sha: sha256:316aa33f3b7707d041e73f246efedb297a70898c4b91f127f66dc8d80c596f1a
-python/Python-3.9.10.tgz:
-  size: 25800844
-  object_id: daafe05c-deb5-40df-7a6c-7d909a8d8978
-  sha: sha256:1aa9c0702edbae8f6a2c95f70a49da8420aaa76b7889d3419c186bfc8c0e571e
-python/Python-3.10.2.tgz:
-  size: 25067363
-  object_id: 31678306-13dc-4994-70eb-97e5a149616f
-  sha: sha256:3c0ede893011319f9b0a56b44953a3d52c7abf9657c23fb4bc9ced93b86e9c97
-redis/redis-5.0.8.tar.gz:
-  size: 1985757
-  object_id: 9fc1ca84-6ece-466b-65dc-616b5ad29375
-  sha: sha256:f3c7eac42f433326a8d981b50dba0169fdfaf46abb23fcda2f933a7552ee4ed7
-redis/redis-6.2.6.tar.gz:
-  size: 2476542
-  object_id: dbc58783-bb9e-4ef0-5298-06912fcc55cf
-  sha: sha256:5b2b8b7a50111ef395bf1c1d5be11e6e167ac018125055daa8b5c2317ae131ab
+postgresql/postgresql-14.10.tar.gz:
+  size: 29190254
+  object_id: 52a1767e-07a0-400c-59ce-c8c92d3fe3a1
+  sha: sha256:ce197c3bada3f10120f617766d9caccee6453a568122e6db52d961c749732f37
+python/Python-3.10.13.tgz:
+  size: 26111363
+  object_id: 24146d09-0663-49ec-601f-c006a1ca7d05
+  sha: sha256:698ec55234c1363bd813b460ed53b0f108877c7a133d48bde9a50a1eb57b7e65
+redis/redis-5.0.9.tar.gz:
+  size: 1986574
+  object_id: 05be408c-03d9-48c7-4f88-44b1aa54b74f
+  sha: sha256:53d0ae164cd33536c3d4b720ae9a128ea6166ebf04ff1add3b85f1242090cb85
+redis/redis-6.2.14.tar.gz:
+  size: 2496149
+  object_id: ba70d207-1816-4bc0-70e8-f2bad13fe6b1
+  sha: sha256:34e74856cbd66fdb3a684fb349d93961d8c7aa668b06f81fd93ff267d09bc277
+redis/redis-7.2.3.tar.gz:
+  size: 3384816
+  object_id: 21b7a69c-40df-4038-5f45-2e62a94a52b2
+  sha: sha256:3e2b196d6eb4ddb9e743088bfc2915ccbb42d40f5a8a3edd8cb69c716ec34be7
 safe/safe-linux-amd64:
-  size: 9982119
-  object_id: d85e3ce6-5681-4d9c-6e6d-b1ce5f31ba95
-  sha: sha256:666a65837b34c60f96868f2b1e2c5fcf32aa3333a184ed3d36c2532654ffc4c0
+  size: 10378351
+  object_id: 59fc50aa-ed6c-45ff-47bd-83d5998d12a6
+  sha: sha256:c8cd4e7fbdfad5155eff8b13ea0035922c7fd2aa74a0bedfbbba0aa3ab60e3da
 screen/screen-4.8.0.tar.gz:
   size: 854854
   object_id: 5be7cfc0-c65a-4ea9-562e-fdc9ab5d726f
@@ -166,10 +162,10 @@ tshark/wireshark-3.6.1.tar.xz:
   size: 39632140
   object_id: 49bb16ef-af16-4aa3-4d68-f02a215c4000
   sha: sha256:0434eda8fb6bf88e2b42a67eb5d1de254a67d505bec3bb51fee9d7cad7925a38
-vault/vault_1.9.2_linux_amd64.zip:
-  size: 68958688
-  object_id: abf2102c-55ac-47d8-5ae7-fc9c0982d924
-  sha: sha256:1e3eb5c225ff1825a59616ebbd4ac300e9d6eaefcae26253e49209350c0a5e71
+vault/vault_1.15.3_linux_amd64.zip:
+  size: 134240071
+  object_id: f51ee6a2-c6d9-4450-6376-99f02ef51f46
+  sha: sha256:9e2d1a2a725cfd2489cd02e6cb22079082d8224a3cc6d9ac900488c911175742
 veritas/veritas-47c19f8:
   size: 12270832
   object_id: 7e2f5aaa-fc23-4b71-85be-50bd4947335e
