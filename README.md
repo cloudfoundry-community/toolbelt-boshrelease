@@ -20,7 +20,7 @@ To outfit your BOSH VMs with awesome tools, first upload Toolbelt
 to your BOSH director:
 
     bosh target https://192.168.50.4:25555
-    bosh upload release https://bosh.io/d/github.com/cloudfoundry-community/toolbelt-boshrelease
+    bosh upload-release https://bosh.io/d/github.com/cloudfoundry-community/toolbelt-boshrelease
 
 Then, add the desired `toolbelt-*` templates to your releases:
 
