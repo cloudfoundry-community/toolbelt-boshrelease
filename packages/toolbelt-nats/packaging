@@ -1,7 +1,7 @@
 set -e # exit immediately if a simple command exits with a non-zero status
 set -u # report the usage of uninitialized variables
 
-# link: https://github.com/starkandwayne/nats/releases
+# link: https://github.com/nats-io/natscli/releases
 
 
 
@@ -12,7 +12,8 @@ CPUS=$(grep -c ^processor /proc/cpuinfo)
 # $BOSH_INSTALL_TARGET - where you copy/install files to be included in package
 export HOME=/var/vcap
 
-tar -xzf nats/nats-1.2.0-linux-x86_64.tar.gz
+cd nats
+unzip nats-0.1.5-linux-amd64.zip
 mkdir -p ${BOSH_INSTALL_TARGET}/bin
-cp nats-1.2.0-linux-x86_64/nats-linux-amd64 ${BOSH_INSTALL_TARGET}/bin/nats
+cp nats-0.1.5-linux-amd64/nats ${BOSH_INSTALL_TARGET}/bin/nats
 chmod 755 ${BOSH_INSTALL_TARGET}/bin/nats

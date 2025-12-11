@@ -3,4 +3,8 @@ name: toolbelt-vault
 dependencies: []
 files:
     # from https://www.vaultproject.io/downloads.html
+<<<<<<< Updated upstream
   - vault/vault_1.15.3_linux_amd64.zip
+=======
+  - vault/vault_1.14.10_linux_amd64.zip
+>>>>>>> Stashed changes

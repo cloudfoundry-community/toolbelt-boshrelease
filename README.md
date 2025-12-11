@@ -42,29 +42,16 @@ Or if you're looking to use `toolbelt` as a BOSH `add-on` via `runtime-config`:
         release: toolbelt
       - name: toolbelt-quick
         release: toolbelt
-    - name: toolbelt-veritas
-      include:
-        jobs:
-        - name: bbs
-          release: diego
-        - name: rep
-          release: diego
-        - name: auctioneer
-          release: diego
-      jobs:
-      - name: toolbelt-veritas
-        release: toolbelt
     releases:
     - name: toolbelt
-      sha1: 03b0e2136b02819ec59675f3e38edb24de2d92f9
-      url: https://bosh.io/d/github.com/cloudfoundry-community/toolbelt-boshrelease?v=3.3.2
-      version: 3.3.2
+      url: https://bosh.io/d/github.com/cloudfoundry-community/toolbelt-boshrelease?v=4.1.0
+      version: 4.1.0
 
 The `toolbelt` job sets up all users (present and future) on the
 box to source in the appropriate `$PATH`, and `$LD_LIBRARY_PATH`
 environment variables, as well as a colorized prompt that shows
 you which deployment you are on, what job type, and which
-instance.o
+instance.
 
 The `toolbelt-quick` job pulls in a small subset of useful
 packages, tuned for a good utility-to-compile-time ratio (hence
@@ -78,39 +65,29 @@ The following `toolbelt-*` jobs exist:
 
 - `toolbelt-boss` - The Blacksmith CLI, [boss][boss]
 - `toolbelt-cf` - The Cloud Foundry CLI, [cf][cf]
-- `toolbelt-cfdot` - The Cloud Foundry Diego Operator Kit, [cfdot][cfdot]
-- `toolbelt-esuf` - The ElasticSearch Unassigned Fixer,
-  [esuf][esuf], for finding and fixigin UNASSIGNED shards on an
-  ElasticSearch cluster (i.e. Logsearch)
-- `toolbelt-gaol` - [A CLI for Garden][gaol]
-- `toolbelt-gotcha` - A small [MitM proxy][gotcha] for debugging
-  HTTP APIs that hide behind SSL/TLS.
+- `toolbelt-cfdot` - The Cloud Foundry Diego Operator Kit, [cfdot][cfdot] (DEPRECATED: archived Sept 2025, moved to diego-release)
+- `toolbelt-gaol` - [A CLI for Garden][gaol] (DEPRECATED: unmaintained since 2018)
 - `toolbelt-jq` - [jq][jq], it's sed for JSON.
+- `toolbelt-mysql-client` - The [MariaDB CLI][mysql].
+- `toolbelt-nats` - A utility for interacting with a NATS messagebus.
+- `toolbelt-netsniff-ng` - The excellent [netsniff-ng][netsniff-ng] suite of networking diagnostics tools.  **LONG COMPILE TIMES**
 - `toolbelt-nload` - [nload][nload] Displays the current network usage
-- `toolbelt-nats` - A utiity for interacting with a NATS
-  messagebus.
-- `toolbelt-netsniff` - The excellent [netsniff-ng][netsniff-ng]
-  suite of networking diagnostics tools.  **LONG COMPILE TIMES**
+- `toolbelt-nmap` - Network exploration tool and security scanner, [nmap][nmap].
 - `toolbelt-psql` - The [PostgreSQL CLI][psql].
 - `toolbelt-redis` - The [Redis CLI][redis].
-- `toolbelt-vault` - The [Vault CLI][vault], from Hashicorp.
 - `toolbelt-safe` - [safe][safe] is an alternate client for Vault.
-- `toolbelt-screen` - [screen][screen] Screen is a full-screen window manager that 
-  multiplexes a physical terminal between several processes.
-- `toolbelt-tree` - Produce tree-based directory listings.
+- `toolbelt-screen` - [screen][screen] Screen is a full-screen window manager that multiplexes a physical terminal between several processes.
+- `toolbelt-spruce` - [Spruce][spruce] is a YAML templating tool.
 - `toolbelt-tcptrace` - Colorized tcpdump packet captures.
-- `toolbelt-tshark` - Terminal-mode [Wireshark][tshark], for
-  analyzing network protocols at a higher level.  **LONG COMPILE
-  TIMES**
-- `toolbelt-veritas` - The [veritas][veritas] diagnostic tool for
-  the [Diego Runtime][diego].
+- `toolbelt-tree` - Produce tree-based directory listings.
+- `toolbelt-tshark` - Terminal-mode [Wireshark][tshark], for analyzing network protocols at a higher level.  **LONG COMPILE TIMES**
+- `toolbelt-vault` - The [Vault CLI][vault], from Hashicorp.
 
 There are some special _meta_-packages that provide subsets of the
 above tools, as groups:
 
 - `toolbelt-everything` - Literally, everything.
-- `toolbelt-quick` - Just the stuff that compiles quickly (i.e.
-  not netsniff, tshark or veritas).
+- `toolbelt-quick` - Just the stuff that compiles quickly (i.e. not netsniff-ng or tshark).
 
 
 Playing on BOSH-lite
@@ -130,17 +107,16 @@ Then, you can `bosh ssh` and see what it is like using Toolbelt!
 [boss]:        https://github.com/blacksmith-community/boss
 [cf]:          https://github.com/cloudfoundry/cli
 [cfdot]:       https://github.com/cloudfoundry/cfdot
-[esuf]:        https://github.com/starkandwayne/esuf
 [gaol]:        https://github.com/contraband/gaol
-[gotcha]:      https://github.com/jhunt/gotcha
-[jq]:          https://stedolan.github.io/jq/
+[jq]:          https://jqlang.github.io/jq/
+[mysql]:       https://mariadb.org/
 [netsniff-ng]: http://netsniff-ng.org/
 [nload]:       http://www.roland-riegel.de/nload/
-[psql]:        http://www.postgresql.org/
-[redis]:       http://redis.io/
-[vault]:       https://www.vaultproject.io/
-[safe]:        https://github.com/jhunt/safe
+[nmap]:        https://nmap.org/
+[psql]:        https://www.postgresql.org/
+[redis]:       https://redis.io/
+[safe]:        https://github.com/cloudfoundry-community/safe
 [screen]:      https://www.gnu.org/software/screen/
+[spruce]:      https://github.com/geofffranks/spruce
 [tshark]:      https://www.wireshark.org/
-[veritas]:     https://github.com/pivotal-cf-experimental/veritas
-[diego]:       https://github.com/cloudfoundry-incubator/diego-release
+[vault]:       https://www.vaultproject.io/

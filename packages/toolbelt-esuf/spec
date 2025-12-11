@@ -1,6 +1,0 @@
----
-name: toolbelt-esuf
-dependencies: []
-files:
-  - esuf/esuf-linux-amd64
-
