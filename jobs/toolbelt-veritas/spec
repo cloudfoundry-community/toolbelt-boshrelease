@@ -1,8 +1,0 @@
----
-name: toolbelt-veritas
-packages:
-  - toolbelt-veritas
-templates:
-  bin/run: bin/run
-
-properties: {}

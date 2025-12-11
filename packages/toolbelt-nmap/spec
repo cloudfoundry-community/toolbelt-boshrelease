@@ -2,4 +2,8 @@
 name: toolbelt-nmap
 dependencies: []
 files:
+<<<<<<< Updated upstream
   - nmap/nmap-7.92.tar.bz2
+=======
+  - nmap/nmap-7.95.tar.bz2
+>>>>>>> Stashed changes

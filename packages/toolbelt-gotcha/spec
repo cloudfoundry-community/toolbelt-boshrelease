@@ -1,5 +1,0 @@
----
-name: toolbelt-gotcha
-dependencies: []
-files:
-  - gotcha/gotcha-linux-amd64

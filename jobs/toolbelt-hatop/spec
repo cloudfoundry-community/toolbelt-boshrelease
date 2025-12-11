@@ -1,8 +1,0 @@
----
-name: toolbelt-hatop
-packages:
-  - toolbelt-hatop
-templates:
-  bin/run: bin/run
-
-properties: {}

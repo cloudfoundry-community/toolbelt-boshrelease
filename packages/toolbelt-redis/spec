@@ -2,4 +2,8 @@
 name: toolbelt-redis
 dependencies: []
 files:
+<<<<<<< Updated upstream
   - redis/redis*tar.gz
+=======
+  - redis/redis-7.2.5.tar.gz
+>>>>>>> Stashed changes

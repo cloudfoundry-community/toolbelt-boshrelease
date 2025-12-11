@@ -4,10 +4,7 @@ packages:
   - toolbelt-boss
   - toolbelt-cf
   - toolbelt-cfdot
-  - toolbelt-esuf
   - toolbelt-gaol
-  - toolbelt-gotcha
-  - toolbelt-hatop
   - toolbelt-jq
   - toolbelt-nload
   - toolbelt-nmap
@@ -23,7 +20,6 @@ packages:
   - toolbelt-tree
 #  - toolbelt-tshark
   - toolbelt-vault
-  - toolbelt-veritas
 templates:
   bin/run: bin/run
 

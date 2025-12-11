@@ -1,8 +1,0 @@
----
-name: toolbelt-gotcha
-packages:
-  - toolbelt-gotcha
-templates:
-  bin/run: bin/run
-
-properties: {}
