@@ -18,9 +18,9 @@ gaol/gaol-linux64:
   size: 8700442
   object_id: 6176383a-4259-4974-7ab8-7ca840f104c3
   sha: sha256:ee37a2dfc8ffc3c3b0a7480bb9c4ec2813f37a6abcf0b5a4764cf357963e6482
-jq/jq-linux64:
+jq/jq-1.7.1-linux-amd64:
   size: 2319424
-  object_id: d2199254-7e26-4dec-7f96-945624914341
+  object_id: 6ddfc6e0-3ff2-4767-724d-110348250785
   sha: 93b97cad19f57d122abc584aa215c7fb8b4f34bb
 mysql/mariadb-11.4.4.tar.gz:
   size: 111017581
