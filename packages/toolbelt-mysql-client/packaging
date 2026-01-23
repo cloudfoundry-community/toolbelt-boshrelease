@@ -4,7 +4,8 @@ set -u # report the usage of uninitialized variables
 # link: https://mariadb.com/kb/en/release-notes/
 # link: https://dlm.mariadb.com/browse/mariadb\_server/
 # mysql version:	Ver 15.1 Distrib 11.4.4-MariaDB
-
+# https://mariadb.com/docs/platform/post-download/mariadb-server-11.4.4
+# https://mariadb.org/download/?t=mariadb&o=true&p=mariadb&r=11.4.4&os=source&mirror=archive
 
 # Detect # of CPUs so make jobs can be parallelized
 CPUS=$(grep -c ^processor /proc/cpuinfo)

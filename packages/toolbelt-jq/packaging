@@ -3,6 +3,7 @@ set -u # report the usage of uninitialized variables
 
 # link: https://github.com/stedolan/jq/releases
 # jq version: jq-1.7
+# Using jq-linux64 and not jq-linux-amd64
 
 
 # Detect # of CPUs so make jobs can be parallelized
