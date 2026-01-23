@@ -1,6 +1,3 @@
-# Toolbelt BOSH Release Blobs
-# Resolved: CF CLI 7.x/8.x only, latest jq/nats, MariaDB 11.4.4, deprecated tools removed
-
 boss/boss-linux-amd64:
   size: 7279015
   object_id: 3277b45a-318b-4361-79eb-14b6719387ae
@@ -23,12 +20,15 @@ gaol/gaol-linux64:
   sha: sha256:ee37a2dfc8ffc3c3b0a7480bb9c4ec2813f37a6abcf0b5a4764cf357963e6482
 jq/jq-linux64:
   size: 2319424
+  object_id: d2199254-7e26-4dec-7f96-945624914341
   sha: sha1:93b97cad19f57d122abc584aa215c7fb8b4f34bb
 mysql/mariadb-11.4.4.tar.gz:
   size: 111017581
+  object_id: cc3dc013-a78e-4582-403e-9ea404fe1c5e
   sha: 798be151f2f580d4b4e39888f07147d6d7afc1f6
 nats/nats-0.1.5-linux-amd64.zip:
   size: 9207220
+  object_id: ea5c3917-7e91-440d-5692-7dfb5c4e3b64
   sha: sha1:1f7942053d3e5536be9c64a52afe38b776cce9ba
 ncurses/ncurses-6.3.tar.gz:
   size: 3583550
@@ -36,36 +36,47 @@ ncurses/ncurses-6.3.tar.gz:
   sha: sha256:97fc51ac2b085d4cde31ef4d2c3122c21abc217e9090a43a30fc5ec21684e059
 netsniff-ng/libcli-1.10.7.tar.gz:
   size: 55713
+  object_id: 3385619c-a44f-4f1e-725d-9157a9718192
   sha: c81755071e61d398ff33bec870736abd27bc3077
 netsniff-ng/libmnl-1.0.5.tar.bz2:
   size: 314791
+  object_id: 9586530b-55c2-4aed-6f72-80679da38f68
   sha: 63c6456b77f7978a7b37e62c1b38346b2ef2d91c
 netsniff-ng/libnet-1.3.tar.gz:
   size: 595500
+  object_id: 52312d3f-975d-46b4-4041-0d089c11093c
   sha: 0afd4169eb6be42f5e2a805b5370e1f881d45969
 netsniff-ng/libnetfilter_conntrack-1.0.9.tar.bz2:
   size: 373177
+  object_id: abb028f0-75fe-4f6d-6372-11ab35863f9d
   sha: 5e27ae89897080aa83eb32b836c4fbe16920db29
 netsniff-ng/libnfnetlink-1.0.2.tar.bz2:
   size: 298844
+  object_id: 3262cbd6-cc41-46bd-70da-22b23845cbd1
   sha: 1fc7023b970ac59410bc60120db9371c2946ff4f
 netsniff-ng/libnl-3.10.0.tar.gz:
   size: 1116186
+  object_id: f45444a4-ec0a-4ab6-7fd5-ac134d841e65
   sha: 1f35bba8516952d9043f0dac27219fdb0452570d
 netsniff-ng/libpcap-1.10.5.tar.gz:
   size: 974772
+  object_id: dc7031db-10c8-43be-7455-acf4e58b7a2b
   sha: 6a29bce449ef75001627224f7c7b71ed51e3d84e
 netsniff-ng/libsodium-1.0.20.tar.gz:
   size: 1925167
+  object_id: 6e079335-5dc4-403d-7dcb-3900bed17954
   sha: e37f50e66b4b90957cfef5792c6af6abf27ae9c6
 netsniff-ng/ncurses-6.5.tar.gz:
   size: 3688489
+  object_id: 3dc0f960-e60f-472b-7e37-4f63f71babd5
   sha: cde3024ac3f9ef21eaed6f001476ea8fffcaa381
 netsniff-ng/netsniff-ng-0.6.8.tar.gz:
   size: 803566
+  object_id: e77f4b4b-b6fc-4c6e-59fe-6b70d834755c
   sha: 07805b53ec197eeb8dd521c1afb1fd6089a385a5
 netsniff-ng/userspace-rcu-0.14.1.tar.bz2:
   size: 669999
+  object_id: 2467e42b-997f-453d-4698-d672eb8ca1a3
   sha: 046ea027b60ce0da483fd26be0975e38b766e018
 nload/nload-0.7.4.tar.gz:
   size: 151005
@@ -73,9 +84,11 @@ nload/nload-0.7.4.tar.gz:
   sha: bb0a168c93c588ad4fd5e3a653b3620b79ada1e8
 nmap/nmap-7.95.tar.bz2:
   size: 11717069
+  object_id: 410f2439-76fe-4fe6-41d9-133212b58584
   sha: dbeea6dacc7d615906846b8421b7d8ccd662740b
 postgresql/postgresql-16.6.tar.gz:
   size: 32715613
+  object_id: 781ba42a-df09-4582-7155-174cc55f9651
   sha: f7c989f4347765b83fdf5b18d2214c77874d3574
 python/Python-3.10.13.tgz:
   size: 26111363
@@ -83,9 +96,11 @@ python/Python-3.10.13.tgz:
   sha: sha256:698ec55234c1363bd813b460ed53b0f108877c7a133d48bde9a50a1eb57b7e65
 redis/redis-7.2.5.tar.gz:
   size: 3386454
+  object_id: 8def2b2c-5aa1-4cb7-4108-441f404cd293
   sha: 996e83f5acbcc36a14ac099eec57af61b5fdb8ca
 safe/safe-linux-amd64:
   size: 10378351
+  object_id: 7335d7db-5f9a-4171-40ac-5fd9ce134e56
   sha: sha1:7dd24619a4d2f1468cac44c918e455f679d970aa
 screen/screen-4.8.0.tar.gz:
   size: 854854
@@ -101,19 +116,25 @@ tcptrace/tcptrace:
   sha: 1209e7f64081c4edcf067927e09587aa351bef4d
 tree/tree-2.1.3.tgz:
   size: 61927
+  object_id: 298660a7-8c29-4202-5a2d-a7a797f5c80d
   sha: abcd594d90fa77292f7c0d615884e60170023c54
 tshark/glib-2.82.2.tar.xz:
   size: 5555528
+  object_id: a2ebe5dd-ac3a-474c-5c5b-78585dd5fa6c
   sha: sha256:ab45f5a323048b1659ee0fbda5cecd94b099ab3e4b9abf26ae06aeb3e781fd63
 tshark/libffi-3.4.6.tar.gz:
   size: 1391684
+  object_id: 51ddef75-fca2-445b-591e-33b3132abd69
   sha: sha256:b0dea9df23c863a7a50e825440f3ebffabd65df1497108e5d437747843895a4e
 tshark/libpcap-1.10.5.tar.gz:
   size: 974772
+  object_id: 3102fc4a-0b80-4e8d-4778-dd9a0478fa67
   sha: sha256:37ced90a19a302a7f32e458224a00c365c117905c2cd35ac544b6880a81488f0
 tshark/wireshark-4.4.2.tar.xz:
   size: 46763620
+  object_id: 7001f929-312a-4f61-401e-60da07fd512a
   sha: sha256:6053d97499c83feb87ce1d7f732d9c889c6c18bb334de67e65dca11483b0514e
 vault/vault_1.14.10_linux_amd64.zip:
   size: 130077125
+  object_id: 2e353ec9-2aa7-43a7-706d-35f2ba364e44
   sha: 251cb2b2cbe0f61d858f4d3818234dbd09d7f499
