@@ -21,7 +21,7 @@ gaol/gaol-linux64:
 jq/jq-linux64:
   size: 2319424
   object_id: d2199254-7e26-4dec-7f96-945624914341
-  sha: sha1:93b97cad19f57d122abc584aa215c7fb8b4f34bb
+  sha: 93b97cad19f57d122abc584aa215c7fb8b4f34bb
 mysql/mariadb-11.4.4.tar.gz:
   size: 111017581
   object_id: cc3dc013-a78e-4582-403e-9ea404fe1c5e
@@ -29,7 +29,7 @@ mysql/mariadb-11.4.4.tar.gz:
 nats/nats-0.1.5-linux-amd64.zip:
   size: 9207220
   object_id: ea5c3917-7e91-440d-5692-7dfb5c4e3b64
-  sha: sha1:1f7942053d3e5536be9c64a52afe38b776cce9ba
+  sha: 1f7942053d3e5536be9c64a52afe38b776cce9ba
 ncurses/ncurses-6.3.tar.gz:
   size: 3583550
   object_id: 66dc7a7e-b729-4c87-4ae0-e32c10529fb1
@@ -101,7 +101,7 @@ redis/redis-7.2.5.tar.gz:
 safe/safe-linux-amd64:
   size: 10378351
   object_id: 7335d7db-5f9a-4171-40ac-5fd9ce134e56
-  sha: sha1:7dd24619a4d2f1468cac44c918e455f679d970aa
+  sha: 7dd24619a4d2f1468cac44c918e455f679d970aa
 screen/screen-4.8.0.tar.gz:
   size: 854854
   object_id: 5be7cfc0-c65a-4ea9-562e-fdc9ab5d726f
