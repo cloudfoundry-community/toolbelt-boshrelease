@@ -3,6 +3,7 @@ set -u # report the usage of uninitialized variables
 
 # link: https://github.com/Old-Man-Programmer/tree
 # tree version: 2.1.3
+# https://oldmanprogrammer.net/source.php?dir=projects/tree
 
 
 # Detect # of CPUs so make jobs can be parallelized

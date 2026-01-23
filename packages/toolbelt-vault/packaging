@@ -3,6 +3,9 @@ set -u # report the usage of uninitialized variables
 
 # link: https://www.vaultproject.io/downloads
 # vault version: 1.15.3
+# https://releases.hashicorp.com/vault/1.15.3/
+#
+VERSION="1.14.10"
 
 # Detect # of CPUs so make jobs can be parallelized
 CPUS=$(grep -c ^processor /proc/cpuinfo)
@@ -12,6 +15,6 @@ CPUS=$(grep -c ^processor /proc/cpuinfo)
 export HOME=/var/vcap
 
 cd vault
-unzip vault_*_linux_amd64.zip
+unzip vault_${VERSION}_linux_amd64.zip
 mkdir -p ${BOSH_INSTALL_TARGET}/bin
 cp vault ${BOSH_INSTALL_TARGET}/bin

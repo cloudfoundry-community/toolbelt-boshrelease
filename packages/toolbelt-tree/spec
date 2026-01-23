@@ -2,9 +2,4 @@
 name: toolbelt-tree
 dependencies: []
 files:
-<<<<<<< Updated upstream
-  - tree/tree-2.0.1.tgz
-=======
   - tree/tree-2.1.3.tgz
->>>>>>> Stashed changes
-

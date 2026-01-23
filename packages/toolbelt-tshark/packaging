@@ -15,6 +15,7 @@ export CPPFLAGS=-I${INCLUDE_PATH}
 export PATH=${PATH}:${BOSH_INSTALL_TARGET}/bin:${BOSH_INSTALL_TARGET}/sbin
 
 # Build libffi 3.4.6
+# https://github.com/libffi/libffi/releases/download/v3.4.6/libffi-3.4.6.tar.gz
 tar -xzf tshark/libffi-3.4.6.tar.gz
 (cd libffi-3.4.6
  ./configure --prefix ${BOSH_INSTALL_TARGET} --disable-builddir && \
@@ -22,6 +23,7 @@ tar -xzf tshark/libffi-3.4.6.tar.gz
  make install) || exit 1
 
 # Build glib 2.82.2 - requires meson build system
+# https://download.gnome.org/sources/glib/2.82/glib-2.82.2.tar.xz
 tar -xJf tshark/glib-2.82.2.tar.xz
 (cd glib-2.82.2/
  # glib 2.82+ requires meson/ninja, fall back to older version if not available
@@ -37,6 +39,7 @@ tar -xJf tshark/glib-2.82.2.tar.xz
 ) || exit 1
 
 # Build libpcap 1.10.5
+# https://www.tcpdump.org/release/libpcap-1.10.5.tar.gz
 tar -xzf tshark/libpcap-1.10.5.tar.gz
 (cd libpcap-1.10.5
  ./configure --prefix ${BOSH_INSTALL_TARGET} && \
@@ -44,6 +47,8 @@ tar -xzf tshark/libpcap-1.10.5.tar.gz
  make install) || exit 1
 
 # Build Wireshark 4.4.2 - uses cmake instead of autotools
+# https://www.wireshark.org/download/src/all-versions/wireshark-4.4.2.tar.xz
+
 tar -xJf tshark/wireshark-4.4.2.tar.xz
 (cd wireshark-4.4.2
  # Wireshark 4.x requires cmake
