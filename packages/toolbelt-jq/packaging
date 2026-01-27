@@ -9,8 +9,10 @@ CPUS=$(grep -c ^processor /proc/cpuinfo)
  # Available variables
 # $BOSH_COMPILE_TARGET - where this package & spec'd source files are available
 # $BOSH_INSTALL_TARGET - where you copy/install files to be included in package
+# download https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-amd64
 export HOME=/var/vcap
+VERSION=1.7.1
 
 mkdir -p ${BOSH_INSTALL_TARGET}/bin
-cp jq/jq-1.7-linux-amd64 ${BOSH_INSTALL_TARGET}/bin/jq
+cp jq/jq-${VERSION}-linux-amd64 ${BOSH_INSTALL_TARGET}/bin/jq
 chmod 755 ${BOSH_INSTALL_TARGET}/bin/jq
