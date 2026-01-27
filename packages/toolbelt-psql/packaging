@@ -27,7 +27,7 @@ tar -zxf "postgresql/postgresql-${VERSION}.tar.gz"
 
 echo "Building only psql CLI & Libraries..."
 
-./configure --enable-depend --prefix="${BOSH_INSTALL_TARGET}"
+./configure --without-icu --enable-depend --prefix="${BOSH_INSTALL_TARGET}"
 
 make -j${CPUS}
 make -j${CPUS} -C src/bin install
