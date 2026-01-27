@@ -118,6 +118,10 @@ tree/tree-2.1.3.tgz:
   size: 61927
   object_id: 298660a7-8c29-4202-5a2d-a7a797f5c80d
   sha: abcd594d90fa77292f7c0d615884e60170023c54
+tshark/c-ares-1.34.6.tar.gz:
+  size: 1017864
+  object_id: 063b5d18-f495-42c4-49d9-992cb40b9036
+  sha: sha256:912dd7cc3b3e8a79c52fd7fb9c0f4ecf0aaa73e45efda880266a2d6e26b84ef5
 tshark/glib-2.82.2.tar.xz:
   size: 5555528
   object_id: a2ebe5dd-ac3a-474c-5c5b-78585dd5fa6c
@@ -126,10 +130,22 @@ tshark/libffi-3.4.6.tar.gz:
   size: 1391684
   object_id: 51ddef75-fca2-445b-591e-33b3132abd69
   sha: sha256:b0dea9df23c863a7a50e825440f3ebffabd65df1497108e5d437747843895a4e
+tshark/libgcrypt-1.11.2.tar.bz2:
+  size: 4237802
+  object_id: 21f08c8d-85ab-48d7-4614-2705fad3e90b
+  sha: sha256:6ba59dd192270e8c1d22ddb41a07d95dcdbc1f0fb02d03c4b54b235814330aac
+tshark/libgpg-error-1.58.tar.bz2:
+  size: 1123899
+  object_id: f0f9d02d-8bfa-4426-646d-623d213a485c
+  sha: sha256:f943aea9a830a8bd938e5124b579efaece24a3225ff4c3d27611a80ce1260c27
 tshark/libpcap-1.10.5.tar.gz:
   size: 974772
   object_id: 3102fc4a-0b80-4e8d-4778-dd9a0478fa67
   sha: sha256:37ced90a19a302a7f32e458224a00c365c117905c2cd35ac544b6880a81488f0
+tshark/speexdsp-SpeexDSP-1.2.1.tar.gz:
+  size: 894360
+  object_id: d71e77f8-280d-4453-778e-54ebb9579e3c
+  sha: sha256:d17ca363654556a4ff1d02cc13d9eb1fc5a8642c90b40bd54ce266c3807b91a7
 tshark/wireshark-4.4.2.tar.xz:
   size: 46763620
   object_id: 7001f929-312a-4f61-401e-60da07fd512a
