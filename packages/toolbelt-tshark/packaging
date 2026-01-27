@@ -38,6 +38,23 @@ tar -xJf tshark/glib-2.82.2.tar.xz
  fi
 ) || exit 1
 
+# Build speexdsp 1.2.1
+# https://github.com/xiph/speexdsp/releases/tag/SpeexDSP-1.2.1
+tar -xzf tshark/speexdsp-SpeexDSP-1.2.1.tar.gz
+(cd speexdsp-SpeexDSP-1.2.1
+ ./autogen.sh
+ ./configure --prefix ${BOSH_INSTALL_TARGET} && \
+ make -j${CPUS} && \
+ make install) || exit 1
+
+# Build c-ares 1.34.6
+# https://c-ares.org/download/
+tar -xzf tshark/c-ares-1.34.6.tar.gz
+(cd c-ares-1.34.6
+ ./configure --prefix ${BOSH_INSTALL_TARGET} && \
+ make -j${CPUS} && \
+ make install) || exit 1
+
 # Build libpcap 1.10.5
 # https://www.tcpdump.org/release/libpcap-1.10.5.tar.gz
 tar -xzf tshark/libpcap-1.10.5.tar.gz
@@ -46,13 +63,31 @@ tar -xzf tshark/libpcap-1.10.5.tar.gz
  make -j${CPUS} && \
  make install) || exit 1
 
+# Build libgpg_error 1.58
+# https://gnupg.org/ftp/gcrypt/libgpg-error/
+tar -xjf tshark/libgpg-error-1.58.tar.bz2
+(cd libgpg-error-1.58
+ ./configure --prefix ${BOSH_INSTALL_TARGET} && \
+ make -j${CPUS} && \
+ make install) || exit 1
+
+# Build libgcrypt 1.11.2
+# https://gnupg.org/ftp/gcrypt/libgcrypt/
+tar -xjf tshark/libgcrypt-1.11.2.tar.bz2
+(cd libgcrypt-1.11.2
+ ./configure --prefix ${BOSH_INSTALL_TARGET} && \
+ make -j${CPUS} && \
+ make install) || exit 1
+
 # Build Wireshark 4.4.2 - uses cmake instead of autotools
 # https://www.wireshark.org/download/src/all-versions/wireshark-4.4.2.tar.xz
+# -DENABLE_PCAP=OFF
 
 tar -xJf tshark/wireshark-4.4.2.tar.xz
 (cd wireshark-4.4.2
  # Wireshark 4.x requires cmake
  if command -v cmake >/dev/null 2>&1; then
+   export C_INCLUDE_PATH="${BOSH_INSTALL_TARGET}/include"
    mkdir -p build && cd build
    cmake .. \
      -DCMAKE_INSTALL_PREFIX=${BOSH_INSTALL_TARGET} \
@@ -60,7 +95,7 @@ tar -xJf tshark/wireshark-4.4.2.tar.xz
      -DENABLE_APPLICATION_BUNDLE=OFF \
      -DENABLE_QT=OFF \
      -DBUILD_randpkt=OFF && \
-   make -j${CPUS} && \
+   make -j${CPUS} tshark && \
    make install
  else
    echo "ERROR: Wireshark 4.x requires cmake build system"
