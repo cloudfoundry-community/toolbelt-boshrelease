@@ -8,13 +8,22 @@ CPUS=$(grep -c ^processor /proc/cpuinfo)
 # $BOSH_INSTALL_TARGET - where you copy/install files to be included in package
 export HOME=/var/vcap
 
+# download from https://github.com/unicode-org/icu/releases/tag/release-4-8-2
+# https://github.com/unicode-org/icu/releases/download/release-4-8-2/icu4c-4_8_2-src.tgz
+
+tar -zxf postgresql/icu4c-4_8_2-src.tgz
+( cd icu/source
+  ./runConfigureICU Linux --prefix="${BOSH_INSTALL_TARGET}"
+  make install ) || exit 1
+
 # download from https://ftp.postgresql.org/pub/source/v16.6/postgresql-16.6.tar.gz
 # shasum: https://ftp.postgresql.org/pub/source/v16.6/postgresql-16.6.tar.gz.sha256
+
 VERSION=16.6
 
 tar -zxf "postgresql/postgresql-${VERSION}.tar.gz"
 
-cd postgresql-${VERSION}
+(cd postgresql-${VERSION}
 
 echo "Building only psql CLI & Libraries..."
 
@@ -24,7 +33,7 @@ make -j${CPUS}
 make -j${CPUS} -C src/bin install
 make -j${CPUS} -C src/include install
 make -j${CPUS} -C src/interfaces install
-make -j${CPUS} -C doc install
+make -j${CPUS} -C doc install ) || exit 1
 
 echo "Installed psql CLI & Libraries to ${BOSH_INSTALL_TARGET}"
 
