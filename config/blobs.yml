@@ -86,6 +86,10 @@ nmap/nmap-7.95.tar.bz2:
   size: 11717069
   object_id: 410f2439-76fe-4fe6-41d9-133212b58584
   sha: dbeea6dacc7d615906846b8421b7d8ccd662740b
+postgresql/icu4c-4_8_2-src.tgz:
+  size: 16932147
+  object_id: f908aef3-0f91-4c41-6341-b60f01a56270
+  sha: sha256:4c70131bcb87205622ed9a3349175f287d2b677f29a389b47da46c6e50b29373
 postgresql/postgresql-16.6.tar.gz:
   size: 32715613
   object_id: 781ba42a-df09-4582-7155-174cc55f9651
