@@ -6,21 +6,41 @@ CPUS=$(grep -c ^processor /proc/cpuinfo)
  # Available variables
 # $BOSH_COMPILE_TARGET - where this package & spec'd source files are available
 # $BOSH_INSTALL_TARGET - where you copy/install files to be included in package
+# uncomment export BOSH_INSTALL_TARGET for local testing
+# export BOSH_INSTALL_TARGET=$PWD/install
+# comment the export HOME line for local testing
 export HOME=/var/vcap
+export HOME=$PWD
 export PKG_CONFIG_PATH=${BOSH_INSTALL_TARGET}/lib/pkgconfig
 export LD_LIBRARY_PATH=${BOSH_INSTALL_TARGET}/lib
 export INCLUDE_PATH=${BOSH_INSTALL_TARGET}/include
 export LDFLAGS=-L${LD_LIBRARY_PATH}
 export CPPFLAGS=-I${INCLUDE_PATH}
-export PATH=${PATH}:${BOSH_INSTALL_TARGET}/bin:${BOSH_INSTALL_TARGET}/sbin
+export PATH="${BOSH_INSTALL_TARGET}/bin:${BOSH_INSTALL_TARGET}/sbin:${PATH}"
+# Have python use BOSH_INSTALL_TARGET instead of $HOME/.local/ for installing python packages
+export PYTHONUSERBASE="${BOSH_INSTALL_TARGET}"
+
+# Install meson build system
+# download https://github.com/mesonbuild/meson/releases/tag/1.10.1
+pip3 install --user tshark/meson-1.10.1.tar.gz
+
+# Install ninja build system for meson
+# Rename the blob to contain the version number in the filename (ninja-1.13.2-linux.zip)
+# download https://github.com/ninja-build/ninja/releases/download/v1.13.2/ninja-linux.zip
+
+unzip tshark/ninja-1.13.2-linux.zip
+mv ninja ${BOSH_INSTALL_TARGET}/bin
+
+# testing if we need this file since it should only be part of the python command build
+# which we are not doing at this time.
 
 # Build libffi 3.4.6
 # https://github.com/libffi/libffi/releases/download/v3.4.6/libffi-3.4.6.tar.gz
-tar -xzf tshark/libffi-3.4.6.tar.gz
-(cd libffi-3.4.6
- ./configure --prefix ${BOSH_INSTALL_TARGET} --disable-builddir && \
- make -j${CPUS} && \
- make install) || exit 1
+# tar -xzf tshark/libffi-3.4.6.tar.gz
+# (cd libffi-3.4.6
+ # ./configure --prefix ${BOSH_INSTALL_TARGET} --disable-builddir && \
+ # make -j${CPUS} && \
+ # make install) || exit 1
 
 # Build glib 2.82.2 - requires meson build system
 # https://download.gnome.org/sources/glib/2.82/glib-2.82.2.tar.xz

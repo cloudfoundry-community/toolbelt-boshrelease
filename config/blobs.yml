@@ -146,6 +146,14 @@ tshark/libpcap-1.10.5.tar.gz:
   size: 974772
   object_id: 3102fc4a-0b80-4e8d-4778-dd9a0478fa67
   sha: sha256:37ced90a19a302a7f32e458224a00c365c117905c2cd35ac544b6880a81488f0
+tshark/meson-1.10.1.tar.gz:
+  size: 2413969
+  object_id: 522f3eae-1a75-43d2-46ee-119630b23b5d
+  sha: sha256:c42296f12db316a4515b9375a5df330f2e751ccdd4f608430d41d7d6210e4317
+tshark/ninja-1.13.2-linux.zip:
+  size: 134040
+  object_id: 58a01296-c662-44ad-7d20-1dfe3c400e8a
+  sha: sha256:5749cbc4e668273514150a80e387a957f933c6ed3f5f11e03fb30955e2bbead6
 tshark/speexdsp-SpeexDSP-1.2.1.tar.gz:
   size: 894360
   object_id: d71e77f8-280d-4453-778e-54ebb9579e3c
