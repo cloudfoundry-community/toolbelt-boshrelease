@@ -22,7 +22,7 @@ export PYTHONUSERBASE="${BOSH_INSTALL_TARGET}"
 
 # Install meson build system
 # download https://github.com/mesonbuild/meson/releases/tag/1.10.1
-pip3 install --user tshark/meson-1.10.1.tar.gz
+pip install --user tshark/meson-1.10.1.tar.gz
 
 # Install ninja build system for meson
 # Rename the blob to contain the version number in the filename (ninja-1.13.2-linux.zip)
