@@ -98,6 +98,10 @@ python/Python-3.10.13.tgz:
   size: 26111363
   object_id: 24146d09-0663-49ec-601f-c006a1ca7d05
   sha: sha256:698ec55234c1363bd813b460ed53b0f108877c7a133d48bde9a50a1eb57b7e65
+python/Python-3.14.2.tgz:
+  size: 30601597
+  object_id: ae7aff70-bfec-4130-552d-8f305502fc64
+  sha: sha256:c609e078adab90e2c6bacb6afafacd5eaf60cd94cf670f1e159565725fcd448d
 redis/redis-7.2.5.tar.gz:
   size: 3386454
   object_id: 8def2b2c-5aa1-4cb7-4108-441f404cd293

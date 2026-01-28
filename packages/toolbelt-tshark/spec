@@ -1,7 +1,8 @@
 ---
 name: toolbelt-tshark
 dependencies: []
-#  - python-3.9
+# python/Python-3.14.2.tgz
+# python/Python-3.10.13.tgz
 files:
   - tshark/*
-  - python/*
+  - python/Python-3.14.2.tgz
