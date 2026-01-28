@@ -10,12 +10,13 @@ CPUS=$(grep -c ^processor /proc/cpuinfo)
 # export BOSH_INSTALL_TARGET=$PWD/install
 # comment the export HOME line for local testing
 export HOME=/var/vcap
-export HOME=$PWD
+# export HOME=$PWD
 export PKG_CONFIG_PATH=${BOSH_INSTALL_TARGET}/lib/pkgconfig
 export LD_LIBRARY_PATH=${BOSH_INSTALL_TARGET}/lib
 export INCLUDE_PATH=${BOSH_INSTALL_TARGET}/include
 export LDFLAGS=-L${LD_LIBRARY_PATH}
 export CPPFLAGS=-I${INCLUDE_PATH}
+export PIP_ROOT_USER_ACTION=ignore
 export PATH="${BOSH_INSTALL_TARGET}/bin:${BOSH_INSTALL_TARGET}/sbin:${PATH}"
 
 # Build libffi 3.4.6
