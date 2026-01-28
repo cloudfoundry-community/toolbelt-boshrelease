@@ -17,12 +17,27 @@ export INCLUDE_PATH=${BOSH_INSTALL_TARGET}/include
 export LDFLAGS=-L${LD_LIBRARY_PATH}
 export CPPFLAGS=-I${INCLUDE_PATH}
 export PATH="${BOSH_INSTALL_TARGET}/bin:${BOSH_INSTALL_TARGET}/sbin:${PATH}"
+
+# Build libffi 3.4.6
+# https://github.com/libffi/libffi/releases/download/v3.4.6/libffi-3.4.6.tar.gz
+tar -xzf tshark/libffi-3.4.6.tar.gz
+(cd libffi-3.4.6
+ ./configure --prefix ${BOSH_INSTALL_TARGET} --disable-builddir && \
+ make -j${CPUS} && \
+ make install) || exit 1
+
+tar -xzf python/Python-3.14.2.tgz
+(cd Python-3.14.2
+ ./configure --prefix ${BOSH_INSTALL_TARGET} --disable-builddir && \
+ make -j${CPUS} && \
+ make install) || exit 1
+
 # Have python use BOSH_INSTALL_TARGET instead of $HOME/.local/ for installing python packages
 export PYTHONUSERBASE="${BOSH_INSTALL_TARGET}"
 
 # Install meson build system
 # download https://github.com/mesonbuild/meson/releases/tag/1.10.1
-pip install --user tshark/meson-1.10.1.tar.gz
+pip3 install --user tshark/meson-1.10.1.tar.gz
 
 # Install ninja build system for meson
 # Rename the blob to contain the version number in the filename (ninja-1.13.2-linux.zip)
@@ -30,17 +45,6 @@ pip install --user tshark/meson-1.10.1.tar.gz
 
 unzip tshark/ninja-1.13.2-linux.zip
 mv ninja ${BOSH_INSTALL_TARGET}/bin
-
-# testing if we need this file since it should only be part of the python command build
-# which we are not doing at this time.
-
-# Build libffi 3.4.6
-# https://github.com/libffi/libffi/releases/download/v3.4.6/libffi-3.4.6.tar.gz
-# tar -xzf tshark/libffi-3.4.6.tar.gz
-# (cd libffi-3.4.6
- # ./configure --prefix ${BOSH_INSTALL_TARGET} --disable-builddir && \
- # make -j${CPUS} && \
- # make install) || exit 1
 
 # Build glib 2.82.2 - requires meson build system
 # https://download.gnome.org/sources/glib/2.82/glib-2.82.2.tar.xz
