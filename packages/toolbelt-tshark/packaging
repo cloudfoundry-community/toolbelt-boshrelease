@@ -56,9 +56,9 @@ tar -xJf tshark/glib-2.82.2.tar.xz
 (cd glib-2.82.2/
  # glib 2.82+ requires meson/ninja, fall back to older version if not available
  if command -v meson >/dev/null 2>&1; then
-   meson setup builddir --verbose --prefix=${BOSH_INSTALL_TARGET} && \
-   meson compile -C builddir --verbose -j${CPUS} && \
-   meson install -C builddir --verbose
+   meson setup builddir --wipe --prefix=${BOSH_INSTALL_TARGET} && \
+   meson compile -C builddir -j${CPUS} && \
+   meson install -C builddir 
  else
    # If meson not available, this will fail - glib 2.82+ requires meson
    echo "ERROR: glib 2.82+ requires meson build system"
