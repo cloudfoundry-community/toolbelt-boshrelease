@@ -13,7 +13,7 @@ CPUS=$(grep -c ^processor /proc/cpuinfo)
 export HOME=/var/vcap
 
 cd nats
-unzip nats-0.1.5-linux-amd64.zip
+unzip nats-0.3.1-linux-amd64.zip
 mkdir -p ${BOSH_INSTALL_TARGET}/bin
-cp nats-0.1.5-linux-amd64/nats ${BOSH_INSTALL_TARGET}/bin/nats
+cp nats-0.3.1-linux-amd64/nats ${BOSH_INSTALL_TARGET}/bin/nats
 chmod 755 ${BOSH_INSTALL_TARGET}/bin/nats
