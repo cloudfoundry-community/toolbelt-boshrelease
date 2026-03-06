@@ -46,87 +46,15 @@ pip3 install --root-user-action=ignore --user tshark/meson-1.10.1.tar.gz
 unzip tshark/ninja-1.13.2-linux.zip
 mv ninja ${BOSH_INSTALL_TARGET}/bin
 
-# Create a minimal pkg-config wrapper script. The stemcell has no pkg-config
-# binary, which prevents meson from discovering our installed libraries.
-# This script reads the .pc files that our builds install.
-cat > ${BOSH_INSTALL_TARGET}/bin/pkg-config <<'PKGCONFIG'
-#!/bin/sh
-# Minimal pkg-config implementation for BOSH stemcell compilation
-# Reads .pc files from directories listed in PKG_CONFIG_PATH
-
-resolve_vars() {
-  file="$1"
-  result="$2"
-  while IFS= read -r line; do
-    case "$line" in
-      [A-Za-z_]*=*)
-        varname="${line%%=*}"
-        varval="${line#*=}"
-        while echo "$varval" | grep -q '\${'; do
-          ref=$(echo "$varval" | sed 's/.*\${\([^}]*\)}.*/\1/')
-          refval=$(grep "^${ref}=" "$file" | head -1 | sed "s/^${ref}=//")
-          varval=$(echo "$varval" | sed "s|\${${ref}}|${refval}|g")
-        done
-        result=$(echo "$result" | sed "s|\${${varname}}|${varval}|g")
-        ;;
-    esac
-  done < "$file"
-  echo "$result"
-}
-
-find_pc() {
-  IFS=:
-  for d in ${PKG_CONFIG_PATH:-}; do
-    if [ -f "$d/$1.pc" ]; then
-      echo "$d/$1.pc"
-      return 0
-    fi
-  done
-  return 1
-}
-
-get_field() {
-  raw=$(grep "^$2:" "$1" | head -1 | sed "s/^$2:[[:space:]]*//")
-  resolve_vars "$1" "$raw"
-}
-
-mode=""
-version_check=""
-packages=""
-while [ $# -gt 0 ]; do
-  case "$1" in
-    --version) echo "0.29.2"; exit 0 ;;
-    --cflags) mode="${mode} cflags" ;;
-    --libs) mode="${mode} libs" ;;
-    --modversion) mode="${mode} modversion" ;;
-    --exists) mode="exists" ;;
-    --variable=*) mode="variable"; varname="${1#--variable=}" ;;
-    --atleast-version=*) mode="exists"; version_check="${1#--atleast-version=}" ;;
-    --print-errors|--silence-errors|--errors-to-stdout) ;;
-    --static) ;;
-    --*) ;;
-    *) packages="${packages} $1" ;;
-  esac
-  shift
-done
-
-output=""
-for pkg in $packages; do
-  pc=$(find_pc "$pkg") || exit 1
-  for m in $mode; do
-    case "$m" in
-      cflags) output="$output $(get_field "$pc" "Cflags")" ;;
-      libs) output="$output $(get_field "$pc" "Libs")" ;;
-      modversion) output="$output $(get_field "$pc" "Version")" ;;
-      exists) find_pc "$pkg" >/dev/null 2>&1 || exit 1 ;;
-      variable) output="$output $(resolve_vars "$pc" "\${${varname}}")" ;;
-    esac
-  done
-done
-[ -n "$output" ] && echo "$output"
-exit 0
-PKGCONFIG
-chmod +x ${BOSH_INSTALL_TARGET}/bin/pkg-config
+# Build pkgconf 2.3.0 (pkg-config implementation, required by meson and cmake
+# to discover installed libraries. The stemcell has no pkg-config binary.)
+# https://distfiles.dereferenced.org/pkgconf/pkgconf-2.3.0.tar.xz
+tar -xJf tshark/pkgconf-2.3.0.tar.xz
+(cd pkgconf-2.3.0
+ ./configure --prefix ${BOSH_INSTALL_TARGET} && \
+ make -j${CPUS} && \
+ make install) || exit 1
+ln -sf pkgconf ${BOSH_INSTALL_TARGET}/bin/pkg-config
 
 # Build glib 2.82.2 - requires meson build system
 # https://download.gnome.org/sources/glib/2.82/glib-2.82.2.tar.xz
