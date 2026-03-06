@@ -90,6 +90,24 @@ above tools, as groups:
 - `toolbelt-quick` - Just the stuff that compiles quickly (i.e. not netsniff-ng or tshark).
 
 
+Compilation Times
+-----------------
+
+Some packages build from source and take significant time on first
+deploy (measured on the Jammy stemcell compilation VM):
+
+| Package            | Compile Time |
+|--------------------|--------------|
+| toolbelt-tshark    | ~27 min      |
+| toolbelt-psql      | ~5 min       |
+| toolbelt-netsniff-ng | long       |
+
+Packages that install pre-built binaries (jq, safe, spruce, vault,
+boss, etc.) take only seconds to install. BOSH caches compiled
+packages, so subsequent deploys reuse the cache unless the package
+spec changes.
+
+
 Playing on BOSH-lite
 --------------------
 
