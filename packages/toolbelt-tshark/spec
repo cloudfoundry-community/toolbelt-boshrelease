@@ -1,8 +1,15 @@
 ---
 name: toolbelt-tshark
 dependencies: []
-# python/Python-3.14.2.tgz
-# python/Python-3.10.13.tgz
 files:
-  - tshark/*
+  - tshark/libffi-3.4.6.tar.gz
   - python/Python-3.14.2.tgz
+  - tshark/meson-1.10.1.tar.gz
+  - tshark/ninja-1.13.2-linux.zip
+  - tshark/pkgconf-2.3.0.tar.xz
+  - tshark/glib-2.82.2.tar.xz
+  - tshark/c-ares-1.34.6.tar.gz
+  - tshark/libpcap-1.10.5.tar.gz
+  - tshark/libgpg-error-1.58.tar.bz2
+  - tshark/libgcrypt-1.11.2.tar.bz2
+  - tshark/wireshark-4.4.2.tar.xz

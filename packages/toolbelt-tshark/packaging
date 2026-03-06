@@ -2,18 +2,99 @@ set -e # exit immediately if a simple command exits with a non-zero status
 set -u # report the usage of uninitialized variables
 set -x
 
+# ============================================================================
+# tshark (Wireshark CLI) - Build from source for BOSH
+# ============================================================================
+#
+# This was developed and tested on the Ubuntu Jammy (22.04) stemcell.
+# Jammy's system libraries (e.g., glib 2.72, glibc 2.35) are too old for
+# Wireshark 4.x, which requires glib 2.76+. We build our own glib and
+# other dependencies to avoid version conflicts with the stemcell.
+#
+# The BOSH compilation VM (stemcell) provides only basic build tools:
+#   gcc, g++, make, cmake, bison, flex, patch
+#
+# It does NOT have: pkg-config, python3, pip, autotools, git, ninja, meson
+#
+# The Wireshark Developer's Guide documents the required dependencies:
+#   https://www.wireshark.org/docs/wsdg_html_chunked/ChapterSetup.html
+#
+# For the full dependency tree, version rationale, and stemcell notes see:
+#   packages/toolbelt-tshark/DEPENDENCIES.md
+#
+# Therefore we must build the entire dependency chain from source blobs:
+#
+#   1. libffi       - foreign function interface (needed by Python and glib)
+#   2. Python 3     - needed to run meson build system
+#   3. meson        - build system required by glib 2.82+
+#   4. ninja        - build executor used by meson
+#   5. pkgconf      - pkg-config implementation for library discovery
+#   6. glib         - core C library required by wireshark
+#   7. c-ares       - async DNS resolver library
+#   8. libpcap      - packet capture library
+#   9. libgpg-error - error handling library for libgcrypt
+#  10. libgcrypt    - cryptographic library (TLS decryption support)
+#  11. wireshark    - built with only the tshark CLI target
+#
+# At runtime, the toolbelt job's envrc sources LD_LIBRARY_PATH and PATH
+# for all toolbelt-* packages via the pkg() function. See:
+#   jobs/toolbelt/templates/envrc
+#
+# ============================================================================
+# Blob management
+# ============================================================================
+#
+# Source blobs are stored under two directories:
+#   tshark/                   - tshark dependencies
+#   python/Python-3.14.2.tgz - Python (shared blob with other packages)
+#
+# The spec file (packages/toolbelt-tshark/spec) lists each blob explicitly
+# in dependency order. When upgrading a dependency:
+#   1. Add the new blob:    bosh add-blob <local-file> tshark/<new-file>
+#   2. Remove the old blob: bosh remove-blob tshark/<old-file>
+#   3. Update the spec file (packages/toolbelt-tshark/spec)
+#   4. Update this script to reference the new filename/version
+#   5. Upload blobs:        bosh upload-blobs  (syncs to remote blobstore)
+#
+# Current blobs and where to download new versions:
+#   tshark/libffi-3.4.6.tar.gz          https://github.com/libffi/libffi/releases
+#   tshark/pkgconf-2.3.0.tar.xz         https://distfiles.dereferenced.org/pkgconf/
+#   tshark/meson-1.10.1.tar.gz          https://github.com/mesonbuild/meson/releases
+#   tshark/ninja-1.13.2-linux.zip       https://github.com/ninja-build/ninja/releases
+#   tshark/glib-2.82.2.tar.xz           https://download.gnome.org/sources/glib/
+#   tshark/c-ares-1.34.6.tar.gz         https://c-ares.org/download/
+#   tshark/libpcap-1.10.5.tar.gz        https://www.tcpdump.org/release/
+#   tshark/libgpg-error-1.58.tar.bz2    https://gnupg.org/ftp/gcrypt/libgpg-error/
+#   tshark/libgcrypt-1.11.2.tar.bz2     https://gnupg.org/ftp/gcrypt/libgcrypt/
+#   tshark/wireshark-4.4.2.tar.xz       https://www.wireshark.org/download/src/all-versions/
+#   python/Python-3.14.2.tgz            https://www.python.org/downloads/source/
+#
+# ============================================================================
+
 # Detect # of CPUs so make jobs can be parallelized
 CPUS=$(grep -c ^processor /proc/cpuinfo)
- # Available variables
-# $BOSH_COMPILE_TARGET - where this package & spec'd source files are available
-# $BOSH_INSTALL_TARGET - where you copy/install files to be included in package
+
+# BOSH variables:
+#   $BOSH_COMPILE_TARGET - where this package & spec'd source files are available
+#   $BOSH_INSTALL_TARGET - where you copy/install files to be included in package
+
 export HOME=/var/vcap
+
+# PKG_CONFIG_PATH: tells pkgconf/pkg-config where to find .pc files for
+# libraries we've already built (e.g., libffi.pc, glib-2.0.pc).
 export PKG_CONFIG_PATH=${BOSH_INSTALL_TARGET}/lib/pkgconfig
+
+# Point linker and compiler at our install prefix so each successive
+# build step can find the libraries and headers from previous steps.
 export LD_LIBRARY_PATH=${BOSH_INSTALL_TARGET}/lib
 export INCLUDE_PATH=${BOSH_INSTALL_TARGET}/include
 export LDFLAGS=-L${LD_LIBRARY_PATH}
 export CPPFLAGS=-I${INCLUDE_PATH}
+
 export PIP_ROOT_USER_ACTION=ignore
+
+# Prepend our install prefix to PATH so that binaries we build (python3,
+# meson, ninja, pkg-config) are found before any system equivalents.
 export PATH="${BOSH_INSTALL_TARGET}/bin:${BOSH_INSTALL_TARGET}/sbin:${PATH}"
 
 # Build libffi 3.4.6 (required by Python and glib)
@@ -25,6 +106,8 @@ tar -xzf tshark/libffi-3.4.6.tar.gz
  make install) || exit 1
 
 # Build Python 3.14.2 (required for meson build system)
+# Note: uses "make install" (not "make altinstall") so that unversioned
+# symlinks python3, pip3 are created. altinstall only creates python3.14/pip3.14.
 tar -xzf python/Python-3.14.2.tgz
 (cd Python-3.14.2
   export C_INCLUDE_PATH="${BOSH_INSTALL_TARGET}/include"
@@ -34,14 +117,19 @@ tar -xzf python/Python-3.14.2.tgz
  make -j${CPUS} && \
  make install) || exit 1
 
-# Have python use BOSH_INSTALL_TARGET instead of $HOME/.local/ for installing python packages
+# PYTHONUSERBASE: pip3 --user installs to $HOME/.local/ by default, which
+# is not part of the BOSH package. Redirect to BOSH_INSTALL_TARGET so that
+# meson's CLI entry point ends up in our bin/ directory.
 export PYTHONUSERBASE="${BOSH_INSTALL_TARGET}"
 
 # Install meson build system (required by glib 2.82+)
+# Installed via pip3 from a source tarball (not PyPI) since the compilation
+# VM has no internet access.
 # https://github.com/mesonbuild/meson/releases/tag/1.10.1
 pip3 install --root-user-action=ignore --user tshark/meson-1.10.1.tar.gz
 
-# Install ninja build system for meson
+# Install ninja build system (build executor used by meson)
+# Pre-built static Linux binary - no compilation needed.
 # https://github.com/ninja-build/ninja/releases/download/v1.13.2/ninja-linux.zip
 unzip tshark/ninja-1.13.2-linux.zip
 mv ninja ${BOSH_INSTALL_TARGET}/bin
@@ -54,9 +142,13 @@ tar -xJf tshark/pkgconf-2.3.0.tar.xz
  ./configure --prefix ${BOSH_INSTALL_TARGET} && \
  make -j${CPUS} && \
  make install) || exit 1
+# Symlink pkgconf as pkg-config so meson and cmake can discover it.
 ln -sf pkgconf ${BOSH_INSTALL_TARGET}/bin/pkg-config
 
-# Build glib 2.82.2 - requires meson build system
+# Build glib 2.82.2 - core C utility library required by wireshark
+# --libdir is required because meson defaults to Debian multiarch paths
+# (lib/x86_64-linux-gnu/) on Ubuntu. The toolbelt envrc only adds lib/
+# to LD_LIBRARY_PATH, so we force glib's libraries into lib/ directly.
 # https://download.gnome.org/sources/glib/2.82/glib-2.82.2.tar.xz
 tar -xJf tshark/glib-2.82.2.tar.xz
 (cd glib-2.82.2/
@@ -65,13 +157,12 @@ tar -xJf tshark/glib-2.82.2.tar.xz
  meson install -C builddir
 ) || exit 1
 
-# speexdsp skipped - requires autotools (autogen.sh) which are not on the
-# stemcell compilation VM. It is optional for tshark (only needed for audio
-# codec analysis in VoIP). If needed later, replace the blob with the official
-# release tarball from https://ftp.osuosl.org/pub/xiph/releases/speex/ which
-# includes a pre-generated configure script.
+# ============================================================================
+# Wireshark runtime dependencies (c-ares, libpcap, libgcrypt)
+# These use standard autotools and have no special build considerations.
+# ============================================================================
 
-# Build c-ares 1.34.6
+# Build c-ares 1.34.6 - async DNS resolver for network name resolution
 # https://c-ares.org/download/
 tar -xzf tshark/c-ares-1.34.6.tar.gz
 (cd c-ares-1.34.6
@@ -79,7 +170,7 @@ tar -xzf tshark/c-ares-1.34.6.tar.gz
  make -j${CPUS} && \
  make install) || exit 1
 
-# Build libpcap 1.10.5
+# Build libpcap 1.10.5 - packet capture library (core of tshark)
 # https://www.tcpdump.org/release/libpcap-1.10.5.tar.gz
 tar -xzf tshark/libpcap-1.10.5.tar.gz
 (cd libpcap-1.10.5
@@ -87,7 +178,7 @@ tar -xzf tshark/libpcap-1.10.5.tar.gz
  make -j${CPUS} && \
  make install) || exit 1
 
-# Build libgpg_error 1.58
+# Build libgpg-error 1.58 - error handling library required by libgcrypt
 # https://gnupg.org/ftp/gcrypt/libgpg-error/
 tar -xjf tshark/libgpg-error-1.58.tar.bz2
 (cd libgpg-error-1.58
@@ -95,7 +186,7 @@ tar -xjf tshark/libgpg-error-1.58.tar.bz2
  make -j${CPUS} && \
  make install) || exit 1
 
-# Build libgcrypt 1.11.2
+# Build libgcrypt 1.11.2 - cryptographic library for TLS decryption support
 # https://gnupg.org/ftp/gcrypt/libgcrypt/
 tar -xjf tshark/libgcrypt-1.11.2.tar.bz2
 (cd libgcrypt-1.11.2
@@ -103,7 +194,27 @@ tar -xjf tshark/libgcrypt-1.11.2.tar.bz2
  make -j${CPUS} && \
  make install) || exit 1
 
-# Build Wireshark 4.4.2 - uses cmake instead of autotools
+# ============================================================================
+# Build Wireshark 4.4.2 (tshark CLI only)
+# ============================================================================
+# cmake flags:
+#   BUILD_wireshark=OFF  - skip GUI (requires Qt)
+#   BUILD_sharkd=OFF     - skip daemon (requires speexdsp)
+#   BUILD_logray=OFF     - skip log analyzer (requires speexdsp)
+#   ENABLE_QT=OFF        - no Qt framework on stemcell
+#   BUILD_randpkt=OFF    - skip random packet generator (not needed)
+#   ENABLE_APPLICATION_BUNDLE=OFF - not macOS
+#
+# "make tshark" builds only the tshark target instead of all binaries.
+# "make install" is still needed to install shared libraries (libwireshark,
+# libwiretap, libwsutil) that tshark links against at runtime.
+#
+# speexdsp is intentionally skipped - it requires autotools (autogen.sh)
+# which the stemcell does not have. It is only needed for audio codec
+# analysis in VoIP captures (wireshark GUI, sharkd, logray), not tshark.
+# If needed later, use the release tarball from
+# https://ftp.osuosl.org/pub/xiph/releases/speex/ which includes a
+# pre-generated configure script.
 # https://www.wireshark.org/download/src/all-versions/wireshark-4.4.2.tar.xz
 tar -xJf tshark/wireshark-4.4.2.tar.xz
 (cd wireshark-4.4.2
