@@ -3,8 +3,8 @@ set -u # report the usage of uninitialized variables
 
 # link: https://github.com/cloudfoundry/cli/releases
 # toolbelt-cf
-# 	- cf7 version:	7.7.5
-# 	- cf8 version:	8.7.5
+# 	- cf7 version:	7.7.12
+# 	- cf8 version:	8.8.0
 
 
 # Detect # of CPUs so make jobs can be parallelized
@@ -17,12 +17,12 @@ export HOME=/var/vcap
 mkdir -p ${BOSH_INSTALL_TARGET}/bin
 
 (
-tar -xzf cf-cli/cf7-cli_7.7.5_linux_x86-64.tgz cf7 &&
+tar -xzf cf-cli/cf7-cli_7.7.12_linux_x86-64.tgz cf7 &&
 cp cf7 ${BOSH_INSTALL_TARGET}/bin &&
 chmod 755 ${BOSH_INSTALL_TARGET}/bin/cf7) || exit 1
 
 (
-tar -xzf cf-cli/cf8-cli_8.7.5_linux_x86-64.tgz cf8 &&
+tar -xzf cf-cli/cf8-cli_8.8.0_linux_x86-64.tgz cf8 &&
 cp cf8 ${BOSH_INSTALL_TARGET}/bin &&
 chmod 755 ${BOSH_INSTALL_TARGET}/bin/cf8) || exit 1
 

@@ -9,24 +9,58 @@ CPUS=$(grep -c ^processor /proc/cpuinfo)
 export HOME=/var/vcap
 
 # download from https://ftp.postgresql.org/pub/source/v16.13/postgresql-16.13.tar.gz
-# shasum: https://ftp.postgresql.org/pub/source/v16.13/postgresql-16.13.tar.gz.sha256
+# download from https://ftp.postgresql.org/pub/source/v18.3/postgresql-18.3.tar.gz
 
-VERSION=16.13
+mkdir -p ${BOSH_INSTALL_TARGET}/bin
+mkdir -p ${BOSH_INSTALL_TARGET}/lib
 
-tar -zxf "postgresql/postgresql-${VERSION}.tar.gz"
+# --- Build psql 16 ---
+VERSION_16=16.13
+TMPDIR_16=$(mktemp -d)
 
-(cd postgresql-${VERSION}
+tar -zxf "postgresql/postgresql-${VERSION_16}.tar.gz"
 
-echo "Building only psql CLI & Libraries..."
+(cd postgresql-${VERSION_16}
 
-./configure --without-icu --enable-depend --prefix="${BOSH_INSTALL_TARGET}"
+echo "Building psql ${VERSION_16}..."
+
+./configure --without-icu --enable-depend --prefix="${TMPDIR_16}"
 
 make -j${CPUS}
 make -j${CPUS} -C src/bin install
 make -j${CPUS} -C src/include install
-make -j${CPUS} -C src/interfaces install
-make -j${CPUS} -C doc install ) || exit 1
+make -j${CPUS} -C src/interfaces install ) || exit 1
 
-echo "Installed psql CLI & Libraries to ${BOSH_INSTALL_TARGET}"
+cp "${TMPDIR_16}/bin/psql" "${BOSH_INSTALL_TARGET}/bin/psql16"
+cp -a "${TMPDIR_16}"/lib/*.so* "${BOSH_INSTALL_TARGET}/lib/" 2>/dev/null || true
+
+echo "Installed psql16 (PostgreSQL ${VERSION_16})"
+
+# --- Build psql 18 ---
+VERSION_18=18.3
+TMPDIR_18=$(mktemp -d)
+
+tar -zxf "postgresql/postgresql-${VERSION_18}.tar.gz"
+
+(cd postgresql-${VERSION_18}
+
+echo "Building psql ${VERSION_18}..."
+
+./configure --without-icu --enable-depend --prefix="${TMPDIR_18}"
+
+make -j${CPUS}
+make -j${CPUS} -C src/bin install
+make -j${CPUS} -C src/include install
+make -j${CPUS} -C src/interfaces install ) || exit 1
+
+cp "${TMPDIR_18}/bin/psql" "${BOSH_INSTALL_TARGET}/bin/psql18"
+cp -a "${TMPDIR_18}"/lib/*.so* "${BOSH_INSTALL_TARGET}/lib/" 2>/dev/null || true
+
+echo "Installed psql18 (PostgreSQL ${VERSION_18})"
+
+# Default 'psql' symlinks to psql16 (conservative: most deployed CF databases are still on 16)
+ln -s ${BOSH_INSTALL_TARGET}/bin/psql16 ${BOSH_INSTALL_TARGET}/bin/psql
+
+echo "Installed psql16 and psql18 to ${BOSH_INSTALL_TARGET} (psql -> psql16)"
 
 exit 0

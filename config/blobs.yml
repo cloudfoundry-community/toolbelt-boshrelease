@@ -2,14 +2,12 @@ boss/boss-linux-amd64:
   size: 7279015
   object_id: 3277b45a-318b-4361-79eb-14b6719387ae
   sha: sha256:752b35912e0cb5ba2387c0c7a50a30c3c2380c02cd6cbd1bd34e56476384f22b
-cf-cli/cf7-cli_7.7.5_linux_x86-64.tgz:
-  size: 7491336
-  object_id: ddd75935-4f14-4354-60e9-171292409719
-  sha: sha256:98c7338794f9bb89f6ab7ea574dc71d4cf79c725826695de93925bb7671cde55
-cf-cli/cf8-cli_8.7.5_linux_x86-64.tgz:
-  size: 8726530
-  object_id: ae962d64-00c6-4760-6d5b-edc3aedad33b
-  sha: sha256:824d23dc595529cee953151b4c8680c43de9b36d46611f0041318706858fd9f1
+cf-cli/cf7-cli_7.7.12_linux_x86-64.tgz:
+  size: 7624800
+  sha: sha256:c507d0191304d29fdda04ad35147d47a7ca0bd801fb9a840c15ddb6eac023e06
+cf-cli/cf8-cli_8.8.0_linux_x86-64.tgz:
+  size: 9199900
+  sha: sha256:fa33d65327e72bc90d9d6f3751aa0a8db3f8168f011740649fa9519c8f0111bb
 cfdot/cfdot-linux64:
   size: 24614808
   object_id: b673e243-7c22-4fd3-5ec2-945d8557c4f1
@@ -21,10 +19,9 @@ gaol/gaol-linux64:
 jq/jq-1.8.1-linux-amd64:
   size: 2255816
   sha: sha256:020468de7539ce70ef1bceaf7cde2e8c4f2ca6c3afb84642aabc5c97d9fc2a0d
-mysql/mariadb-11.4.4.tar.gz:
-  size: 111017581
-  object_id: cc3dc013-a78e-4582-403e-9ea404fe1c5e
-  sha: 798be151f2f580d4b4e39888f07147d6d7afc1f6
+mysql/mariadb-11.4.10.tar.gz:
+  size: 120394058
+  sha: sha256:14783ddc5edd966ff05aa0efd5ed6d3d369ed5b9e4080a448f00f87a9f0a4a6b
 nats/nats-0.3.1-linux-amd64.zip:
   size: 11853415
   sha: sha256:f48374be6fc903b954b90b729321772bdd5bc745234edf3d31cd17ab79e85629
@@ -80,13 +77,15 @@ nload/nload-0.7.4.tar.gz:
   size: 151005
   object_id: fe9d2165-bca8-48ff-6f88-79b628070039
   sha: bb0a168c93c588ad4fd5e3a653b3620b79ada1e8
-nmap/nmap-7.95.tar.bz2:
-  size: 11717069
-  object_id: 410f2439-76fe-4fe6-41d9-133212b58584
-  sha: dbeea6dacc7d615906846b8421b7d8ccd662740b
+nmap/nmap-7.98.tar.bz2:
+  size: 12273108
+  sha: sha256:ce847313eaae9e5c9f21708e42d2ab7b56c7e0eb8803729a3092f58886d897e6
 postgresql/postgresql-16.13.tar.gz:
   size: 32997122
   sha: sha256:9b767d0dfd156424b0b8f02b65eebb4b6958ef6413ebf7c8349e28b0b91e6b09
+postgresql/postgresql-18.3.tar.gz:
+  size: 29416481
+  sha: sha256:9e054ffd6e013da2c2c9a1bfd6e062c98875d340df080516551c96b9b0926a59
 python/Python-3.10.13.tgz:
   size: 26111363
   object_id: 24146d09-0663-49ec-601f-c006a1ca7d05
@@ -95,10 +94,9 @@ python/Python-3.14.2.tgz:
   size: 30601597
   object_id: ae7aff70-bfec-4130-552d-8f305502fc64
   sha: sha256:c609e078adab90e2c6bacb6afafacd5eaf60cd94cf670f1e159565725fcd448d
-redis/redis-7.2.5.tar.gz:
-  size: 3386454
-  object_id: 8def2b2c-5aa1-4cb7-4108-441f404cd293
-  sha: 996e83f5acbcc36a14ac099eec57af61b5fdb8ca
+redis/redis-7.2.7.tar.gz:
+  size: 3394075
+  sha: sha256:72c081e3b8cfae7144273d26d76736f08319000af46c01515cad5d29765cead5
 safe/safe-linux-amd64:
   size: 10378351
   object_id: 7335d7db-5f9a-4171-40ac-5fd9ce134e56
@@ -114,10 +112,9 @@ tcptrace/tcptrace:
   size: 2983
   object_id: 0975577c-b183-4e7f-bb13-8db0f1e49361
   sha: 1209e7f64081c4edcf067927e09587aa351bef4d
-tree/tree-2.1.3.tgz:
-  size: 61927
-  object_id: 298660a7-8c29-4202-5a2d-a7a797f5c80d
-  sha: abcd594d90fa77292f7c0d615884e60170023c54
+tree/tree-2.3.1.tgz:
+  size: 70339
+  sha: sha256:47ca786ed4ea4aa277cabd42b1a54635aca41b29e425e9229bd1317831f25665
 tshark/c-ares-1.34.6.tar.gz:
   size: 1017864
   object_id: 063b5d18-f495-42c4-49d9-992cb40b9036
