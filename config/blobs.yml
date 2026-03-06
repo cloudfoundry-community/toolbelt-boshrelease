@@ -158,6 +158,9 @@ tshark/ninja-1.13.2-linux.zip:
   size: 134040
   object_id: 58a01296-c662-44ad-7d20-1dfe3c400e8a
   sha: sha256:5749cbc4e668273514150a80e387a957f933c6ed3f5f11e03fb30955e2bbead6
+tshark/pkgconf-2.3.0.tar.xz:
+  size: 316160
+  sha: sha256:3a9080ac51d03615e7c1910a0a2a8df08424892b5f13b0628a204d3fcce0ea8b
 tshark/speexdsp-SpeexDSP-1.2.1.tar.gz:
   size: 894360
   object_id: d71e77f8-280d-4453-778e-54ebb9579e3c
