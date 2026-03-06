@@ -64,7 +64,7 @@ Tools On The Belt
 The following `toolbelt-*` jobs exist:
 
 - `toolbelt-boss` - The Blacksmith CLI, [boss][boss]
-- `toolbelt-cf` - The Cloud Foundry CLI, [cf][cf]
+- `toolbelt-cf` - The Cloud Foundry CLI, [cf][cf] (ships cf7 7.7.12 and cf8 8.8.0; `cf` symlinks to cf8)
 - `toolbelt-cfdot` - The Cloud Foundry Diego Operator Kit, [cfdot][cfdot] (DEPRECATED: archived Sept 2025, moved to diego-release)
 - `toolbelt-gaol` - [A CLI for Garden][gaol] (DEPRECATED: unmaintained since 2018)
 - `toolbelt-jq` - [jq][jq], it's sed for JSON.
@@ -73,7 +73,7 @@ The following `toolbelt-*` jobs exist:
 - `toolbelt-netsniff-ng` - The excellent [netsniff-ng][netsniff-ng] suite of networking diagnostics tools.  **LONG COMPILE TIMES**
 - `toolbelt-nload` - [nload][nload] Displays the current network usage
 - `toolbelt-nmap` - Network exploration tool and security scanner, [nmap][nmap].
-- `toolbelt-psql` - The [PostgreSQL CLI][psql].
+- `toolbelt-psql` - The [PostgreSQL CLI][psql] (ships psql16 16.13 and psql18 18.3; `psql` symlinks to psql16).
 - `toolbelt-redis` - The [Redis CLI][redis].
 - `toolbelt-safe` - [safe][safe] is an alternate client for Vault.
 - `toolbelt-screen` - [screen][screen] Screen is a full-screen window manager that multiplexes a physical terminal between several processes.
@@ -96,16 +96,19 @@ Compilation Times
 Some packages build from source and take significant time on first
 deploy (measured on the Jammy stemcell compilation VM):
 
-| Package            | Compile Time |
-|--------------------|--------------|
-| toolbelt-tshark    | ~27 min      |
-| toolbelt-psql      | ~5 min       |
-| toolbelt-netsniff-ng | long       |
+| Package              | Compile Time |
+|----------------------|--------------|
+| toolbelt-tshark      | ~27 min      |
+| toolbelt-psql        | ~10 min      |
+| toolbelt-mysql-client| ~5 min       |
+| toolbelt-nmap        | ~5 min       |
+| toolbelt-netsniff-ng | long         |
+| toolbelt-quick       | seconds      |
 
 Packages that install pre-built binaries (jq, safe, spruce, vault,
-boss, etc.) take only seconds to install. BOSH caches compiled
-packages, so subsequent deploys reuse the cache unless the package
-spec changes.
+boss, cf, redis, tree, etc.) take only seconds to install. BOSH caches
+compiled packages, so subsequent deploys reuse the cache unless the
+package spec changes.
 
 
 Playing on BOSH-lite

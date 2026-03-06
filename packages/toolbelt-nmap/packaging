@@ -2,10 +2,9 @@
 set -eu
 CPUS=$(grep -c ^processor /proc/cpuinfo)
 
-# retrieved from https://nmap.org/dist/nmap-7.95.tar.bz2
-# on Sun Dec  8 2024
+# retrieved from https://nmap.org/dist/nmap-7.98.tar.bz2
 
-VERSION=7.95
+VERSION=7.98
 tar -xjvf nmap/nmap-${VERSION}.tar.bz2
 cd nmap-${VERSION}
 ./configure

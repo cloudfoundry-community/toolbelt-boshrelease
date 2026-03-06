@@ -2,4 +2,4 @@
 name: toolbelt-mysql-client
 dependencies: []
 files:
-  - mysql/*
+  - mysql/mariadb-11.4.10.tar.gz
