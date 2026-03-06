@@ -1,16 +1,13 @@
 set -e # exit immediately if a simple command exits with a non-zero status
 set -u # report the usage of uninitialized variables
+set -x
 
 # Detect # of CPUs so make jobs can be parallelized
 CPUS=$(grep -c ^processor /proc/cpuinfo)
  # Available variables
 # $BOSH_COMPILE_TARGET - where this package & spec'd source files are available
 # $BOSH_INSTALL_TARGET - where you copy/install files to be included in package
-# uncomment export BOSH_INSTALL_TARGET for local testing
-# export BOSH_INSTALL_TARGET=$PWD/install
-# comment the export HOME line for local testing
 export HOME=/var/vcap
-# export HOME=$PWD
 export PKG_CONFIG_PATH=${BOSH_INSTALL_TARGET}/lib/pkgconfig
 export LD_LIBRARY_PATH=${BOSH_INSTALL_TARGET}/lib
 export INCLUDE_PATH=${BOSH_INSTALL_TARGET}/include
@@ -19,7 +16,7 @@ export CPPFLAGS=-I${INCLUDE_PATH}
 export PIP_ROOT_USER_ACTION=ignore
 export PATH="${BOSH_INSTALL_TARGET}/bin:${BOSH_INSTALL_TARGET}/sbin:${PATH}"
 
-# Build libffi 3.4.6
+# Build libffi 3.4.6 (required by Python and glib)
 # https://github.com/libffi/libffi/releases/download/v3.4.6/libffi-3.4.6.tar.gz
 tar -xzf tshark/libffi-3.4.6.tar.gz
 (cd libffi-3.4.6
@@ -27,6 +24,7 @@ tar -xzf tshark/libffi-3.4.6.tar.gz
  make -j${CPUS} && \
  make install) || exit 1
 
+# Build Python 3.14.2 (required for meson build system)
 tar -xzf python/Python-3.14.2.tgz
 (cd Python-3.14.2
   export C_INCLUDE_PATH="${BOSH_INSTALL_TARGET}/include"
@@ -39,41 +37,111 @@ tar -xzf python/Python-3.14.2.tgz
 # Have python use BOSH_INSTALL_TARGET instead of $HOME/.local/ for installing python packages
 export PYTHONUSERBASE="${BOSH_INSTALL_TARGET}"
 
-# Install meson build system
-# download https://github.com/mesonbuild/meson/releases/tag/1.10.1
+# Install meson build system (required by glib 2.82+)
+# https://github.com/mesonbuild/meson/releases/tag/1.10.1
 pip3 install --root-user-action=ignore --user tshark/meson-1.10.1.tar.gz
 
 # Install ninja build system for meson
-# Rename the blob to contain the version number in the filename (ninja-1.13.2-linux.zip)
-# download https://github.com/ninja-build/ninja/releases/download/v1.13.2/ninja-linux.zip
-
+# https://github.com/ninja-build/ninja/releases/download/v1.13.2/ninja-linux.zip
 unzip tshark/ninja-1.13.2-linux.zip
 mv ninja ${BOSH_INSTALL_TARGET}/bin
+
+# Create a minimal pkg-config wrapper script. The stemcell has no pkg-config
+# binary, which prevents meson from discovering our installed libraries.
+# This script reads the .pc files that our builds install.
+cat > ${BOSH_INSTALL_TARGET}/bin/pkg-config <<'PKGCONFIG'
+#!/bin/sh
+# Minimal pkg-config implementation for BOSH stemcell compilation
+# Reads .pc files from directories listed in PKG_CONFIG_PATH
+
+resolve_vars() {
+  file="$1"
+  result="$2"
+  while IFS= read -r line; do
+    case "$line" in
+      [A-Za-z_]*=*)
+        varname="${line%%=*}"
+        varval="${line#*=}"
+        while echo "$varval" | grep -q '\${'; do
+          ref=$(echo "$varval" | sed 's/.*\${\([^}]*\)}.*/\1/')
+          refval=$(grep "^${ref}=" "$file" | head -1 | sed "s/^${ref}=//")
+          varval=$(echo "$varval" | sed "s|\${${ref}}|${refval}|g")
+        done
+        result=$(echo "$result" | sed "s|\${${varname}}|${varval}|g")
+        ;;
+    esac
+  done < "$file"
+  echo "$result"
+}
+
+find_pc() {
+  IFS=:
+  for d in ${PKG_CONFIG_PATH:-}; do
+    if [ -f "$d/$1.pc" ]; then
+      echo "$d/$1.pc"
+      return 0
+    fi
+  done
+  return 1
+}
+
+get_field() {
+  raw=$(grep "^$2:" "$1" | head -1 | sed "s/^$2:[[:space:]]*//")
+  resolve_vars "$1" "$raw"
+}
+
+mode=""
+version_check=""
+packages=""
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --version) echo "0.29.2"; exit 0 ;;
+    --cflags) mode="${mode} cflags" ;;
+    --libs) mode="${mode} libs" ;;
+    --modversion) mode="${mode} modversion" ;;
+    --exists) mode="exists" ;;
+    --variable=*) mode="variable"; varname="${1#--variable=}" ;;
+    --atleast-version=*) mode="exists"; version_check="${1#--atleast-version=}" ;;
+    --print-errors|--silence-errors|--errors-to-stdout) ;;
+    --static) ;;
+    --*) ;;
+    *) packages="${packages} $1" ;;
+  esac
+  shift
+done
+
+output=""
+for pkg in $packages; do
+  pc=$(find_pc "$pkg") || exit 1
+  for m in $mode; do
+    case "$m" in
+      cflags) output="$output $(get_field "$pc" "Cflags")" ;;
+      libs) output="$output $(get_field "$pc" "Libs")" ;;
+      modversion) output="$output $(get_field "$pc" "Version")" ;;
+      exists) find_pc "$pkg" >/dev/null 2>&1 || exit 1 ;;
+      variable) output="$output $(resolve_vars "$pc" "\${${varname}}")" ;;
+    esac
+  done
+done
+[ -n "$output" ] && echo "$output"
+exit 0
+PKGCONFIG
+chmod +x ${BOSH_INSTALL_TARGET}/bin/pkg-config
 
 # Build glib 2.82.2 - requires meson build system
 # https://download.gnome.org/sources/glib/2.82/glib-2.82.2.tar.xz
 tar -xJf tshark/glib-2.82.2.tar.xz
 (cd glib-2.82.2/
- # glib 2.82+ requires meson/ninja, fall back to older version if not available
- if command -v meson >/dev/null 2>&1; then
-   meson setup builddir --wipe --prefix=${BOSH_INSTALL_TARGET} && \
-   meson compile -C builddir -j${CPUS} && \
-   meson install -C builddir 
- else
-   # If meson not available, this will fail - glib 2.82+ requires meson
-   echo "ERROR: glib 2.82+ requires meson build system"
-   exit 1
- fi
-) || (echo $?; exit 1)
+ meson setup builddir --prefix=${BOSH_INSTALL_TARGET} --libdir=${BOSH_INSTALL_TARGET}/lib && \
+ meson compile -C builddir -j${CPUS} && \
+ meson install -C builddir
+) || exit 1
 
-# Build speexdsp 1.2.1
-# https://github.com/xiph/speexdsp/releases/tag/SpeexDSP-1.2.1
-tar -xzf tshark/speexdsp-SpeexDSP-1.2.1.tar.gz
-(cd speexdsp-SpeexDSP-1.2.1
- ./autogen.sh
- ./configure --prefix ${BOSH_INSTALL_TARGET} && \
- make -j${CPUS} && \
- make install) || exit 1
+# speexdsp skipped - requires autotools (autogen.sh) which are not on the
+# stemcell compilation VM. It is optional for tshark (only needed for audio
+# codec analysis in VoIP). If needed later, replace the blob with the official
+# release tarball from https://ftp.osuosl.org/pub/xiph/releases/speex/ which
+# includes a pre-generated configure script.
 
 # Build c-ares 1.34.6
 # https://c-ares.org/download/
@@ -109,17 +177,16 @@ tar -xjf tshark/libgcrypt-1.11.2.tar.bz2
 
 # Build Wireshark 4.4.2 - uses cmake instead of autotools
 # https://www.wireshark.org/download/src/all-versions/wireshark-4.4.2.tar.xz
-# -DENABLE_PCAP=OFF
-
 tar -xJf tshark/wireshark-4.4.2.tar.xz
 (cd wireshark-4.4.2
- # Wireshark 4.x requires cmake
  if command -v cmake >/dev/null 2>&1; then
    export C_INCLUDE_PATH="${BOSH_INSTALL_TARGET}/include"
    mkdir -p build && cd build
    cmake .. \
      -DCMAKE_INSTALL_PREFIX=${BOSH_INSTALL_TARGET} \
      -DBUILD_wireshark=OFF \
+     -DBUILD_sharkd=OFF \
+     -DBUILD_logray=OFF \
      -DENABLE_APPLICATION_BUNDLE=OFF \
      -DENABLE_QT=OFF \
      -DBUILD_randpkt=OFF && \
