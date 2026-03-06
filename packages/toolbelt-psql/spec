@@ -3,4 +3,3 @@ name: toolbelt-psql
 dependencies: []
 files:
   - postgresql/postgresql-16.6.tar.gz
-  - postgresql/icu4c-4_8_2-src.tgz
