@@ -18,18 +18,16 @@ gaol/gaol-linux64:
   size: 8700442
   object_id: 6176383a-4259-4974-7ab8-7ca840f104c3
   sha: sha256:ee37a2dfc8ffc3c3b0a7480bb9c4ec2813f37a6abcf0b5a4764cf357963e6482
-jq/jq-1.7.1-linux-amd64:
-  size: 2319424
-  object_id: 6ddfc6e0-3ff2-4767-724d-110348250785
-  sha: 93b97cad19f57d122abc584aa215c7fb8b4f34bb
+jq/jq-1.8.1-linux-amd64:
+  size: 2255816
+  sha: sha256:020468de7539ce70ef1bceaf7cde2e8c4f2ca6c3afb84642aabc5c97d9fc2a0d
 mysql/mariadb-11.4.4.tar.gz:
   size: 111017581
   object_id: cc3dc013-a78e-4582-403e-9ea404fe1c5e
   sha: 798be151f2f580d4b4e39888f07147d6d7afc1f6
-nats/nats-0.1.5-linux-amd64.zip:
-  size: 9207220
-  object_id: ea5c3917-7e91-440d-5692-7dfb5c4e3b64
-  sha: 1f7942053d3e5536be9c64a52afe38b776cce9ba
+nats/nats-0.3.1-linux-amd64.zip:
+  size: 11853415
+  sha: sha256:f48374be6fc903b954b90b729321772bdd5bc745234edf3d31cd17ab79e85629
 ncurses/ncurses-6.3.tar.gz:
   size: 3583550
   object_id: 66dc7a7e-b729-4c87-4ae0-e32c10529fb1
@@ -86,10 +84,9 @@ nmap/nmap-7.95.tar.bz2:
   size: 11717069
   object_id: 410f2439-76fe-4fe6-41d9-133212b58584
   sha: dbeea6dacc7d615906846b8421b7d8ccd662740b
-postgresql/postgresql-16.6.tar.gz:
-  size: 32715613
-  object_id: 781ba42a-df09-4582-7155-174cc55f9651
-  sha: f7c989f4347765b83fdf5b18d2214c77874d3574
+postgresql/postgresql-16.13.tar.gz:
+  size: 32997122
+  sha: sha256:9b767d0dfd156424b0b8f02b65eebb4b6958ef6413ebf7c8349e28b0b91e6b09
 python/Python-3.10.13.tgz:
   size: 26111363
   object_id: 24146d09-0663-49ec-601f-c006a1ca7d05
@@ -106,10 +103,9 @@ safe/safe-linux-amd64:
   size: 10378351
   object_id: 7335d7db-5f9a-4171-40ac-5fd9ce134e56
   sha: 7dd24619a4d2f1468cac44c918e455f679d970aa
-screen/screen-4.8.0.tar.gz:
-  size: 854854
-  object_id: 5be7cfc0-c65a-4ea9-562e-fdc9ab5d726f
-  sha: sha256:6e11b13d8489925fde25dfb0935bf6ed71f9eb47eff233a181e078fde5655aa1
+screen/screen-5.0.1.tar.gz:
+  size: 897507
+  sha: sha256:2dae36f4db379ffcd14b691596ba6ec18ac3a9e22bc47ac239789ab58409869d
 spruce/spruce-linux-amd64:
   size: 30125863
   object_id: d7bef635-b668-443e-5e79-cbe41292e286

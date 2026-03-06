@@ -8,10 +8,10 @@ CPUS=$(grep -c ^processor /proc/cpuinfo)
 # $BOSH_INSTALL_TARGET - where you copy/install files to be included in package
 export HOME=/var/vcap
 
-# download from https://ftp.postgresql.org/pub/source/v16.6/postgresql-16.6.tar.gz
-# shasum: https://ftp.postgresql.org/pub/source/v16.6/postgresql-16.6.tar.gz.sha256
+# download from https://ftp.postgresql.org/pub/source/v16.13/postgresql-16.13.tar.gz
+# shasum: https://ftp.postgresql.org/pub/source/v16.13/postgresql-16.13.tar.gz.sha256
 
-VERSION=16.6
+VERSION=16.13
 
 tar -zxf "postgresql/postgresql-${VERSION}.tar.gz"
 

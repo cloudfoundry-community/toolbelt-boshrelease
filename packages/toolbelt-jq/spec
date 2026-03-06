@@ -2,5 +2,5 @@
 name: toolbelt-jq
 dependencies: []
 files:
-    # https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-amd64
-  - jq/jq-1.7.1-linux-amd64
+    # https://github.com/jqlang/jq/releases/download/jq-1.8.1/jq-linux-amd64
+  - jq/jq-1.8.1-linux-amd64
