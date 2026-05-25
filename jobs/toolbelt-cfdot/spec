@@ -1,8 +1,0 @@
----
-name: toolbelt-cfdot
-packages:
-  - toolbelt-cfdot
-templates:
-  bin/run: bin/run
-
-properties: {}
