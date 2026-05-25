@@ -3,7 +3,6 @@ name: toolbelt-everything
 packages:
   - toolbelt-boss
   - toolbelt-cf
-  - toolbelt-cfdot
   - toolbelt-gaol
   - toolbelt-jq
   - toolbelt-nload
@@ -18,7 +17,7 @@ packages:
   - toolbelt-spruce
   - toolbelt-tcptrace
   - toolbelt-tree
-#  - toolbelt-tshark
+  - toolbelt-tshark
   - toolbelt-vault
 templates:
   bin/run: bin/run
