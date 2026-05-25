@@ -65,7 +65,7 @@ The following `toolbelt-*` jobs exist:
 
 - `toolbelt-boss` - The Blacksmith CLI, [boss][boss]
 - `toolbelt-cf` - The Cloud Foundry CLI, [cf][cf] (ships cf7 7.7.12 and cf8 8.8.0; `cf` symlinks to cf8)
-- `toolbelt-cfdot` - The Cloud Foundry Diego Operator Kit, [cfdot][cfdot] (DEPRECATED: archived Sept 2025, moved to diego-release)
+- `toolbelt-cfdot` - This diego tool now ships with the diego bosh release [cfdot][cfdot].  [cfdot usage documentation][cfdot-usage].
 - `toolbelt-gaol` - [A CLI for Garden][gaol] (DEPRECATED: unmaintained since 2018)
 - `toolbelt-jq` - [jq][jq], it's sed for JSON.
 - `toolbelt-mysql-client` - The [MariaDB CLI][mysql].
@@ -127,7 +127,8 @@ Then, you can `bosh ssh` and see what it is like using Toolbelt!
 
 [boss]:        https://github.com/blacksmith-community/boss
 [cf]:          https://github.com/cloudfoundry/cli
-[cfdot]:       https://github.com/cloudfoundry/cfdot
+[cfdot]:       https://github.com/cloudfoundry/diego-release
+[cfdot-usage]: https://github.com/cloudfoundry/diego-release/blob/develop/docs/040-cfdot-setup.md
 [gaol]:        https://github.com/contraband/gaol
 [jq]:          https://jqlang.github.io/jq/
 [mysql]:       https://mariadb.org/

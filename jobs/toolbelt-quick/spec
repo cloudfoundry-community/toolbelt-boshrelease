@@ -2,7 +2,6 @@
 name: toolbelt-quick
 packages:
   - toolbelt-cf
-  - toolbelt-cfdot
   - toolbelt-gaol
   - toolbelt-jq
   - toolbelt-nats
