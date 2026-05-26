@@ -12,4 +12,4 @@ files:
   - tshark/libpcap-1.10.5.tar.gz
   - tshark/libgpg-error-1.58.tar.bz2
   - tshark/libgcrypt-1.11.2.tar.bz2
-  - tshark/wireshark-4.4.2.tar.xz
+  - tshark/wireshark-4.6.6.tar.xz

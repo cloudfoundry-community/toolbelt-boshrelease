@@ -66,7 +66,7 @@ set -x
 #   tshark/libpcap-1.10.5.tar.gz        https://www.tcpdump.org/release/
 #   tshark/libgpg-error-1.58.tar.bz2    https://gnupg.org/ftp/gcrypt/libgpg-error/
 #   tshark/libgcrypt-1.11.2.tar.bz2     https://gnupg.org/ftp/gcrypt/libgcrypt/
-#   tshark/wireshark-4.4.2.tar.xz       https://www.wireshark.org/download/src/all-versions/
+#   tshark/wireshark-4.6.6.tar.xz       https://www.wireshark.org/download/src/all-versions/
 #   python/Python-3.14.2.tgz            https://www.python.org/downloads/source/
 #
 # ============================================================================
@@ -195,7 +195,7 @@ tar -xjf tshark/libgcrypt-1.11.2.tar.bz2
  make install) || exit 1
 
 # ============================================================================
-# Build Wireshark 4.4.2 (tshark CLI only)
+# Build Wireshark 4.6.6 (tshark CLI only)
 # ============================================================================
 # cmake flags:
 #   BUILD_wireshark=OFF  - skip GUI (requires Qt)
@@ -215,9 +215,9 @@ tar -xjf tshark/libgcrypt-1.11.2.tar.bz2
 # If needed later, use the release tarball from
 # https://ftp.osuosl.org/pub/xiph/releases/speex/ which includes a
 # pre-generated configure script.
-# https://www.wireshark.org/download/src/all-versions/wireshark-4.4.2.tar.xz
-tar -xJf tshark/wireshark-4.4.2.tar.xz
-(cd wireshark-4.4.2
+# https://www.wireshark.org/download/src/all-versions/wireshark-4.6.6.tar.xz
+tar -xJf tshark/wireshark-4.6.6.tar.xz
+(cd wireshark-4.6.6
  if command -v cmake >/dev/null 2>&1; then
    export C_INCLUDE_PATH="${BOSH_INSTALL_TARGET}/include"
    mkdir -p build && cd build

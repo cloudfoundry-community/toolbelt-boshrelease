@@ -4,13 +4,13 @@ This file documents the dependency relationships and version choices for
 each tshark build. The packaging script builds these in order; the spec
 file lists the corresponding blobs.
 
-## Wireshark 4.4.2 (current)
+## Wireshark 4.6.6 (current)
 
 Stemcell: Ubuntu Jammy (22.04)
 - glibc 2.35, glib 2.72 (too old for Wireshark 4.x which requires glib 2.76+)
 
 Note: Ubuntu Noble (24.04) stemcell is planned. Noble ships glib 2.80 and
-glibc 2.39. Wireshark 4.4.2 requires glib 2.76+, so Noble's system glib
+glibc 2.39. Wireshark 4.6.6 requires glib 2.76+, so Noble's system glib
 may be sufficient. When migrating to Noble, evaluate whether glib (and its
 build chain: meson, ninja, pkgconf, libffi, Python) can be dropped from
 this build in favor of the system version.
