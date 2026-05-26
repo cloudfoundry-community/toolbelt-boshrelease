@@ -118,10 +118,9 @@ tcptrace/tcptrace:
   size: 2983
   object_id: 0975577c-b183-4e7f-bb13-8db0f1e49361
   sha: 1209e7f64081c4edcf067927e09587aa351bef4d
-tree/tree-2.3.1.tgz:
-  size: 70339
-  object_id: c11c62b4-a123-4f3f-4cbc-b6e1ac2e9b8a
-  sha: sha256:47ca786ed4ea4aa277cabd42b1a54635aca41b29e425e9229bd1317831f25665
+tree/tree-2.3.2.tgz:
+  size: 70885
+  sha: sha256:6b941dd6cbecfb4d3250700e4d08d8e0c251488981dd4868b90d744234300e21
 tshark/c-ares-1.34.6.tar.gz:
   size: 1017864
   object_id: 063b5d18-f495-42c4-49d9-992cb40b9036
