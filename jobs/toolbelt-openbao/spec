@@ -1,0 +1,8 @@
+---
+name: toolbelt-openbao
+packages:
+  - toolbelt-openbao
+templates:
+  bin/run: bin/run
+
+properties: {}

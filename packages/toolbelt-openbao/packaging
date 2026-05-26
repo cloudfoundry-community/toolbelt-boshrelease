@@ -1,0 +1,18 @@
+set -e # exit immediately if a simple command exits with a non-zero status
+set -u # report the usage of uninitialized variables
+
+# OpenBao — Linux Foundation fork of MPL-era HashiCorp Vault.
+# link: https://github.com/openbao/openbao/releases
+# openbao version: 2.5.4
+# download from https://github.com/openbao/openbao/releases/download/v2.5.4/bao_2.5.4_Linux_x86_64.tar.gz
+#
+# Note: binary inside the tarball is named `bao`, not `vault` or `openbao`.
+VERSION="2.5.4"
+
+export HOME=/var/vcap
+
+cd openbao
+tar -xzf bao_${VERSION}_Linux_x86_64.tar.gz
+mkdir -p ${BOSH_INSTALL_TARGET}/bin
+cp bao ${BOSH_INSTALL_TARGET}/bin
+chmod 755 ${BOSH_INSTALL_TARGET}/bin/bao

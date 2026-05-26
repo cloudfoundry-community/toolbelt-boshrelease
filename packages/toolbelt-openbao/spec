@@ -1,0 +1,6 @@
+---
+name: toolbelt-openbao
+dependencies: []
+files:
+    # from https://github.com/openbao/openbao/releases
+  - openbao/bao_2.5.4_Linux_x86_64.tar.gz

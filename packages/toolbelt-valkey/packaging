@@ -1,0 +1,22 @@
+set -e # exit immediately if a simple command exits with a non-zero status
+set -u # report the usage of uninitialized variables
+
+# Valkey — Linux Foundation fork of OSS Redis (last AGPLv3/BSD line before
+# the SSPL/RSALv2 relicense).
+# link: https://github.com/valkey-io/valkey/releases
+# valkey version: 9.1.0
+# download from https://github.com/valkey-io/valkey/archive/refs/tags/9.1.0.tar.gz
+
+# Detect # of CPUs so make jobs can be parallelized
+CPUS=$(grep -c ^processor /proc/cpuinfo)
+
+export HOME=/var/vcap
+
+VERSION=9.1.0
+tar -xzvf valkey/valkey-${VERSION}.tar.gz
+cd valkey-${VERSION}
+make -j${CPUS}
+
+mkdir -p ${BOSH_INSTALL_TARGET}/bin
+cp src/valkey-cli ${BOSH_INSTALL_TARGET}/bin/valkey-cli
+ln -s ${BOSH_INSTALL_TARGET}/bin/valkey-cli ${BOSH_INSTALL_TARGET}/bin/valkey
