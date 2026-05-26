@@ -23,10 +23,9 @@ mysql/mariadb-11.4.10.tar.gz:
   size: 120394058
   object_id: c63754b8-e3af-45c6-632d-3621c466586d
   sha: sha256:14783ddc5edd966ff05aa0efd5ed6d3d369ed5b9e4080a448f00f87a9f0a4a6b
-nats/nats-0.3.1-linux-amd64.zip:
-  size: 11853415
-  object_id: 7f827aa3-643f-40bf-5604-1831a08d0d7f
-  sha: sha256:f48374be6fc903b954b90b729321772bdd5bc745234edf3d31cd17ab79e85629
+nats/nats-0.4.0-linux-amd64.zip:
+  size: 9609864
+  sha: sha256:8dbd437c826b953dbd7432cf890ef22ba3c33dccc3dce5e71b3e8d055427849c
 ncurses/ncurses-6.3.tar.gz:
   size: 3583550
   object_id: 66dc7a7e-b729-4c87-4ae0-e32c10529fb1
