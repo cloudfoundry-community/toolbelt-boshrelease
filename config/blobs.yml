@@ -4,9 +4,11 @@ boss/boss-linux-amd64:
   sha: sha256:752b35912e0cb5ba2387c0c7a50a30c3c2380c02cd6cbd1bd34e56476384f22b
 cf-cli/cf7-cli_7.7.12_linux_x86-64.tgz:
   size: 7624800
+  object_id: 0bf8fb02-b7c4-424b-4a8c-94f7c8008371
   sha: sha256:c507d0191304d29fdda04ad35147d47a7ca0bd801fb9a840c15ddb6eac023e06
 cf-cli/cf8-cli_8.8.0_linux_x86-64.tgz:
   size: 9199900
+  object_id: 7829bd6a-cdec-4b4d-6323-453d58503319
   sha: sha256:fa33d65327e72bc90d9d6f3751aa0a8db3f8168f011740649fa9519c8f0111bb
 cfdot/cfdot-linux64:
   size: 24614808
@@ -18,12 +20,15 @@ gaol/gaol-linux64:
   sha: sha256:ee37a2dfc8ffc3c3b0a7480bb9c4ec2813f37a6abcf0b5a4764cf357963e6482
 jq/jq-1.8.1-linux-amd64:
   size: 2255816
+  object_id: acf22495-3aac-41c4-6869-33be56c388e0
   sha: sha256:020468de7539ce70ef1bceaf7cde2e8c4f2ca6c3afb84642aabc5c97d9fc2a0d
 mysql/mariadb-11.4.10.tar.gz:
   size: 120394058
+  object_id: c63754b8-e3af-45c6-632d-3621c466586d
   sha: sha256:14783ddc5edd966ff05aa0efd5ed6d3d369ed5b9e4080a448f00f87a9f0a4a6b
 nats/nats-0.3.1-linux-amd64.zip:
   size: 11853415
+  object_id: 7f827aa3-643f-40bf-5604-1831a08d0d7f
   sha: sha256:f48374be6fc903b954b90b729321772bdd5bc745234edf3d31cd17ab79e85629
 ncurses/ncurses-6.3.tar.gz:
   size: 3583550
@@ -79,12 +84,19 @@ nload/nload-0.7.4.tar.gz:
   sha: bb0a168c93c588ad4fd5e3a653b3620b79ada1e8
 nmap/nmap-7.98.tar.bz2:
   size: 12273108
+  object_id: 31803e8e-f91e-4b2e-7ff8-7e4574417fcf
   sha: sha256:ce847313eaae9e5c9f21708e42d2ab7b56c7e0eb8803729a3092f58886d897e6
+openbao/bao_2.5.4_Linux_x86_64.tar.gz:
+  size: 72596286
+  object_id: 181dbbcd-989c-41bf-4ff3-23a988927559
+  sha: sha256:7690853adccaf9bc413768e6bfed4d0ac5222b67f808ba71af0930189f22f94f
 postgresql/postgresql-16.13.tar.gz:
   size: 32997122
+  object_id: 4071ac2b-28b5-4ec4-7ce6-6850285bdf60
   sha: sha256:9b767d0dfd156424b0b8f02b65eebb4b6958ef6413ebf7c8349e28b0b91e6b09
 postgresql/postgresql-18.3.tar.gz:
   size: 29416481
+  object_id: ec9997bc-9eca-4da1-7291-b598091b15c3
   sha: sha256:9e054ffd6e013da2c2c9a1bfd6e062c98875d340df080516551c96b9b0926a59
 python/Python-3.10.13.tgz:
   size: 26111363
@@ -96,6 +108,7 @@ python/Python-3.14.2.tgz:
   sha: sha256:c609e078adab90e2c6bacb6afafacd5eaf60cd94cf670f1e159565725fcd448d
 redis/redis-7.2.7.tar.gz:
   size: 3394075
+  object_id: c9ad80e7-8902-4e7f-7623-bd7e3aa54ff8
   sha: sha256:72c081e3b8cfae7144273d26d76736f08319000af46c01515cad5d29765cead5
 safe/safe-linux-amd64:
   size: 10378351
@@ -103,6 +116,7 @@ safe/safe-linux-amd64:
   sha: 7dd24619a4d2f1468cac44c918e455f679d970aa
 screen/screen-5.0.1.tar.gz:
   size: 897507
+  object_id: 7ae7735b-23ac-4d3a-65d3-509e2ef2d4f6
   sha: sha256:2dae36f4db379ffcd14b691596ba6ec18ac3a9e22bc47ac239789ab58409869d
 spruce/spruce-linux-amd64:
   size: 27798277
@@ -114,6 +128,7 @@ tcptrace/tcptrace:
   sha: 1209e7f64081c4edcf067927e09587aa351bef4d
 tree/tree-2.3.1.tgz:
   size: 70339
+  object_id: c11c62b4-a123-4f3f-4cbc-b6e1ac2e9b8a
   sha: sha256:47ca786ed4ea4aa277cabd42b1a54635aca41b29e425e9229bd1317831f25665
 tshark/c-ares-1.34.6.tar.gz:
   size: 1017864
@@ -149,11 +164,16 @@ tshark/ninja-1.13.2-linux.zip:
   sha: sha256:5749cbc4e668273514150a80e387a957f933c6ed3f5f11e03fb30955e2bbead6
 tshark/pkgconf-2.3.0.tar.xz:
   size: 316160
+  object_id: 2bc28dbf-66ce-4716-5caf-79eec1ae4793
   sha: sha256:3a9080ac51d03615e7c1910a0a2a8df08424892b5f13b0628a204d3fcce0ea8b
 tshark/wireshark-4.4.2.tar.xz:
   size: 46763620
   object_id: 7001f929-312a-4f61-401e-60da07fd512a
   sha: sha256:6053d97499c83feb87ce1d7f732d9c889c6c18bb334de67e65dca11483b0514e
+valkey/valkey-9.1.0.tar.gz:
+  size: 4375381
+  object_id: 92730ec1-448f-4be2-7e27-1bf1555d397b
+  sha: sha256:7789fe1df257774457bafb4c1d56c9f7020c3879a7f5b4234af9030b2bd82dfd
 vault/vault_1.14.10_linux_amd64.zip:
   size: 130077125
   object_id: 2e353ec9-2aa7-43a7-706d-35f2ba364e44
