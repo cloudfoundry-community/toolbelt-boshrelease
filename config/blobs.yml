@@ -113,7 +113,6 @@ screen/screen-5.0.1.tar.gz:
   sha: sha256:2dae36f4db379ffcd14b691596ba6ec18ac3a9e22bc47ac239789ab58409869d
 spruce/spruce-linux-amd64:
   size: 30125863
-  object_id: d7bef635-b668-443e-5e79-cbe41292e286
   sha: sha256:a7b468898530430dd58c9c8bcb2f66c4f1a1d30f8560aadc5b5eeb5fe31c9a45
 tcptrace/tcptrace:
   size: 2983
