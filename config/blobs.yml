@@ -85,14 +85,12 @@ openbao/bao_2.5.4_Linux_x86_64.tar.gz:
   size: 72596286
   object_id: 181dbbcd-989c-41bf-4ff3-23a988927559
   sha: sha256:7690853adccaf9bc413768e6bfed4d0ac5222b67f808ba71af0930189f22f94f
-postgresql/postgresql-16.13.tar.gz:
-  size: 32997122
-  object_id: 4071ac2b-28b5-4ec4-7ce6-6850285bdf60
-  sha: sha256:9b767d0dfd156424b0b8f02b65eebb4b6958ef6413ebf7c8349e28b0b91e6b09
-postgresql/postgresql-18.3.tar.gz:
-  size: 29416481
-  object_id: ec9997bc-9eca-4da1-7291-b598091b15c3
-  sha: sha256:9e054ffd6e013da2c2c9a1bfd6e062c98875d340df080516551c96b9b0926a59
+postgresql/postgresql-16.14.tar.gz:
+  size: 33046588
+  sha: sha256:ca18d43510bbb09a271383e1aa705b05b76bc8e9400f9857178ba8ec54cf461a
+postgresql/postgresql-18.4.tar.gz:
+  size: 29477735
+  sha: sha256:450aa8f2da06c46f8221916e82ae06b04fb1040f8f00643dbf8b7d663caac0b9
 python/Python-3.10.13.tgz:
   size: 26111363
   object_id: 24146d09-0663-49ec-601f-c006a1ca7d05
