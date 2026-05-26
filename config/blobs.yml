@@ -10,10 +10,6 @@ cf-cli/cf8-cli_8.18.3_linux_x86-64.tgz:
   size: 9765051
   object_id: 15e2acd1-da01-4ff9-4c7c-98a7a2dc90ea
   sha: sha256:8942e2c3c98e83c7e14edbce939876bba7ff12a26f0f722c5aa5b079d357d50b
-cfdot/cfdot-linux64:
-  size: 24614808
-  object_id: b673e243-7c22-4fd3-5ec2-945d8557c4f1
-  sha: sha256:3c4bfbab50aba7e21aa4d0617990f6f59c1ad391b092edf65f1cd5eae95741b7
 gaol/gaol-linux64:
   size: 8700442
   object_id: 6176383a-4259-4974-7ab8-7ca840f104c3
@@ -30,10 +26,6 @@ nats/nats-0.4.0-linux-amd64.zip:
   size: 9609864
   object_id: 07349793-96cb-46fd-7910-62d5960e4ab4
   sha: sha256:8dbd437c826b953dbd7432cf890ef22ba3c33dccc3dce5e71b3e8d055427849c
-ncurses/ncurses-6.3.tar.gz:
-  size: 3583550
-  object_id: 66dc7a7e-b729-4c87-4ae0-e32c10529fb1
-  sha: sha256:97fc51ac2b085d4cde31ef4d2c3122c21abc217e9090a43a30fc5ec21684e059
 netsniff-ng/libcli-1.10.7.tar.gz:
   size: 55713
   object_id: 3385619c-a44f-4f1e-725d-9157a9718192
@@ -98,10 +90,6 @@ postgresql/postgresql-18.4.tar.gz:
   size: 29477735
   object_id: 03df9da8-ca12-48c5-7714-efbaa0664d38
   sha: sha256:450aa8f2da06c46f8221916e82ae06b04fb1040f8f00643dbf8b7d663caac0b9
-python/Python-3.10.13.tgz:
-  size: 26111363
-  object_id: 24146d09-0663-49ec-601f-c006a1ca7d05
-  sha: sha256:698ec55234c1363bd813b460ed53b0f108877c7a133d48bde9a50a1eb57b7e65
 python/Python-3.14.2.tgz:
   size: 30601597
   object_id: ae7aff70-bfec-4130-552d-8f305502fc64
