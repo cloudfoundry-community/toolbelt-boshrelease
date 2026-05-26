@@ -8,14 +8,14 @@ CPUS=$(grep -c ^processor /proc/cpuinfo)
 # $BOSH_INSTALL_TARGET - where you copy/install files to be included in package
 export HOME=/var/vcap
 
-# download from https://ftp.postgresql.org/pub/source/v16.13/postgresql-16.13.tar.gz
-# download from https://ftp.postgresql.org/pub/source/v18.3/postgresql-18.3.tar.gz
+# download from https://ftp.postgresql.org/pub/source/v16.14/postgresql-16.14.tar.gz
+# download from https://ftp.postgresql.org/pub/source/v18.4/postgresql-18.4.tar.gz
 
 mkdir -p ${BOSH_INSTALL_TARGET}/bin
 mkdir -p ${BOSH_INSTALL_TARGET}/lib
 
 # --- Build psql 16 ---
-VERSION_16=16.13
+VERSION_16=16.14
 TMPDIR_16=$(mktemp -d)
 
 tar -zxf "postgresql/postgresql-${VERSION_16}.tar.gz"
@@ -37,7 +37,7 @@ cp -a "${TMPDIR_16}"/lib/*.so* "${BOSH_INSTALL_TARGET}/lib/" 2>/dev/null || true
 echo "Installed psql16 (PostgreSQL ${VERSION_16})"
 
 # --- Build psql 18 ---
-VERSION_18=18.3
+VERSION_18=18.4
 TMPDIR_18=$(mktemp -d)
 
 tar -zxf "postgresql/postgresql-${VERSION_18}.tar.gz"
