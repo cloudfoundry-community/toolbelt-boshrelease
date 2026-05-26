@@ -10,6 +10,7 @@ packages:
   - toolbelt-nats
   - toolbelt-mysql-client
 #  - toolbelt-netsniff-ng
+  - toolbelt-openbao
   - toolbelt-psql
   - toolbelt-redis
   - toolbelt-safe
@@ -18,6 +19,7 @@ packages:
   - toolbelt-tcptrace
   - toolbelt-tree
   - toolbelt-tshark
+  - toolbelt-valkey
   - toolbelt-vault
 templates:
   bin/run: bin/run
