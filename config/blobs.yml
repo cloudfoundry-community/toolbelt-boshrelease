@@ -1,7 +1,6 @@
 boss/boss-linux-amd64:
-  size: 7279015
-  object_id: 3277b45a-318b-4361-79eb-14b6719387ae
-  sha: sha256:752b35912e0cb5ba2387c0c7a50a30c3c2380c02cd6cbd1bd34e56476384f22b
+  size: 9653586
+  sha: sha256:d282dd2bfc62b550398082df84c671c802dfa7610d05cb2a32a93069bb540fa8
 cf-cli/cf7-cli_7.7.12_linux_x86-64.tgz:
   size: 7624800
   object_id: 0bf8fb02-b7c4-424b-4a8c-94f7c8008371
