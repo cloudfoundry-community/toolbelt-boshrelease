@@ -18,10 +18,9 @@ jq/jq-1.8.1-linux-amd64:
   size: 2255816
   object_id: acf22495-3aac-41c4-6869-33be56c388e0
   sha: sha256:020468de7539ce70ef1bceaf7cde2e8c4f2ca6c3afb84642aabc5c97d9fc2a0d
-mysql/mariadb-11.4.10.tar.gz:
-  size: 120394058
-  object_id: c63754b8-e3af-45c6-632d-3621c466586d
-  sha: sha256:14783ddc5edd966ff05aa0efd5ed6d3d369ed5b9e4080a448f00f87a9f0a4a6b
+mysql/mariadb-11.8.7.tar.gz:
+  size: 119377507
+  sha: sha256:1a23a21549ce6e4803f0f149159e5c76b925f6fa4c955a4064f9c472b4b79a05
 nats/nats-0.4.0-linux-amd64.zip:
   size: 9609864
   object_id: 07349793-96cb-46fd-7910-62d5960e4ab4
