@@ -1,14 +1,12 @@
 boss/boss-linux-amd64:
   size: 9653586
   sha: sha256:d282dd2bfc62b550398082df84c671c802dfa7610d05cb2a32a93069bb540fa8
-cf-cli/cf7-cli_7.7.12_linux_x86-64.tgz:
-  size: 7624800
-  object_id: 0bf8fb02-b7c4-424b-4a8c-94f7c8008371
-  sha: sha256:c507d0191304d29fdda04ad35147d47a7ca0bd801fb9a840c15ddb6eac023e06
-cf-cli/cf8-cli_8.8.0_linux_x86-64.tgz:
-  size: 9199900
-  object_id: 7829bd6a-cdec-4b4d-6323-453d58503319
-  sha: sha256:fa33d65327e72bc90d9d6f3751aa0a8db3f8168f011740649fa9519c8f0111bb
+cf-cli/cf7-cli_7.8.0_linux_x86-64.tgz:
+  size: 7815617
+  sha: sha256:a663907f7a7ad193b6e3d3e7af7f916925f9e6e21a6a500e4711a46413aa1e74
+cf-cli/cf8-cli_8.18.3_linux_x86-64.tgz:
+  size: 9765051
+  sha: sha256:8942e2c3c98e83c7e14edbce939876bba7ff12a26f0f722c5aa5b079d357d50b
 cfdot/cfdot-linux64:
   size: 24614808
   object_id: b673e243-7c22-4fd3-5ec2-945d8557c4f1
