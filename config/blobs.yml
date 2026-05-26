@@ -154,10 +154,9 @@ tshark/pkgconf-2.3.0.tar.xz:
   size: 316160
   object_id: 2bc28dbf-66ce-4716-5caf-79eec1ae4793
   sha: sha256:3a9080ac51d03615e7c1910a0a2a8df08424892b5f13b0628a204d3fcce0ea8b
-tshark/wireshark-4.4.2.tar.xz:
-  size: 46763620
-  object_id: 7001f929-312a-4f61-401e-60da07fd512a
-  sha: sha256:6053d97499c83feb87ce1d7f732d9c889c6c18bb334de67e65dca11483b0514e
+tshark/wireshark-4.6.6.tar.xz:
+  size: 56334204
+  sha: sha256:27e7ff780cd68a7466082be82ca26c06a002e74a71646ef3a6e4683e444c1a86
 valkey/valkey-9.1.0.tar.gz:
   size: 4375381
   object_id: 92730ec1-448f-4be2-7e27-1bf1555d397b
