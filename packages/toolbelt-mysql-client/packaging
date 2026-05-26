@@ -3,9 +3,9 @@ set -u # report the usage of uninitialized variables
 
 # link: https://mariadb.com/kb/en/release-notes/
 # link: https://dlm.mariadb.com/browse/mariadb\_server/
-# mysql version:	Ver 15.1 Distrib 11.4.10-MariaDB
-# https://mariadb.com/docs/platform/post-download/mariadb-server-11.4.10
-# https://mariadb.org/download/?t=mariadb&o=true&p=mariadb&r=11.4.10&os=source&mirror=archive
+# mysql version:	Ver 15.1 Distrib 11.8.7-MariaDB
+# https://mariadb.com/docs/platform/post-download/mariadb-server-11.8.7
+# download from https://archive.mariadb.org/mariadb-11.8.7/source/mariadb-11.8.7.tar.gz
 
 # Detect # of CPUs so make jobs can be parallelized
 CPUS=$(grep -c ^processor /proc/cpuinfo)
@@ -20,8 +20,8 @@ export LDFLAGS=-L${LD_LIBRARY_PATH}
 export CPPFLAGS=-I${INCLUDE_PATH}
 export PATH=${PATH}:${BOSH_INSTALL_TARGET}/bin:${BOSH_INSTALL_TARGET}/sbin
 
-tar -xzf mysql/mariadb-11.4.10.tar.gz
-(cd mariadb-11.4.10/
+tar -xzf mysql/mariadb-11.8.7.tar.gz
+(cd mariadb-11.8.7/
   cmake -DCMAKE_INSTALL_PREFIX:PATH=${BOSH_INSTALL_TARGET} -DWITHOUT_SERVER:BOOL=ON && \
   make && \
   make install) || exit 1
