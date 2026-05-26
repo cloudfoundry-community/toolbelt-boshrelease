@@ -2,7 +2,7 @@ set -e # exit immediately if a simple command exits with a non-zero status
 set -u # report the usage of uninitialized variables
 
 # link: https://github.com/Old-Man-Programmer/tree
-# tree version: 2.3.1
+# tree version: 2.3.2
 # https://oldmanprogrammer.net/source.php?dir=projects/tree
 
 
@@ -14,8 +14,8 @@ CPUS=$(grep -c ^processor /proc/cpuinfo)
 export HOME=/var/vcap
 
 # Running in a subshell since I might be messing with the exportability of BOSH_INSTALL_TARGET
-tar -xzvf tree/tree-2.3.1.tgz
-( cd tree-2.3.1
+tar -xzvf tree/tree-2.3.2.tgz
+( cd tree-2.3.2
   export BOSH_INSTALL_TARGET
   make -j${CPUS}
   make PREFIX="${BOSH_INSTALL_TARGET}" install ) || exit 1
