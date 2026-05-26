@@ -2,4 +2,4 @@
 name: toolbelt-nats
 dependencies: []
 files:
-  - nats/nats-0.3.1-linux-amd64.zip
+  - nats/nats-0.4.0-linux-amd64.zip
