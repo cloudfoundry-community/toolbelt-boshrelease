@@ -37,6 +37,6 @@ stemcells:
 
 releases:
 - name:    toolbelt
-  version: 4.0.0
-  url:     https://github.com/cloudfoundry-community/toolbelt-boshrelease/releases/download/v4.0.0/toolbelt-4.0.0.tgz
-  sha1:    9ef47e3aa0f9b22a4186df675f3c223fe3a6d847
+  version: 4.0.1
+  url:     https://github.com/cloudfoundry-community/toolbelt-boshrelease/releases/download/v4.0.1/toolbelt-4.0.1.tgz
+  sha1:    b917a6bea2e4d76adcd59b6ac92756e5fc7b3f6a
