@@ -107,9 +107,9 @@ screen/screen-5.0.1.tar.gz:
   object_id: 7ae7735b-23ac-4d3a-65d3-509e2ef2d4f6
   sha: sha256:2dae36f4db379ffcd14b691596ba6ec18ac3a9e22bc47ac239789ab58409869d
 spruce/spruce-linux-amd64:
-  size: 30092232
-  object_id: 4f793c14-2d97-4190-6193-0c4d1fbc4bfc
-  sha: sha256:6b77b0a58c98f5a91ec01e08cf217e6db5b31e052274ae50d6b9285f6136786f
+  size: 31071301
+  object_id: bc96e5db-c18e-440e-6c55-7df15790152b
+  sha: sha256:2af1e30e995cd686a7d41db5c3e313e0df03f9a23e59771a9e41b7fdbde11847
 tcptrace/tcptrace:
   size: 2983
   object_id: 0975577c-b183-4e7f-bb13-8db0f1e49361
