@@ -34,3 +34,7 @@
 # spruce
 
 - Bumped spruce to v1.35.25
+
+# spruce
+
+- Bumped spruce to v1.35.26
